@@ -23,7 +23,7 @@
 
     Private Sub DefaultButton_Click(sender As Object, e As EventArgs) Handles DefaultButton.Click
         If PrinterListBox.SelectedItems.Count <> 1 Then
-            OperationBox.AppendText("Choose only 1 printer to make default")
+            MsgBox("Choose only 1 printer to make default")
         Else
             Dim cid As Integer = 0
             Dim pid As Integer = 0
@@ -35,6 +35,20 @@
                 Next
             Next
         End If
+        DisplayPrintersForSelectedComputers()
+    End Sub
+
+    Private Sub UnAssignButton_Click(sender As Object, e As EventArgs) Handles UnAssignButton.Click
+        OperationBox.Clear()
+        Dim cid As Integer = 0
+        Dim pid As Integer = 0
+        For Each computerRow As DataRowView In ComputerListBox.SelectedItems
+            cid = computerRow.Row.Field(Of Integer)("ComputerID")
+            For Each printerRow As DataRowView In PrinterListBox.SelectedItems
+                pid = printerRow.Row.Field(Of Integer)("PrinterID")
+                UnassignPrinter(cid, pid)
+            Next
+        Next
         DisplayPrintersForSelectedComputers()
     End Sub
 
@@ -68,17 +82,46 @@
 
     Private Sub AddPrinter(ByVal cid As Integer, ByVal pid As Integer, Optional ByVal isDefault As Boolean = False)
         Dim linkTable As DataTable = PrinterLinkTableAdapter.GetLink(cid, pid)
+        If isDefault Then
+            PrinterLinkTableAdapter.RemoveDefaults(cid)
+        End If
         If linkTable.Rows.Count > 1 Then
             MsgBox(String.Format("Database corrupt. Multiple entries for cid = {0}, pid = {1}", cid, pid))
         End If
         If linkTable.Rows.Count = 1 Then
             Dim key As Integer = linkTable.Rows(0).Field(Of Integer)("ID")
-            If isDefault Then
-                PrinterLinkTableAdapter.RemoveDefaults(cid)
-            End If
+
             PrinterLinkTableAdapter.UpdateDefault(isDefault, key)
         Else
             PrinterLinkTableAdapter.InsertQuery(cid, pid, isDefault)
         End If
+    End Sub
+
+    Private Sub UnassignPrinter(ByVal cid As Integer, ByVal pid As Integer)
+        PrinterLinkTableAdapter.DeleteByInstance(cid, pid)
+    End Sub
+
+    Private Sub DeletePrinterButton_Click(sender As Object, e As EventArgs) Handles DeletePrinterButton.Click
+        Dim PrinterTableAdapter As New ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter
+        Dim pid As Integer = 0
+        Dim plural As String = If(PrinterListBox.SelectedItems.Count = 1, "", "s")
+        Dim warn As String = String.Format("Are you sure you wish to delete {0} printer{1} permanently from the database?", PrinterListBox.SelectedItems.Count, plural)
+        Dim res As DialogResult = MsgBox(warn, MsgBoxStyle.YesNo)
+        If res.Equals(DialogResult.Yes) Then
+            For Each printer As DataRowView In PrinterListBox.SelectedItems
+                pid = printer.Row.Field(Of Integer)("PrinterID")
+                PrinterTableAdapter.DeleteByID(pid)
+            Next
+        End If
+        Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+    End Sub
+
+    Private Sub EditPrinterButton_Click(sender As Object, e As EventArgs) Handles EditPrinterButton.Click
+        Dim pd As New PrinterDetail
+        Dim selectedPrinter As DataRow = PrinterListBox.SelectedItems(0).row
+        Dim pid As Integer = selectedPrinter.Field(Of Integer)("PrinterID")
+        pd.SelectPrinter(pid)
+        pd.ShowDialog()
+        Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
     End Sub
 End Class

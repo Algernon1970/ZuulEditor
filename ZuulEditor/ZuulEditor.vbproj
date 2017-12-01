@@ -72,10 +72,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssetForms\PrinterDetail.Designer.vb">
+      <DependentUpon>PrinterDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AssetForms\PrinterDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AssignPrintersForm.Designer.vb">
       <DependentUpon>AssignPrintersForm.vb</DependentUpon>
     </Compile>
     <Compile Include="AssignPrintersForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogues\RequestString.Designer.vb">
+      <DependentUpon>RequestString.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogues\RequestString.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.vb">
@@ -110,8 +122,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AssetForms\PrinterDetail.resx">
+      <DependentUpon>PrinterDetail.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssignPrintersForm.resx">
       <DependentUpon>AssignPrintersForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogues\RequestString.resx">
+      <DependentUpon>RequestString.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

@@ -7766,20 +7766,20 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tbl_Computer] WHERE (([ComputerID] = @Original_ComputerID) AND"& _ 
-                " ([Name] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumbe"& _ 
-                "r] IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_Se"& _ 
-                "rialNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_Serial"& _ 
-                "Number)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)"& _ 
-                ") AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) A"& _ 
-                "ND ((@IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND "& _ 
-                "((@IsNull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@"& _ 
-                "IsNull_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = "& _ 
-                "@Original_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supp"& _ 
-                "lier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) "& _ 
-                "OR ([Purchase] = @Original_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] "& _ 
-                "IS NULL) OR ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND"& _ 
-                " [WirelessMac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Computer] WHERE (([ComputerID] = @Original_ComputerID) AND ([Nam"& _ 
+                "e] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS "& _ 
+                "NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNu"& _ 
+                "mber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber"& _ 
+                ")) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND "& _ 
+                "((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@"& _ 
+                "IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsN"& _ 
+                "ull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull"& _ 
+                "_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Origi"& _ 
+                "nal_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] "& _ 
+                "= @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([P"& _ 
+                "urchase] = @Original_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NUL"& _ 
+                "L) OR ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [Wire"& _ 
+                "lessMac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComputerID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7808,13 +7808,13 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_WirelessMac", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WirelessMac", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tbl_Computer] ([Name], [InventoryNumber], [SerialNumber], [Mak"& _ 
-                "e], [Model], [RamGB], [HDDGB], [SSD], [Location], [Supplier], [Purchase], [Wired"& _ 
-                "Mac], [WirelessMac]) VALUES (@Name, @InventoryNumber, @SerialNumber, @Make, @Mod"& _ 
-                "el, @RamGB, @HDDGB, @SSD, @Location, @Supplier, @Purchase, @WiredMac, @WirelessM"& _ 
-                "ac);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB"& _ 
-                ", HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM Tbl_Compu"& _ 
-                "ter WHERE (ComputerID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Computer] ([Name], [InventoryNumber], [SerialNumber], [Make], [M"& _ 
+                "odel], [RamGB], [HDDGB], [SSD], [Location], [Supplier], [Purchase], [WiredMac], "& _ 
+                "[WirelessMac]) VALUES (@Name, @InventoryNumber, @SerialNumber, @Make, @Model, @R"& _ 
+                "amGB, @HDDGB, @SSD, @Location, @Supplier, @Purchase, @WiredMac, @WirelessMac);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDG"& _ 
+                "B, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM Tbl_Computer WH"& _ 
+                "ERE (ComputerID = SCOPE_IDENTITY()) ORDER BY Name"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7831,26 +7831,27 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WirelessMac", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WirelessMac", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tbl_Computer] SET [Name] = @Name, [InventoryNumber] = @InventoryNum"& _ 
-                "ber, [SerialNumber] = @SerialNumber, [Make] = @Make, [Model] = @Model, [RamGB] ="& _ 
-                " @RamGB, [HDDGB] = @HDDGB, [SSD] = @SSD, [Location] = @Location, [Supplier] = @S"& _ 
-                "upplier, [Purchase] = @Purchase, [WiredMac] = @WiredMac, [WirelessMac] = @Wirele"& _ 
-                "ssMac WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name)"& _ 
-                " AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([Inventory"& _ 
-                "Number] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [Serial"& _ 
-                "Number] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Mak"& _ 
-                "e = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 "& _ 
-                "AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND"& _ 
-                " [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [H"& _ 
-                "DDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] I"& _ 
-                "S NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND (("& _ 
-                "@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier"& _ 
-                ")) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original"& _ 
-                "_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = "& _ 
-                "@Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR"& _ 
-                " ([WirelessMac] = @Original_WirelessMac)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryN"& _ 
-                "umber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchas"& _ 
-                "e, WiredMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = @ComputerID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Computer] SET [Name] = @Name, [InventoryNumber] = @InventoryNumber, ["& _ 
+                "SerialNumber] = @SerialNumber, [Make] = @Make, [Model] = @Model, [RamGB] = @RamG"& _ 
+                "B, [HDDGB] = @HDDGB, [SSD] = @SSD, [Location] = @Location, [Supplier] = @Supplie"& _ 
+                "r, [Purchase] = @Purchase, [WiredMac] = @WiredMac, [WirelessMac] = @WirelessMac "& _ 
+                "WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name) AND ("& _ 
+                "(@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNumber"& _ 
+                "] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNumber"& _ 
+                "] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make = 1 "& _ 
+                "AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [M"& _ 
+                "odel] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND [RamG"& _ 
+                "B] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [HDDGB] "& _ 
+                "IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] IS NULL"& _ 
+                ") OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND ((@IsNul"& _ 
+                "l_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND"& _ 
+                " ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purch"& _ 
+                "ase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = @Origi"& _ 
+                "nal_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR ([Wir"& _ 
+                "elessMac] = @Original_WirelessMac)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryNumber,"& _ 
+                " SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, Wir"& _ 
+                "edMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = @ComputerID) ORDER BY N"& _ 
+                "ame"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -7906,9 +7907,9 @@ Namespace ZuulDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
-                ", SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM dbo.Tbl_Computer"& _ 
-                ""
+            Me._commandCollection(0).CommandText = "SELECT        ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB"& _ 
+                ", HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM         "& _ 
+                "   Tbl_Computer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Name"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -8851,23 +8852,24 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tbl_Location] WHERE (([LocationID] = @Original_LocationID) AND"& _ 
-                " ([LocationName] = @Original_LocationName))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Location] WHERE (([LocationID] = @Original_LocationID) AND ([Loc"& _ 
+                "ationName] = @Original_LocationName))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LocationID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LocationID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LocationName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LocationName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tbl_Location] ([LocationName]) VALUES (@LocationName);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT"& _ 
-                " LocationID, LocationName FROM Tbl_Location WHERE (LocationID = SCOPE_IDENTITY()"& _ 
-                ")"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Location] ([LocationName]) VALUES (@LocationName);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Locat"& _ 
+                "ionID, LocationName FROM Tbl_Location WHERE (LocationID = SCOPE_IDENTITY()) ORDE"& _ 
+                "R BY LocationName"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LocationName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LocationName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tbl_Location] SET [LocationName] = @LocationName WHERE (([LocationI"& _ 
-                "D] = @Original_LocationID) AND ([LocationName] = @Original_LocationName));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELE"& _ 
-                "CT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = @LocationID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Location] SET [LocationName] = @LocationName WHERE (([LocationID] = @"& _ 
+                "Original_LocationID) AND ([LocationName] = @Original_LocationName));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Loc"& _ 
+                "ationID, LocationName FROM Tbl_Location WHERE (LocationID = @LocationID) ORDER B"& _ 
+                "Y LocationName"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LocationName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LocationName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LocationID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LocationID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -8885,11 +8887,18 @@ Namespace ZuulDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT LocationID, LocationName FROM dbo.Tbl_Location"
+            Me._commandCollection(0).CommandText = "SELECT        LocationID, LocationName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Location"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Lo"& _ 
+                "cationName"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        LocationID, LocationName"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Location"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  Loca"& _ 
+                "tionID = @lid"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@lid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "LocationID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8911,6 +8920,18 @@ Namespace ZuulDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As ZuulDataSet.Tbl_LocationDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As ZuulDataSet.Tbl_LocationDataTable = New ZuulDataSet.Tbl_LocationDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetLocationName(ByVal lid As Integer) As ZuulDataSet.Tbl_LocationDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(lid,Integer)
             Dim dataTable As ZuulDataSet.Tbl_LocationDataTable = New ZuulDataSet.Tbl_LocationDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -9171,12 +9192,12 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tbl_Person] WHERE (([PersonID] = @Original_PersonID) AND ((@Is"& _ 
-                "Null_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) "& _ 
-                "AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surna"& _ 
-                "me)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @"& _ 
-                "Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Orig"& _ 
-                "inal_SID)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Person] WHERE (([PersonID] = @Original_PersonID) AND ((@IsNull_F"& _ 
+                "orename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) AND (("& _ 
+                "@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surname)) A"& _ 
+                "ND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @Origin"& _ 
+                "al_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Original_S"& _ 
+                "ID)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PersonID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PersonID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Forename", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Forename", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -9189,9 +9210,10 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tbl_Person] ([Forename], [Surname], [SamAccount], [SID]) VALUE"& _ 
-                "S (@Forename, @Surname, @SamAccount, @SID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PersonID, Forename, Surname,"& _ 
-                " SamAccount, SID FROM Tbl_Person WHERE (PersonID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Person] ([Forename], [Surname], [SamAccount], [SID]) VALUES (@Fo"& _ 
+                "rename, @Surname, @SamAccount, @SID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PersonID, Forename, Surname, SamAc"& _ 
+                "count, SID FROM Tbl_Person WHERE (PersonID = SCOPE_IDENTITY()) ORDER BY Surname,"& _ 
+                " Forename"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Forename", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Forename", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Surname", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Surname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -9199,14 +9221,14 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SID", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tbl_Person] SET [Forename] = @Forename, [Surname] = @Surname, [SamA"& _ 
-                "ccount] = @SamAccount, [SID] = @SID WHERE (([PersonID] = @Original_PersonID) AND"& _ 
-                " ((@IsNull_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Foren"& _ 
-                "ame)) AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original"& _ 
-                "_Surname)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccoun"& _ 
-                "t] = @Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] ="& _ 
-                " @Original_SID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl"& _ 
-                "_Person WHERE (PersonID = @PersonID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Person] SET [Forename] = @Forename, [Surname] = @Surname, [SamAccount"& _ 
+                "] = @SamAccount, [SID] = @SID WHERE (([PersonID] = @Original_PersonID) AND ((@Is"& _ 
+                "Null_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) "& _ 
+                "AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surna"& _ 
+                "me)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @"& _ 
+                "Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Orig"& _ 
+                "inal_SID)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Perso"& _ 
+                "n WHERE (PersonID = @PersonID) ORDER BY Surname, Forename"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Forename", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Forename", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Surname", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Surname", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -9237,7 +9259,8 @@ Namespace ZuulDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT PersonID, Forename, Surname, SamAccount, SID FROM dbo.Tbl_Person"
+            Me._commandCollection(0).CommandText = "SELECT        PersonID, Forename, Surname, SamAccount, SID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_P"& _ 
+                "erson"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Surname, Forename"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -9600,15 +9623,15 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tbl_Printer] WHERE (([PrinterID] = @Original_PrinterID) AND (["& _ 
-                "Name] = @Original_Name) AND ([ConnectionString] = @Original_ConnectionString) AN"& _ 
-                "D ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@Is"& _ 
-                "Null_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNul"& _ 
-                "l_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @Original_IPAddress))"& _ 
-                " AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_L"& _ 
-                "ocation)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @O"& _ 
-                "riginal_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purch"& _ 
-                "ase] = @Original_Purchase)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Printer] WHERE (([PrinterID] = @Original_PrinterID) AND ([Name] "& _ 
+                "= @Original_Name) AND ([ConnectionString] = @Original_ConnectionString) AND ((@I"& _ 
+                "sNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_M"& _ 
+                "odel = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_IPAd"& _ 
+                "dress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @Original_IPAddress)) AND ("& _ 
+                "(@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Locatio"& _ 
+                "n)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Origina"& _ 
+                "l_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] ="& _ 
+                " @Original_Purchase)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PrinterID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrinterID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -9627,11 +9650,11 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Purchase", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Purchase", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tbl_Printer] ([Name], [ConnectionString], [Make], [Model], [IP"& _ 
-                "Address], [Location], [Supplier], [Purchase]) VALUES (@Name, @ConnectionString, "& _ 
-                "@Make, @Model, @IPAddress, @Location, @Supplier, @Purchase);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PrinterID, "& _ 
-                "Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FRO"& _ 
-                "M Tbl_Printer WHERE (PrinterID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Printer] ([Name], [ConnectionString], [Make], [Model], [IPAddres"& _ 
+                "s], [Location], [Supplier], [Purchase]) VALUES (@Name, @ConnectionString, @Make,"& _ 
+                " @Model, @IPAddress, @Location, @Supplier, @Purchase);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PrinterID, Name, "& _ 
+                "ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_"& _ 
+                "Printer WHERE (PrinterID = SCOPE_IDENTITY()) ORDER BY Name"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ConnectionString", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ConnectionString", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -9643,19 +9666,19 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Purchase", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Purchase", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tbl_Printer] SET [Name] = @Name, [ConnectionString] = @ConnectionSt"& _ 
-                "ring, [Make] = @Make, [Model] = @Model, [IPAddress] = @IPAddress, [Location] = @"& _ 
-                "Location, [Supplier] = @Supplier, [Purchase] = @Purchase WHERE (([PrinterID] = @"& _ 
-                "Original_PrinterID) AND ([Name] = @Original_Name) AND ([ConnectionString] = @Ori"& _ 
-                "ginal_ConnectionString) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = "& _ 
-                "@Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Ori"& _ 
-                "ginal_Model)) AND ((@IsNull_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddres"& _ 
-                "s] = @Original_IPAddress)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR"& _ 
-                " ([Location] = @Original_Location)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS"& _ 
-                " NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Pur"& _ 
-                "chase] IS NULL) OR ([Purchase] = @Original_Purchase)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PrinterID, Name,"& _ 
-                " ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl"& _ 
-                "_Printer WHERE (PrinterID = @PrinterID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Printer] SET [Name] = @Name, [ConnectionString] = @ConnectionString, "& _ 
+                "[Make] = @Make, [Model] = @Model, [IPAddress] = @IPAddress, [Location] = @Locati"& _ 
+                "on, [Supplier] = @Supplier, [Purchase] = @Purchase WHERE (([PrinterID] = @Origin"& _ 
+                "al_PrinterID) AND ([Name] = @Original_Name) AND ([ConnectionString] = @Original_"& _ 
+                "ConnectionString) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Origi"& _ 
+                "nal_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_"& _ 
+                "Model)) AND ((@IsNull_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @"& _ 
+                "Original_IPAddress)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Loc"& _ 
+                "ation] = @Original_Location)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL)"& _ 
+                " OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase]"& _ 
+                " IS NULL) OR ([Purchase] = @Original_Purchase)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT PrinterID, Name, Conne"& _ 
+                "ctionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_Print"& _ 
+                "er WHERE (PrinterID = @PrinterID) ORDER BY Name"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ConnectionString", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ConnectionString", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -9693,18 +9716,51 @@ Namespace ZuulDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(5) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Suppl"& _ 
-                "ier, Purchase FROM dbo.Tbl_Printer"
+            Me._commandCollection(0).CommandText = "SELECT        PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location"& _ 
+                ", Supplier, Purchase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Printer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Name"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Suppl"& _ 
-                "ier, Purchase FROM dbo.Tbl_Printer where PrinterID = @pid"
+            Me._commandCollection(1).CommandText = "SELECT COUNT(*) FROM Tbl_Printer where name = @name"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "PrinterID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "INSERT INTO Tbl_Printer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Name, ConnectionString, Make, "& _ 
+                "Model, IPAddress, Location, Supplier, Purchase)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (@Name,@Connectio"& _ 
+                "nString,@Make,@Model,@IPAddress,@Location,@Supplier,@Purchase); "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Printer"& _ 
+                "ID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase"& _ 
+                " FROM Tbl_Printer WHERE (PrinterID = SCOPE_IDENTITY()) ORDER BY Name"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ConnectionString", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, "ConnectionString", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Make", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Model", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IPAddress", Global.System.Data.SqlDbType.NVarChar, 20, Global.System.Data.ParameterDirection.Input, 0, 0, "IPAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Location", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Supplier", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Purchase", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Purchase", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "DELETE FROM Tbl_Printer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (PrinterID = @pid)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "PrinterID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(4).Connection = Me.Connection
+            Me._commandCollection(4).CommandText = "SELECT        PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location"& _ 
+                ", Supplier, Purchase"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Printer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE     Name =@name"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER "& _ 
+                "BY Name"
+            Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(4).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(5).Connection = Me.Connection
+            Me._commandCollection(5).CommandText = "SELECT ConnectionString, IPAddress, Location, Make, Model, Name, PrinterID, Purch"& _ 
+                "ase, Supplier FROM Tbl_Printer WHERE (PrinterID = @pid)"
+            Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(5).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@pid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "PrinterID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9735,8 +9791,24 @@ Namespace ZuulDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetPrinterByName(ByVal name As String) As ZuulDataSet.Tbl_PrinterDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(4)
+            If (name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("name")
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(name,String)
+            End If
+            Dim dataTable As ZuulDataSet.Tbl_PrinterDataTable = New ZuulDataSet.Tbl_PrinterDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetPrinterByPrinterID(ByVal pid As Integer) As ZuulDataSet.Tbl_PrinterDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand = Me.CommandCollection(5)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(pid,Integer)
             Dim dataTable As ZuulDataSet.Tbl_PrinterDataTable = New ZuulDataSet.Tbl_PrinterDataTable()
             Me.Adapter.Fill(dataTable)
@@ -10059,6 +10131,122 @@ Namespace ZuulDataSetTableAdapters
                     ByVal Original_Supplier As Global.System.Nullable(Of Integer),  _
                     ByVal Original_Purchase As Global.System.Nullable(Of Integer)) As Integer
             Return Me.Update(Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase, Original_PrinterID, Original_Name, Original_ConnectionString, Original_Make, Original_Model, Original_IPAddress, Original_Location, Original_Supplier, Original_Purchase, Original_PrinterID)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function alreadyExists(ByVal name As String) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("name")
+            Else
+                command.Parameters(0).Value = CType(name,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function CreatePrinter(ByVal Name As String, ByVal ConnectionString As String, ByVal Make As String, ByVal Model As String, ByVal IPAddress As String, ByVal Location As Global.System.Nullable(Of Integer), ByVal Supplier As Global.System.Nullable(Of Integer), ByVal Purchase As Global.System.Nullable(Of Integer)) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (Name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Name")
+            Else
+                command.Parameters(0).Value = CType(Name,String)
+            End If
+            If (ConnectionString Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("ConnectionString")
+            Else
+                command.Parameters(1).Value = CType(ConnectionString,String)
+            End If
+            If (Make Is Nothing) Then
+                command.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(2).Value = CType(Make,String)
+            End If
+            If (Model Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(3).Value = CType(Model,String)
+            End If
+            If (IPAddress Is Nothing) Then
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(4).Value = CType(IPAddress,String)
+            End If
+            If (Location.HasValue = true) Then
+                command.Parameters(5).Value = CType(Location.Value,Integer)
+            Else
+                command.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (Supplier.HasValue = true) Then
+                command.Parameters(6).Value = CType(Supplier.Value,Integer)
+            Else
+                command.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (Purchase.HasValue = true) Then
+                command.Parameters(7).Value = CType(Purchase.Value,Integer)
+            Else
+                command.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, false)>  _
+        Public Overloads Overridable Function DeleteByID(ByVal pid As Integer) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(3)
+            command.Parameters(0).Value = CType(pid,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            Return returnValue
         End Function
     End Class
     
@@ -10554,9 +10742,9 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tbl_Supplier] WHERE (([SupplierID] = @Original_SupplierID) AND"& _ 
-                " ([Name] = @Original_Name) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Pho"& _ 
-                "ne] = @Original_Phone)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Supplier] WHERE (([SupplierID] = @Original_SupplierID) AND ([Nam"& _ 
+                "e] = @Original_Name) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = "& _ 
+                "@Original_Phone)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SupplierID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SupplierID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -10564,20 +10752,20 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Phone", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tbl_Supplier] ([Name], [Phone], [Notes]) VALUES (@Name, @Phone"& _ 
-                ", @Notes);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (Suppl"& _ 
-                "ierID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Supplier] ([Name], [Phone], [Notes]) VALUES (@Name, @Phone, @Not"& _ 
+                "es);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID "& _ 
+                "= SCOPE_IDENTITY()) ORDER BY Name"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Notes", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Notes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tbl_Supplier] SET [Name] = @Name, [Phone] = @Phone, [Notes] = @Note"& _ 
-                "s WHERE (([SupplierID] = @Original_SupplierID) AND ([Name] = @Original_Name) AND"& _ 
-                " ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SEL"& _ 
-                "ECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Suppli"& _ 
-                "erID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Supplier] SET [Name] = @Name, [Phone] = @Phone, [Notes] = @Notes WHER"& _ 
+                "E (([SupplierID] = @Original_SupplierID) AND ([Name] = @Original_Name) AND ((@Is"& _ 
+                "Null_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Su"& _ 
+                "pplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @SupplierID) "& _ 
+                "ORDER BY Name"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Phone", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10602,7 +10790,8 @@ Namespace ZuulDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT SupplierID, Name, Phone, Notes FROM dbo.Tbl_Supplier"
+            Me._commandCollection(0).CommandText = "SELECT        SupplierID, Name, Phone, Notes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Supplier"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER"& _ 
+                " BY Name"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

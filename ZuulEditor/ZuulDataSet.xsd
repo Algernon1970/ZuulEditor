@@ -169,7 +169,7 @@ SELECT ID, ComputerID, PrinterID, IsDefaultPrinter FROM Lnk_ComputerPrinter WHER
               <Mapping SourceColumn="IsDefaultPrinter" DataSetColumn="IsDefaultPrinter" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByID" Modifier="Public" Name="DeleteByID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="DeleteByID">
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByID" Modifier="Public" Name="DeleteByID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteByID">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Lnk_ComputerPrinter
@@ -180,7 +180,7 @@ WHERE        (ID = @Original_ID)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByInstance" Modifier="Public" Name="DeleteByInstance" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="DeleteByInstance">
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByInstance" Modifier="Public" Name="DeleteByInstance" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteByInstance">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM Lnk_ComputerPrinter
@@ -213,7 +213,7 @@ WHERE        (ComputerID = @cid) AND (PrinterID = @pid)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertQuery">
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertQuery" Modifier="Public" Name="InsertQuery" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertQuery">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[Lnk_ComputerPrinter] ([ComputerID], [PrinterID], [IsDefaultPrinter]) VALUES (@ComputerID, @PrinterID, @IsDefaultPrinter);
@@ -226,7 +226,7 @@ SELECT ID, ComputerID, PrinterID, IsDefaultPrinter FROM Lnk_ComputerPrinter WHER
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="RemoveDefaults" Modifier="Public" Name="RemoveDefaults" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="RemoveDefaults">
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="RemoveDefaults" Modifier="Public" Name="RemoveDefaults" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="RemoveDefaults">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Lnk_ComputerPrinter
@@ -239,7 +239,7 @@ WHERE        (ComputerID = @cid);
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateDefault" Modifier="Public" Name="UpdateDefault" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="UpdateDefault">
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateDefault" Modifier="Public" Name="UpdateDefault" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateDefault">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Lnk_ComputerPrinter
@@ -312,7 +312,7 @@ SELECT ID, PrinterID, InfoID FROM Lnk_PrinterInfo WHERE (ID = @ID)</CommandText>
               <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Computer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tbl_Computer] WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)))</CommandText>
+                    <CommandText>DELETE FROM [Tbl_Computer] WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ComputerID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ComputerID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -344,8 +344,8 @@ SELECT ID, PrinterID, InfoID FROM Lnk_PrinterInfo WHERE (ID = @ID)</CommandText>
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tbl_Computer] ([Name], [InventoryNumber], [SerialNumber], [Make], [Model], [RamGB], [HDDGB], [SSD], [Location], [Supplier], [Purchase], [WiredMac], [WirelessMac]) VALUES (@Name, @InventoryNumber, @SerialNumber, @Make, @Model, @RamGB, @HDDGB, @SSD, @Location, @Supplier, @Purchase, @WiredMac, @WirelessMac);
-SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Tbl_Computer] ([Name], [InventoryNumber], [SerialNumber], [Make], [Model], [RamGB], [HDDGB], [SSD], [Location], [Supplier], [Purchase], [WiredMac], [WirelessMac]) VALUES (@Name, @InventoryNumber, @SerialNumber, @Make, @Model, @RamGB, @HDDGB, @SSD, @Location, @Supplier, @Purchase, @WiredMac, @WirelessMac);
+SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = SCOPE_IDENTITY()) ORDER BY Name</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@InventoryNumber" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="InventoryNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -364,15 +364,17 @@ SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDG
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM dbo.Tbl_Computer</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac
+FROM            Tbl_Computer
+ORDER BY Name</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tbl_Computer] SET [Name] = @Name, [InventoryNumber] = @InventoryNumber, [SerialNumber] = @SerialNumber, [Make] = @Make, [Model] = @Model, [RamGB] = @RamGB, [HDDGB] = @HDDGB, [SSD] = @SSD, [Location] = @Location, [Supplier] = @Supplier, [Purchase] = @Purchase, [WiredMac] = @WiredMac, [WirelessMac] = @WirelessMac WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)));
-SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = @ComputerID)</CommandText>
+                    <CommandText>UPDATE [Tbl_Computer] SET [Name] = @Name, [InventoryNumber] = @InventoryNumber, [SerialNumber] = @SerialNumber, [Make] = @Make, [Model] = @Model, [RamGB] = @RamGB, [HDDGB] = @HDDGB, [SSD] = @SSD, [Location] = @Location, [Supplier] = @Supplier, [Purchase] = @Purchase, [WiredMac] = @WiredMac, [WirelessMac] = @WirelessMac WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)));
+SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, Purchase, WiredMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = @ComputerID) ORDER BY Name</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@InventoryNumber" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="InventoryNumber" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -496,7 +498,7 @@ SELECT InfoID, DateStamp, Title, Notes FROM Tbl_Info WHERE (InfoID = @InfoID)</C
               <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Location" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tbl_Location] WHERE (([LocationID] = @Original_LocationID) AND ([LocationName] = @Original_LocationName))</CommandText>
+                    <CommandText>DELETE FROM [Tbl_Location] WHERE (([LocationID] = @Original_LocationID) AND ([LocationName] = @Original_LocationName))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_LocationID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LocationID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_LocationName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="LocationName" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -505,23 +507,25 @@ SELECT InfoID, DateStamp, Title, Notes FROM Tbl_Info WHERE (InfoID = @InfoID)</C
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tbl_Location] ([LocationName]) VALUES (@LocationName);
-SELECT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Tbl_Location] ([LocationName]) VALUES (@LocationName);
+SELECT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = SCOPE_IDENTITY()) ORDER BY LocationName</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@LocationName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="LocationName" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT LocationID, LocationName FROM dbo.Tbl_Location</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        LocationID, LocationName
+FROM            Tbl_Location
+ORDER BY LocationName</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tbl_Location] SET [LocationName] = @LocationName WHERE (([LocationID] = @Original_LocationID) AND ([LocationName] = @Original_LocationName));
-SELECT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = @LocationID)</CommandText>
+                    <CommandText>UPDATE [Tbl_Location] SET [LocationName] = @LocationName WHERE (([LocationID] = @Original_LocationID) AND ([LocationName] = @Original_LocationName));
+SELECT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = @LocationID) ORDER BY LocationName</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@LocationName" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="LocationName" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_LocationID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="LocationID" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -536,14 +540,27 @@ SELECT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = @LocationI
               <Mapping SourceColumn="LocationID" DataSetColumn="LocationID" />
               <Mapping SourceColumn="LocationName" DataSetColumn="LocationName" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Location" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetLocationName" GetMethodModifier="Public" GetMethodName="GetLocationName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetLocationName" UserSourceName="GetLocationName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        LocationID, LocationName
+FROM            Tbl_Location
+WHERE  LocationID = @lid</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="lid" ColumnName="LocationID" DataSourceName="Zuul.dbo.Tbl_Location" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@lid" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="LocationID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Tbl_PersonTableAdapter" GeneratorDataComponentClassName="Tbl_PersonTableAdapter" Name="Tbl_Person" UserDataComponentName="Tbl_PersonTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Person" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tbl_Person] WHERE (([PersonID] = @Original_PersonID) AND ((@IsNull_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surname)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Original_SID)))</CommandText>
+                    <CommandText>DELETE FROM [Tbl_Person] WHERE (([PersonID] = @Original_PersonID) AND ((@IsNull_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surname)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Original_SID)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PersonID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PersonID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_Forename" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Forename" SourceColumnNullMapping="true" SourceVersion="Original" />
@@ -559,8 +576,8 @@ SELECT LocationID, LocationName FROM Tbl_Location WHERE (LocationID = @LocationI
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tbl_Person] ([Forename], [Surname], [SamAccount], [SID]) VALUES (@Forename, @Surname, @SamAccount, @SID);
-SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (PersonID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Tbl_Person] ([Forename], [Surname], [SamAccount], [SID]) VALUES (@Forename, @Surname, @SamAccount, @SID);
+SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (PersonID = SCOPE_IDENTITY()) ORDER BY Surname, Forename</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Forename" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Forename" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Surname" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Surname" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -570,15 +587,17 @@ SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (Perso
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT PersonID, Forename, Surname, SamAccount, SID FROM dbo.Tbl_Person</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PersonID, Forename, Surname, SamAccount, SID
+FROM            Tbl_Person
+ORDER BY Surname, Forename</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tbl_Person] SET [Forename] = @Forename, [Surname] = @Surname, [SamAccount] = @SamAccount, [SID] = @SID WHERE (([PersonID] = @Original_PersonID) AND ((@IsNull_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surname)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Original_SID)));
-SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (PersonID = @PersonID)</CommandText>
+                    <CommandText>UPDATE [Tbl_Person] SET [Forename] = @Forename, [Surname] = @Surname, [SamAccount] = @SamAccount, [SID] = @SID WHERE (([PersonID] = @Original_PersonID) AND ((@IsNull_Forename = 1 AND [Forename] IS NULL) OR ([Forename] = @Original_Forename)) AND ((@IsNull_Surname = 1 AND [Surname] IS NULL) OR ([Surname] = @Original_Surname)) AND ((@IsNull_SamAccount = 1 AND [SamAccount] IS NULL) OR ([SamAccount] = @Original_SamAccount)) AND ((@IsNull_SID = 1 AND [SID] IS NULL) OR ([SID] = @Original_SID)));
+SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (PersonID = @PersonID) ORDER BY Surname, Forename</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Forename" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Forename" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Surname" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Surname" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -613,7 +632,7 @@ SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (Perso
               <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Printer" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tbl_Printer] WHERE (([PrinterID] = @Original_PrinterID) AND ([Name] = @Original_Name) AND ([ConnectionString] = @Original_ConnectionString) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @Original_IPAddress)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)))</CommandText>
+                    <CommandText>DELETE FROM [Tbl_Printer] WHERE (([PrinterID] = @Original_PrinterID) AND ([Name] = @Original_Name) AND ([ConnectionString] = @Original_ConnectionString) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @Original_IPAddress)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_PrinterID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="PrinterID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -635,8 +654,8 @@ SELECT PersonID, Forename, Surname, SamAccount, SID FROM Tbl_Person WHERE (Perso
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tbl_Printer] ([Name], [ConnectionString], [Make], [Model], [IPAddress], [Location], [Supplier], [Purchase]) VALUES (@Name, @ConnectionString, @Make, @Model, @IPAddress, @Location, @Supplier, @Purchase);
-SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_Printer WHERE (PrinterID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Tbl_Printer] ([Name], [ConnectionString], [Make], [Model], [IPAddress], [Location], [Supplier], [Purchase]) VALUES (@Name, @ConnectionString, @Make, @Model, @IPAddress, @Location, @Supplier, @Purchase);
+SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_Printer WHERE (PrinterID = SCOPE_IDENTITY()) ORDER BY Name</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ConnectionString" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ConnectionString" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -650,15 +669,17 @@ SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supp
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM dbo.Tbl_Printer</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase
+FROM            Tbl_Printer
+ORDER BY Name</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tbl_Printer] SET [Name] = @Name, [ConnectionString] = @ConnectionString, [Make] = @Make, [Model] = @Model, [IPAddress] = @IPAddress, [Location] = @Location, [Supplier] = @Supplier, [Purchase] = @Purchase WHERE (([PrinterID] = @Original_PrinterID) AND ([Name] = @Original_Name) AND ([ConnectionString] = @Original_ConnectionString) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @Original_IPAddress)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)));
-SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_Printer WHERE (PrinterID = @PrinterID)</CommandText>
+                    <CommandText>UPDATE [Tbl_Printer] SET [Name] = @Name, [ConnectionString] = @ConnectionString, [Make] = @Make, [Model] = @Model, [IPAddress] = @IPAddress, [Location] = @Location, [Supplier] = @Supplier, [Purchase] = @Purchase WHERE (([PrinterID] = @Original_PrinterID) AND ([Name] = @Original_Name) AND ([ConnectionString] = @Original_ConnectionString) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_IPAddress = 1 AND [IPAddress] IS NULL) OR ([IPAddress] = @Original_IPAddress)) AND ((@IsNull_Location = 1 AND [Location] IS NULL) OR ([Location] = @Original_Location)) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_Purchase = 1 AND [Purchase] IS NULL) OR ([Purchase] = @Original_Purchase)));
+SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_Printer WHERE (PrinterID = @PrinterID) ORDER BY Name</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@ConnectionString" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="ConnectionString" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -701,10 +722,64 @@ SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supp
               <Mapping SourceColumn="Purchase" DataSetColumn="Purchase" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="alreadyExists" Modifier="Public" Name="alreadyExists" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="alreadyExists">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM Tbl_Printer where name = @name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="name" ColumnName="Name" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CreatePrinter" Modifier="Public" Name="CreatePrinter" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="CreatePrinter">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>INSERT INTO Tbl_Printer
+                         (Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase)
+VALUES        (@Name,@ConnectionString,@Make,@Model,@IPAddress,@Location,@Supplier,@Purchase); 
+SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM Tbl_Printer WHERE (PrinterID = SCOPE_IDENTITY()) ORDER BY Name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Name" ColumnName="Name" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ConnectionString" ColumnName="ConnectionString" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(150)" DbType="String" Direction="Input" ParameterName="@ConnectionString" Precision="0" ProviderType="NVarChar" Scale="0" Size="150" SourceColumn="ConnectionString" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Make" ColumnName="Make" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Make" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Make" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Model" ColumnName="Model" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Model" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Model" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="IPAddress" ColumnName="IPAddress" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(20)" DbType="String" Direction="Input" ParameterName="@IPAddress" Precision="0" ProviderType="NVarChar" Scale="0" Size="20" SourceColumn="IPAddress" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Location" ColumnName="Location" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Location" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Location" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Supplier" ColumnName="Supplier" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Supplier" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Supplier" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Purchase" ColumnName="Purchase" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Purchase" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Purchase" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteByID" Modifier="Public" Name="DeleteByID" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="DeleteByID">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM Tbl_Printer
+WHERE        (PrinterID = @pid)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="pid" ColumnName="PrinterID" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@pid" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="PrinterID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+              <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Printer" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetPrinterByName" GetMethodModifier="Public" GetMethodName="GetPrinterByName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPrinterByName" UserSourceName="GetPrinterByName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase
+FROM            Tbl_Printer
+WHERE     Name =@name
+ORDER BY Name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="name" ColumnName="Name" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@name" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Printer" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetPrinterByPrinterID" GetMethodModifier="Public" GetMethodName="GetPrinterByPrinterID" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetPrinterByPrinterID" UserSourceName="GetPrinterByPrinterID">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT PrinterID, Name, ConnectionString, Make, Model, IPAddress, Location, Supplier, Purchase FROM dbo.Tbl_Printer where PrinterID = @pid</CommandText>
+                    <CommandText>SELECT ConnectionString, IPAddress, Location, Make, Model, Name, PrinterID, Purchase, Supplier FROM Tbl_Printer WHERE (PrinterID = @pid)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="pid" ColumnName="PrinterID" DataSourceName="Zuul.dbo.Tbl_Printer" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@pid" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="PrinterID" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -774,7 +849,7 @@ SELECT PurchaseID, PurchaseDate, Cost FROM Tbl_Purchase WHERE (PurchaseID = @Pur
               <DbSource ConnectionRef="ZuulConnectionString (MySettings)" DbObjectName="Zuul.dbo.Tbl_Supplier" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>DELETE FROM [dbo].[Tbl_Supplier] WHERE (([SupplierID] = @Original_SupplierID) AND ([Name] = @Original_Name) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)))</CommandText>
+                    <CommandText>DELETE FROM [Tbl_Supplier] WHERE (([SupplierID] = @Original_SupplierID) AND ([Name] = @Original_Name) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)))</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_SupplierID" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SupplierID" SourceColumnNullMapping="false" SourceVersion="Original" />
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Original" />
@@ -785,8 +860,8 @@ SELECT PurchaseID, PurchaseDate, Cost FROM Tbl_Purchase WHERE (PurchaseID = @Pur
                 </DeleteCommand>
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>INSERT INTO [dbo].[Tbl_Supplier] ([Name], [Phone], [Notes]) VALUES (@Name, @Phone, @Notes);
-SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = SCOPE_IDENTITY())</CommandText>
+                    <CommandText>INSERT INTO [Tbl_Supplier] ([Name], [Phone], [Notes]) VALUES (@Name, @Phone, @Notes);
+SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = SCOPE_IDENTITY()) ORDER BY Name</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Phone" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -795,15 +870,17 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = SCOP
                   </DbCommand>
                 </InsertCommand>
                 <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT SupplierID, Name, Phone, Notes FROM dbo.Tbl_Supplier</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SupplierID, Name, Phone, Notes
+FROM            Tbl_Supplier
+ORDER BY Name</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>UPDATE [dbo].[Tbl_Supplier] SET [Name] = @Name, [Phone] = @Phone, [Notes] = @Notes WHERE (([SupplierID] = @Original_SupplierID) AND ([Name] = @Original_Name) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)));
-SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @SupplierID)</CommandText>
+                    <CommandText>UPDATE [Tbl_Supplier] SET [Name] = @Name, [Phone] = @Phone, [Notes] = @Notes WHERE (([SupplierID] = @Original_SupplierID) AND ([Name] = @Original_Name) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)));
+SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @SupplierID) ORDER BY Name</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Phone" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="Phone" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -834,7 +911,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
   <xs:element name="ZuulDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ZuulDataSet" msprop:Generator_UserDSName="ZuulDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Lnk_ComputerInfo" msprop:Generator_TableClassName="Lnk_ComputerInfoDataTable" msprop:Generator_TableVarName="tableLnk_ComputerInfo" msprop:Generator_TablePropName="Lnk_ComputerInfo" msprop:Generator_RowDeletingName="Lnk_ComputerInfoRowDeleting" msprop:Generator_RowChangingName="Lnk_ComputerInfoRowChanging" msprop:Generator_RowEvHandlerName="Lnk_ComputerInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_ComputerInfoRowDeleted" msprop:Generator_UserTableName="Lnk_ComputerInfo" msprop:Generator_RowChangedName="Lnk_ComputerInfoRowChanged" msprop:Generator_RowEvArgName="Lnk_ComputerInfoRowChangeEvent" msprop:Generator_RowClassName="Lnk_ComputerInfoRow">
+        <xs:element name="Lnk_ComputerInfo" msprop:Generator_TableClassName="Lnk_ComputerInfoDataTable" msprop:Generator_TableVarName="tableLnk_ComputerInfo" msprop:Generator_RowChangedName="Lnk_ComputerInfoRowChanged" msprop:Generator_TablePropName="Lnk_ComputerInfo" msprop:Generator_RowDeletingName="Lnk_ComputerInfoRowDeleting" msprop:Generator_RowChangingName="Lnk_ComputerInfoRowChanging" msprop:Generator_RowEvHandlerName="Lnk_ComputerInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_ComputerInfoRowDeleted" msprop:Generator_RowClassName="Lnk_ComputerInfoRow" msprop:Generator_UserTableName="Lnk_ComputerInfo" msprop:Generator_RowEvArgName="Lnk_ComputerInfoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -843,7 +920,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Lnk_ComputerPerson" msprop:Generator_TableClassName="Lnk_ComputerPersonDataTable" msprop:Generator_TableVarName="tableLnk_ComputerPerson" msprop:Generator_TablePropName="Lnk_ComputerPerson" msprop:Generator_RowDeletingName="Lnk_ComputerPersonRowDeleting" msprop:Generator_RowChangingName="Lnk_ComputerPersonRowChanging" msprop:Generator_RowEvHandlerName="Lnk_ComputerPersonRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_ComputerPersonRowDeleted" msprop:Generator_UserTableName="Lnk_ComputerPerson" msprop:Generator_RowChangedName="Lnk_ComputerPersonRowChanged" msprop:Generator_RowEvArgName="Lnk_ComputerPersonRowChangeEvent" msprop:Generator_RowClassName="Lnk_ComputerPersonRow">
+        <xs:element name="Lnk_ComputerPerson" msprop:Generator_TableClassName="Lnk_ComputerPersonDataTable" msprop:Generator_TableVarName="tableLnk_ComputerPerson" msprop:Generator_RowChangedName="Lnk_ComputerPersonRowChanged" msprop:Generator_TablePropName="Lnk_ComputerPerson" msprop:Generator_RowDeletingName="Lnk_ComputerPersonRowDeleting" msprop:Generator_RowChangingName="Lnk_ComputerPersonRowChanging" msprop:Generator_RowEvHandlerName="Lnk_ComputerPersonRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_ComputerPersonRowDeleted" msprop:Generator_RowClassName="Lnk_ComputerPersonRow" msprop:Generator_UserTableName="Lnk_ComputerPerson" msprop:Generator_RowEvArgName="Lnk_ComputerPersonRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -852,7 +929,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Lnk_ComputerPrinter" msprop:Generator_TableClassName="Lnk_ComputerPrinterDataTable" msprop:Generator_TableVarName="tableLnk_ComputerPrinter" msprop:Generator_TablePropName="Lnk_ComputerPrinter" msprop:Generator_RowDeletingName="Lnk_ComputerPrinterRowDeleting" msprop:Generator_RowChangingName="Lnk_ComputerPrinterRowChanging" msprop:Generator_RowEvHandlerName="Lnk_ComputerPrinterRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_ComputerPrinterRowDeleted" msprop:Generator_UserTableName="Lnk_ComputerPrinter" msprop:Generator_RowChangedName="Lnk_ComputerPrinterRowChanged" msprop:Generator_RowEvArgName="Lnk_ComputerPrinterRowChangeEvent" msprop:Generator_RowClassName="Lnk_ComputerPrinterRow">
+        <xs:element name="Lnk_ComputerPrinter" msprop:Generator_TableClassName="Lnk_ComputerPrinterDataTable" msprop:Generator_TableVarName="tableLnk_ComputerPrinter" msprop:Generator_RowChangedName="Lnk_ComputerPrinterRowChanged" msprop:Generator_TablePropName="Lnk_ComputerPrinter" msprop:Generator_RowDeletingName="Lnk_ComputerPrinterRowDeleting" msprop:Generator_RowChangingName="Lnk_ComputerPrinterRowChanging" msprop:Generator_RowEvHandlerName="Lnk_ComputerPrinterRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_ComputerPrinterRowDeleted" msprop:Generator_RowClassName="Lnk_ComputerPrinterRow" msprop:Generator_UserTableName="Lnk_ComputerPrinter" msprop:Generator_RowEvArgName="Lnk_ComputerPrinterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -862,7 +939,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Lnk_PrinterInfo" msprop:Generator_TableClassName="Lnk_PrinterInfoDataTable" msprop:Generator_TableVarName="tableLnk_PrinterInfo" msprop:Generator_TablePropName="Lnk_PrinterInfo" msprop:Generator_RowDeletingName="Lnk_PrinterInfoRowDeleting" msprop:Generator_RowChangingName="Lnk_PrinterInfoRowChanging" msprop:Generator_RowEvHandlerName="Lnk_PrinterInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_PrinterInfoRowDeleted" msprop:Generator_UserTableName="Lnk_PrinterInfo" msprop:Generator_RowChangedName="Lnk_PrinterInfoRowChanged" msprop:Generator_RowEvArgName="Lnk_PrinterInfoRowChangeEvent" msprop:Generator_RowClassName="Lnk_PrinterInfoRow">
+        <xs:element name="Lnk_PrinterInfo" msprop:Generator_TableClassName="Lnk_PrinterInfoDataTable" msprop:Generator_TableVarName="tableLnk_PrinterInfo" msprop:Generator_RowChangedName="Lnk_PrinterInfoRowChanged" msprop:Generator_TablePropName="Lnk_PrinterInfo" msprop:Generator_RowDeletingName="Lnk_PrinterInfoRowDeleting" msprop:Generator_RowChangingName="Lnk_PrinterInfoRowChanging" msprop:Generator_RowEvHandlerName="Lnk_PrinterInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="Lnk_PrinterInfoRowDeleted" msprop:Generator_RowClassName="Lnk_PrinterInfoRow" msprop:Generator_UserTableName="Lnk_PrinterInfo" msprop:Generator_RowEvArgName="Lnk_PrinterInfoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -871,7 +948,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Computer" msprop:Generator_TableClassName="Tbl_ComputerDataTable" msprop:Generator_TableVarName="tableTbl_Computer" msprop:Generator_TablePropName="Tbl_Computer" msprop:Generator_RowDeletingName="Tbl_ComputerRowDeleting" msprop:Generator_RowChangingName="Tbl_ComputerRowChanging" msprop:Generator_RowEvHandlerName="Tbl_ComputerRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_ComputerRowDeleted" msprop:Generator_UserTableName="Tbl_Computer" msprop:Generator_RowChangedName="Tbl_ComputerRowChanged" msprop:Generator_RowEvArgName="Tbl_ComputerRowChangeEvent" msprop:Generator_RowClassName="Tbl_ComputerRow">
+        <xs:element name="Tbl_Computer" msprop:Generator_TableClassName="Tbl_ComputerDataTable" msprop:Generator_TableVarName="tableTbl_Computer" msprop:Generator_RowChangedName="Tbl_ComputerRowChanged" msprop:Generator_TablePropName="Tbl_Computer" msprop:Generator_RowDeletingName="Tbl_ComputerRowDeleting" msprop:Generator_RowChangingName="Tbl_ComputerRowChanging" msprop:Generator_RowEvHandlerName="Tbl_ComputerRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_ComputerRowDeleted" msprop:Generator_RowClassName="Tbl_ComputerRow" msprop:Generator_UserTableName="Tbl_Computer" msprop:Generator_RowEvArgName="Tbl_ComputerRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ComputerID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnComputerID" msprop:Generator_ColumnPropNameInRow="ComputerID" msprop:Generator_ColumnPropNameInTable="ComputerIDColumn" msprop:Generator_UserColumnName="ComputerID" type="xs:int" />
@@ -933,7 +1010,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Info" msprop:Generator_TableClassName="Tbl_InfoDataTable" msprop:Generator_TableVarName="tableTbl_Info" msprop:Generator_TablePropName="Tbl_Info" msprop:Generator_RowDeletingName="Tbl_InfoRowDeleting" msprop:Generator_RowChangingName="Tbl_InfoRowChanging" msprop:Generator_RowEvHandlerName="Tbl_InfoRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_InfoRowDeleted" msprop:Generator_UserTableName="Tbl_Info" msprop:Generator_RowChangedName="Tbl_InfoRowChanged" msprop:Generator_RowEvArgName="Tbl_InfoRowChangeEvent" msprop:Generator_RowClassName="Tbl_InfoRow">
+        <xs:element name="Tbl_Info" msprop:Generator_TableClassName="Tbl_InfoDataTable" msprop:Generator_TableVarName="tableTbl_Info" msprop:Generator_RowChangedName="Tbl_InfoRowChanged" msprop:Generator_TablePropName="Tbl_Info" msprop:Generator_RowDeletingName="Tbl_InfoRowDeleting" msprop:Generator_RowChangingName="Tbl_InfoRowChanging" msprop:Generator_RowEvHandlerName="Tbl_InfoRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_InfoRowDeleted" msprop:Generator_RowClassName="Tbl_InfoRow" msprop:Generator_UserTableName="Tbl_Info" msprop:Generator_RowEvArgName="Tbl_InfoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="InfoID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnInfoID" msprop:Generator_ColumnPropNameInRow="InfoID" msprop:Generator_ColumnPropNameInTable="InfoIDColumn" msprop:Generator_UserColumnName="InfoID" type="xs:int" />
@@ -955,7 +1032,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Location" msprop:Generator_TableClassName="Tbl_LocationDataTable" msprop:Generator_TableVarName="tableTbl_Location" msprop:Generator_TablePropName="Tbl_Location" msprop:Generator_RowDeletingName="Tbl_LocationRowDeleting" msprop:Generator_RowChangingName="Tbl_LocationRowChanging" msprop:Generator_RowEvHandlerName="Tbl_LocationRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_LocationRowDeleted" msprop:Generator_UserTableName="Tbl_Location" msprop:Generator_RowChangedName="Tbl_LocationRowChanged" msprop:Generator_RowEvArgName="Tbl_LocationRowChangeEvent" msprop:Generator_RowClassName="Tbl_LocationRow">
+        <xs:element name="Tbl_Location" msprop:Generator_TableClassName="Tbl_LocationDataTable" msprop:Generator_TableVarName="tableTbl_Location" msprop:Generator_RowChangedName="Tbl_LocationRowChanged" msprop:Generator_TablePropName="Tbl_Location" msprop:Generator_RowDeletingName="Tbl_LocationRowDeleting" msprop:Generator_RowChangingName="Tbl_LocationRowChanging" msprop:Generator_RowEvHandlerName="Tbl_LocationRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_LocationRowDeleted" msprop:Generator_RowClassName="Tbl_LocationRow" msprop:Generator_UserTableName="Tbl_Location" msprop:Generator_RowEvArgName="Tbl_LocationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LocationID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnLocationID" msprop:Generator_ColumnPropNameInRow="LocationID" msprop:Generator_ColumnPropNameInTable="LocationIDColumn" msprop:Generator_UserColumnName="LocationID" type="xs:int" />
@@ -969,7 +1046,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Person" msprop:Generator_TableClassName="Tbl_PersonDataTable" msprop:Generator_TableVarName="tableTbl_Person" msprop:Generator_TablePropName="Tbl_Person" msprop:Generator_RowDeletingName="Tbl_PersonRowDeleting" msprop:Generator_RowChangingName="Tbl_PersonRowChanging" msprop:Generator_RowEvHandlerName="Tbl_PersonRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_PersonRowDeleted" msprop:Generator_UserTableName="Tbl_Person" msprop:Generator_RowChangedName="Tbl_PersonRowChanged" msprop:Generator_RowEvArgName="Tbl_PersonRowChangeEvent" msprop:Generator_RowClassName="Tbl_PersonRow">
+        <xs:element name="Tbl_Person" msprop:Generator_TableClassName="Tbl_PersonDataTable" msprop:Generator_TableVarName="tableTbl_Person" msprop:Generator_RowChangedName="Tbl_PersonRowChanged" msprop:Generator_TablePropName="Tbl_Person" msprop:Generator_RowDeletingName="Tbl_PersonRowDeleting" msprop:Generator_RowChangingName="Tbl_PersonRowChanging" msprop:Generator_RowEvHandlerName="Tbl_PersonRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_PersonRowDeleted" msprop:Generator_RowClassName="Tbl_PersonRow" msprop:Generator_UserTableName="Tbl_Person" msprop:Generator_RowEvArgName="Tbl_PersonRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PersonID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPersonID" msprop:Generator_ColumnPropNameInRow="PersonID" msprop:Generator_ColumnPropNameInTable="PersonIDColumn" msprop:Generator_UserColumnName="PersonID" type="xs:int" />
@@ -1004,7 +1081,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Printer" msprop:Generator_TableClassName="Tbl_PrinterDataTable" msprop:Generator_TableVarName="tableTbl_Printer" msprop:Generator_TablePropName="Tbl_Printer" msprop:Generator_RowDeletingName="Tbl_PrinterRowDeleting" msprop:Generator_RowChangingName="Tbl_PrinterRowChanging" msprop:Generator_RowEvHandlerName="Tbl_PrinterRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_PrinterRowDeleted" msprop:Generator_UserTableName="Tbl_Printer" msprop:Generator_RowChangedName="Tbl_PrinterRowChanged" msprop:Generator_RowEvArgName="Tbl_PrinterRowChangeEvent" msprop:Generator_RowClassName="Tbl_PrinterRow">
+        <xs:element name="Tbl_Printer" msprop:Generator_TableClassName="Tbl_PrinterDataTable" msprop:Generator_TableVarName="tableTbl_Printer" msprop:Generator_RowChangedName="Tbl_PrinterRowChanged" msprop:Generator_TablePropName="Tbl_Printer" msprop:Generator_RowDeletingName="Tbl_PrinterRowDeleting" msprop:Generator_RowChangingName="Tbl_PrinterRowChanging" msprop:Generator_RowEvHandlerName="Tbl_PrinterRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_PrinterRowDeleted" msprop:Generator_RowClassName="Tbl_PrinterRow" msprop:Generator_UserTableName="Tbl_Printer" msprop:Generator_RowEvArgName="Tbl_PrinterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PrinterID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPrinterID" msprop:Generator_ColumnPropNameInRow="PrinterID" msprop:Generator_ColumnPropNameInTable="PrinterIDColumn" msprop:Generator_UserColumnName="PrinterID" type="xs:int" />
@@ -1049,7 +1126,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Purchase" msprop:Generator_TableClassName="Tbl_PurchaseDataTable" msprop:Generator_TableVarName="tableTbl_Purchase" msprop:Generator_TablePropName="Tbl_Purchase" msprop:Generator_RowDeletingName="Tbl_PurchaseRowDeleting" msprop:Generator_RowChangingName="Tbl_PurchaseRowChanging" msprop:Generator_RowEvHandlerName="Tbl_PurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_PurchaseRowDeleted" msprop:Generator_UserTableName="Tbl_Purchase" msprop:Generator_RowChangedName="Tbl_PurchaseRowChanged" msprop:Generator_RowEvArgName="Tbl_PurchaseRowChangeEvent" msprop:Generator_RowClassName="Tbl_PurchaseRow">
+        <xs:element name="Tbl_Purchase" msprop:Generator_TableClassName="Tbl_PurchaseDataTable" msprop:Generator_TableVarName="tableTbl_Purchase" msprop:Generator_RowChangedName="Tbl_PurchaseRowChanged" msprop:Generator_TablePropName="Tbl_Purchase" msprop:Generator_RowDeletingName="Tbl_PurchaseRowDeleting" msprop:Generator_RowChangingName="Tbl_PurchaseRowChanging" msprop:Generator_RowEvHandlerName="Tbl_PurchaseRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_PurchaseRowDeleted" msprop:Generator_RowClassName="Tbl_PurchaseRow" msprop:Generator_UserTableName="Tbl_Purchase" msprop:Generator_RowEvArgName="Tbl_PurchaseRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="PurchaseID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnPurchaseID" msprop:Generator_ColumnPropNameInRow="PurchaseID" msprop:Generator_ColumnPropNameInTable="PurchaseIDColumn" msprop:Generator_UserColumnName="PurchaseID" type="xs:int" />
@@ -1058,7 +1135,7 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tbl_Supplier" msprop:Generator_TableClassName="Tbl_SupplierDataTable" msprop:Generator_TableVarName="tableTbl_Supplier" msprop:Generator_TablePropName="Tbl_Supplier" msprop:Generator_RowDeletingName="Tbl_SupplierRowDeleting" msprop:Generator_RowChangingName="Tbl_SupplierRowChanging" msprop:Generator_RowEvHandlerName="Tbl_SupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_SupplierRowDeleted" msprop:Generator_UserTableName="Tbl_Supplier" msprop:Generator_RowChangedName="Tbl_SupplierRowChanged" msprop:Generator_RowEvArgName="Tbl_SupplierRowChangeEvent" msprop:Generator_RowClassName="Tbl_SupplierRow">
+        <xs:element name="Tbl_Supplier" msprop:Generator_TableClassName="Tbl_SupplierDataTable" msprop:Generator_TableVarName="tableTbl_Supplier" msprop:Generator_RowChangedName="Tbl_SupplierRowChanged" msprop:Generator_TablePropName="Tbl_Supplier" msprop:Generator_RowDeletingName="Tbl_SupplierRowDeleting" msprop:Generator_RowChangingName="Tbl_SupplierRowChanging" msprop:Generator_RowEvHandlerName="Tbl_SupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="Tbl_SupplierRowDeleted" msprop:Generator_RowClassName="Tbl_SupplierRow" msprop:Generator_UserTableName="Tbl_Supplier" msprop:Generator_RowEvArgName="Tbl_SupplierRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="SupplierID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnSupplierID" msprop:Generator_ColumnPropNameInRow="SupplierID" msprop:Generator_ColumnPropNameInTable="SupplierIDColumn" msprop:Generator_UserColumnName="SupplierID" type="xs:int" />
@@ -1135,20 +1212,20 @@ SELECT SupplierID, Name, Phone, Notes FROM Tbl_Supplier WHERE (SupplierID = @Sup
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Lnk_ComputerInfo_Tbl_Computer" msdata:parent="Tbl_Computer" msdata:child="Lnk_ComputerInfo" msdata:parentkey="ComputerID" msdata:childkey="ComputerID" msprop:Generator_UserChildTable="Lnk_ComputerInfo" msprop:Generator_ChildPropName="GetLnk_ComputerInfoRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerInfo_Tbl_Computer" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerInfo_Tbl_Computer" msprop:Generator_UserParentTable="Tbl_Computer" msprop:Generator_ParentPropName="Tbl_ComputerRow" />
-      <msdata:Relationship name="FK_Lnk_ComputerInfo_Tbl_Info" msdata:parent="Tbl_Info" msdata:child="Lnk_ComputerInfo" msdata:parentkey="InfoID" msdata:childkey="InfoID" msprop:Generator_UserChildTable="Lnk_ComputerInfo" msprop:Generator_ChildPropName="GetLnk_ComputerInfoRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerInfo_Tbl_Info" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerInfo_Tbl_Info" msprop:Generator_UserParentTable="Tbl_Info" msprop:Generator_ParentPropName="Tbl_InfoRow" />
-      <msdata:Relationship name="FK_Lnk_ComputerPerson_Tbl_Computer" msdata:parent="Tbl_Computer" msdata:child="Lnk_ComputerPerson" msdata:parentkey="ComputerID" msdata:childkey="ComputerID" msprop:Generator_UserChildTable="Lnk_ComputerPerson" msprop:Generator_ChildPropName="GetLnk_ComputerPersonRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPerson_Tbl_Computer" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPerson_Tbl_Computer" msprop:Generator_UserParentTable="Tbl_Computer" msprop:Generator_ParentPropName="Tbl_ComputerRow" />
-      <msdata:Relationship name="FK_Lnk_ComputerPerson_Tbl_Person" msdata:parent="Tbl_Person" msdata:child="Lnk_ComputerPerson" msdata:parentkey="PersonID" msdata:childkey="PersonID" msprop:Generator_UserChildTable="Lnk_ComputerPerson" msprop:Generator_ChildPropName="GetLnk_ComputerPersonRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPerson_Tbl_Person" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPerson_Tbl_Person" msprop:Generator_UserParentTable="Tbl_Person" msprop:Generator_ParentPropName="Tbl_PersonRow" />
-      <msdata:Relationship name="FK_Lnk_ComputerPrinter_Tbl_Computer" msdata:parent="Tbl_Computer" msdata:child="Lnk_ComputerPrinter" msdata:parentkey="ComputerID" msdata:childkey="ComputerID" msprop:Generator_UserChildTable="Lnk_ComputerPrinter" msprop:Generator_ChildPropName="GetLnk_ComputerPrinterRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPrinter_Tbl_Computer" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPrinter_Tbl_Computer" msprop:Generator_UserParentTable="Tbl_Computer" msprop:Generator_ParentPropName="Tbl_ComputerRow" />
-      <msdata:Relationship name="FK_Lnk_ComputerPrinter_Tbl_Printer" msdata:parent="Tbl_Printer" msdata:child="Lnk_ComputerPrinter" msdata:parentkey="PrinterID" msdata:childkey="PrinterID" msprop:Generator_UserChildTable="Lnk_ComputerPrinter" msprop:Generator_ChildPropName="GetLnk_ComputerPrinterRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPrinter_Tbl_Printer" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPrinter_Tbl_Printer" msprop:Generator_UserParentTable="Tbl_Printer" msprop:Generator_ParentPropName="Tbl_PrinterRow" />
-      <msdata:Relationship name="FK_Lnk_PrinterInfo_Tbl_Info" msdata:parent="Tbl_Info" msdata:child="Lnk_PrinterInfo" msdata:parentkey="InfoID" msdata:childkey="InfoID" msprop:Generator_UserChildTable="Lnk_PrinterInfo" msprop:Generator_ChildPropName="GetLnk_PrinterInfoRows" msprop:Generator_UserRelationName="FK_Lnk_PrinterInfo_Tbl_Info" msprop:Generator_RelationVarName="relationFK_Lnk_PrinterInfo_Tbl_Info" msprop:Generator_UserParentTable="Tbl_Info" msprop:Generator_ParentPropName="Tbl_InfoRow" />
-      <msdata:Relationship name="FK_Lnk_PrinterInfo_Tbl_Printer" msdata:parent="Tbl_Printer" msdata:child="Lnk_PrinterInfo" msdata:parentkey="PrinterID" msdata:childkey="InfoID" msprop:Generator_UserChildTable="Lnk_PrinterInfo" msprop:Generator_ChildPropName="GetLnk_PrinterInfoRows" msprop:Generator_UserRelationName="FK_Lnk_PrinterInfo_Tbl_Printer" msprop:Generator_RelationVarName="relationFK_Lnk_PrinterInfo_Tbl_Printer" msprop:Generator_UserParentTable="Tbl_Printer" msprop:Generator_ParentPropName="Tbl_PrinterRow" />
-      <msdata:Relationship name="FK_Tbl_Computer_Tbl_Location" msdata:parent="Tbl_Location" msdata:child="Tbl_Computer" msdata:parentkey="LocationID" msdata:childkey="Location" msprop:Generator_UserChildTable="Tbl_Computer" msprop:Generator_ChildPropName="GetTbl_ComputerRows" msprop:Generator_UserRelationName="FK_Tbl_Computer_Tbl_Location" msprop:Generator_RelationVarName="relationFK_Tbl_Computer_Tbl_Location" msprop:Generator_UserParentTable="Tbl_Location" msprop:Generator_ParentPropName="Tbl_LocationRow" />
-      <msdata:Relationship name="FK_Tbl_Computer_Tbl_Purchase1" msdata:parent="Tbl_Purchase" msdata:child="Tbl_Computer" msdata:parentkey="PurchaseID" msdata:childkey="Purchase" msprop:Generator_UserChildTable="Tbl_Computer" msprop:Generator_ChildPropName="GetTbl_ComputerRows" msprop:Generator_UserRelationName="FK_Tbl_Computer_Tbl_Purchase1" msprop:Generator_RelationVarName="relationFK_Tbl_Computer_Tbl_Purchase1" msprop:Generator_UserParentTable="Tbl_Purchase" msprop:Generator_ParentPropName="Tbl_PurchaseRow" />
-      <msdata:Relationship name="FK_Tbl_Computer_Tbl_Supplier1" msdata:parent="Tbl_Supplier" msdata:child="Tbl_Computer" msdata:parentkey="SupplierID" msdata:childkey="Supplier" msprop:Generator_UserChildTable="Tbl_Computer" msprop:Generator_ChildPropName="GetTbl_ComputerRows" msprop:Generator_UserRelationName="FK_Tbl_Computer_Tbl_Supplier1" msprop:Generator_RelationVarName="relationFK_Tbl_Computer_Tbl_Supplier1" msprop:Generator_UserParentTable="Tbl_Supplier" msprop:Generator_ParentPropName="Tbl_SupplierRow" />
-      <msdata:Relationship name="FK_Tbl_Printer_Tbl_Location" msdata:parent="Tbl_Location" msdata:child="Tbl_Printer" msdata:parentkey="LocationID" msdata:childkey="Location" msprop:Generator_UserChildTable="Tbl_Printer" msprop:Generator_ChildPropName="GetTbl_PrinterRows" msprop:Generator_UserRelationName="FK_Tbl_Printer_Tbl_Location" msprop:Generator_ParentPropName="Tbl_LocationRow" msprop:Generator_RelationVarName="relationFK_Tbl_Printer_Tbl_Location" msprop:Generator_UserParentTable="Tbl_Location" />
-      <msdata:Relationship name="FK_Tbl_Printer_Tbl_Purchase" msdata:parent="Tbl_Purchase" msdata:child="Tbl_Printer" msdata:parentkey="PurchaseID" msdata:childkey="Purchase" msprop:Generator_UserChildTable="Tbl_Printer" msprop:Generator_ChildPropName="GetTbl_PrinterRows" msprop:Generator_UserRelationName="FK_Tbl_Printer_Tbl_Purchase" msprop:Generator_RelationVarName="relationFK_Tbl_Printer_Tbl_Purchase" msprop:Generator_UserParentTable="Tbl_Purchase" msprop:Generator_ParentPropName="Tbl_PurchaseRow" />
-      <msdata:Relationship name="FK_Tbl_Printer_Tbl_Supplier" msdata:parent="Tbl_Supplier" msdata:child="Tbl_Printer" msdata:parentkey="SupplierID" msdata:childkey="Supplier" msprop:Generator_UserChildTable="Tbl_Printer" msprop:Generator_ChildPropName="GetTbl_PrinterRows" msprop:Generator_UserRelationName="FK_Tbl_Printer_Tbl_Supplier" msprop:Generator_RelationVarName="relationFK_Tbl_Printer_Tbl_Supplier" msprop:Generator_UserParentTable="Tbl_Supplier" msprop:Generator_ParentPropName="Tbl_SupplierRow" />
+      <msdata:Relationship name="FK_Lnk_ComputerInfo_Tbl_Computer" msdata:parent="Tbl_Computer" msdata:child="Lnk_ComputerInfo" msdata:parentkey="ComputerID" msdata:childkey="ComputerID" msprop:Generator_UserChildTable="Lnk_ComputerInfo" msprop:Generator_ChildPropName="GetLnk_ComputerInfoRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerInfo_Tbl_Computer" msprop:Generator_ParentPropName="Tbl_ComputerRow" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerInfo_Tbl_Computer" msprop:Generator_UserParentTable="Tbl_Computer" />
+      <msdata:Relationship name="FK_Lnk_ComputerInfo_Tbl_Info" msdata:parent="Tbl_Info" msdata:child="Lnk_ComputerInfo" msdata:parentkey="InfoID" msdata:childkey="InfoID" msprop:Generator_UserChildTable="Lnk_ComputerInfo" msprop:Generator_ChildPropName="GetLnk_ComputerInfoRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerInfo_Tbl_Info" msprop:Generator_ParentPropName="Tbl_InfoRow" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerInfo_Tbl_Info" msprop:Generator_UserParentTable="Tbl_Info" />
+      <msdata:Relationship name="FK_Lnk_ComputerPerson_Tbl_Computer" msdata:parent="Tbl_Computer" msdata:child="Lnk_ComputerPerson" msdata:parentkey="ComputerID" msdata:childkey="ComputerID" msprop:Generator_UserChildTable="Lnk_ComputerPerson" msprop:Generator_ChildPropName="GetLnk_ComputerPersonRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPerson_Tbl_Computer" msprop:Generator_ParentPropName="Tbl_ComputerRow" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPerson_Tbl_Computer" msprop:Generator_UserParentTable="Tbl_Computer" />
+      <msdata:Relationship name="FK_Lnk_ComputerPerson_Tbl_Person" msdata:parent="Tbl_Person" msdata:child="Lnk_ComputerPerson" msdata:parentkey="PersonID" msdata:childkey="PersonID" msprop:Generator_UserChildTable="Lnk_ComputerPerson" msprop:Generator_ChildPropName="GetLnk_ComputerPersonRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPerson_Tbl_Person" msprop:Generator_ParentPropName="Tbl_PersonRow" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPerson_Tbl_Person" msprop:Generator_UserParentTable="Tbl_Person" />
+      <msdata:Relationship name="FK_Lnk_ComputerPrinter_Tbl_Computer" msdata:parent="Tbl_Computer" msdata:child="Lnk_ComputerPrinter" msdata:parentkey="ComputerID" msdata:childkey="ComputerID" msprop:Generator_UserChildTable="Lnk_ComputerPrinter" msprop:Generator_ChildPropName="GetLnk_ComputerPrinterRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPrinter_Tbl_Computer" msprop:Generator_ParentPropName="Tbl_ComputerRow" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPrinter_Tbl_Computer" msprop:Generator_UserParentTable="Tbl_Computer" />
+      <msdata:Relationship name="FK_Lnk_ComputerPrinter_Tbl_Printer" msdata:parent="Tbl_Printer" msdata:child="Lnk_ComputerPrinter" msdata:parentkey="PrinterID" msdata:childkey="PrinterID" msprop:Generator_UserChildTable="Lnk_ComputerPrinter" msprop:Generator_ChildPropName="GetLnk_ComputerPrinterRows" msprop:Generator_UserRelationName="FK_Lnk_ComputerPrinter_Tbl_Printer" msprop:Generator_ParentPropName="Tbl_PrinterRow" msprop:Generator_RelationVarName="relationFK_Lnk_ComputerPrinter_Tbl_Printer" msprop:Generator_UserParentTable="Tbl_Printer" />
+      <msdata:Relationship name="FK_Lnk_PrinterInfo_Tbl_Info" msdata:parent="Tbl_Info" msdata:child="Lnk_PrinterInfo" msdata:parentkey="InfoID" msdata:childkey="InfoID" msprop:Generator_UserChildTable="Lnk_PrinterInfo" msprop:Generator_ChildPropName="GetLnk_PrinterInfoRows" msprop:Generator_UserRelationName="FK_Lnk_PrinterInfo_Tbl_Info" msprop:Generator_ParentPropName="Tbl_InfoRow" msprop:Generator_RelationVarName="relationFK_Lnk_PrinterInfo_Tbl_Info" msprop:Generator_UserParentTable="Tbl_Info" />
+      <msdata:Relationship name="FK_Lnk_PrinterInfo_Tbl_Printer" msdata:parent="Tbl_Printer" msdata:child="Lnk_PrinterInfo" msdata:parentkey="PrinterID" msdata:childkey="InfoID" msprop:Generator_UserChildTable="Lnk_PrinterInfo" msprop:Generator_ChildPropName="GetLnk_PrinterInfoRows" msprop:Generator_UserRelationName="FK_Lnk_PrinterInfo_Tbl_Printer" msprop:Generator_ParentPropName="Tbl_PrinterRow" msprop:Generator_RelationVarName="relationFK_Lnk_PrinterInfo_Tbl_Printer" msprop:Generator_UserParentTable="Tbl_Printer" />
+      <msdata:Relationship name="FK_Tbl_Computer_Tbl_Location" msdata:parent="Tbl_Location" msdata:child="Tbl_Computer" msdata:parentkey="LocationID" msdata:childkey="Location" msprop:Generator_UserChildTable="Tbl_Computer" msprop:Generator_ChildPropName="GetTbl_ComputerRows" msprop:Generator_UserRelationName="FK_Tbl_Computer_Tbl_Location" msprop:Generator_ParentPropName="Tbl_LocationRow" msprop:Generator_RelationVarName="relationFK_Tbl_Computer_Tbl_Location" msprop:Generator_UserParentTable="Tbl_Location" />
+      <msdata:Relationship name="FK_Tbl_Computer_Tbl_Purchase1" msdata:parent="Tbl_Purchase" msdata:child="Tbl_Computer" msdata:parentkey="PurchaseID" msdata:childkey="Purchase" msprop:Generator_UserChildTable="Tbl_Computer" msprop:Generator_ChildPropName="GetTbl_ComputerRows" msprop:Generator_UserRelationName="FK_Tbl_Computer_Tbl_Purchase1" msprop:Generator_ParentPropName="Tbl_PurchaseRow" msprop:Generator_RelationVarName="relationFK_Tbl_Computer_Tbl_Purchase1" msprop:Generator_UserParentTable="Tbl_Purchase" />
+      <msdata:Relationship name="FK_Tbl_Computer_Tbl_Supplier1" msdata:parent="Tbl_Supplier" msdata:child="Tbl_Computer" msdata:parentkey="SupplierID" msdata:childkey="Supplier" msprop:Generator_UserChildTable="Tbl_Computer" msprop:Generator_ChildPropName="GetTbl_ComputerRows" msprop:Generator_UserRelationName="FK_Tbl_Computer_Tbl_Supplier1" msprop:Generator_ParentPropName="Tbl_SupplierRow" msprop:Generator_RelationVarName="relationFK_Tbl_Computer_Tbl_Supplier1" msprop:Generator_UserParentTable="Tbl_Supplier" />
+      <msdata:Relationship name="FK_Tbl_Printer_Tbl_Location" msdata:parent="Tbl_Location" msdata:child="Tbl_Printer" msdata:parentkey="LocationID" msdata:childkey="Location" msprop:Generator_UserChildTable="Tbl_Printer" msprop:Generator_ChildPropName="GetTbl_PrinterRows" msprop:Generator_UserRelationName="FK_Tbl_Printer_Tbl_Location" msprop:Generator_RelationVarName="relationFK_Tbl_Printer_Tbl_Location" msprop:Generator_UserParentTable="Tbl_Location" msprop:Generator_ParentPropName="Tbl_LocationRow" />
+      <msdata:Relationship name="FK_Tbl_Printer_Tbl_Purchase" msdata:parent="Tbl_Purchase" msdata:child="Tbl_Printer" msdata:parentkey="PurchaseID" msdata:childkey="Purchase" msprop:Generator_UserChildTable="Tbl_Printer" msprop:Generator_ChildPropName="GetTbl_PrinterRows" msprop:Generator_UserRelationName="FK_Tbl_Printer_Tbl_Purchase" msprop:Generator_ParentPropName="Tbl_PurchaseRow" msprop:Generator_RelationVarName="relationFK_Tbl_Printer_Tbl_Purchase" msprop:Generator_UserParentTable="Tbl_Purchase" />
+      <msdata:Relationship name="FK_Tbl_Printer_Tbl_Supplier" msdata:parent="Tbl_Supplier" msdata:child="Tbl_Printer" msdata:parentkey="SupplierID" msdata:childkey="Supplier" msprop:Generator_UserChildTable="Tbl_Printer" msprop:Generator_ChildPropName="GetTbl_PrinterRows" msprop:Generator_UserRelationName="FK_Tbl_Printer_Tbl_Supplier" msprop:Generator_ParentPropName="Tbl_SupplierRow" msprop:Generator_RelationVarName="relationFK_Tbl_Printer_Tbl_Supplier" msprop:Generator_UserParentTable="Tbl_Supplier" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
