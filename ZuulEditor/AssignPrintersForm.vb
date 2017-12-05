@@ -118,10 +118,17 @@
 
     Private Sub EditPrinterButton_Click(sender As Object, e As EventArgs) Handles EditPrinterButton.Click
         Dim pd As New PrinterDetail
-        Dim selectedPrinter As DataRow = PrinterListBox.SelectedItems(0).row
-        Dim pid As Integer = selectedPrinter.Field(Of Integer)("PrinterID")
-        pd.SelectPrinter(pid)
-        pd.ShowDialog()
-        Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+        Try
+
+            Dim selectedPrinter As DataRow = PrinterListBox.SelectedItems(0).row
+            Dim pid As Integer = selectedPrinter.Field(Of Integer)("PrinterID")
+            pd.SelectPrinter(pid)
+
+        Catch ex As Exception
+        Finally
+            pd.ShowDialog()
+            Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+        End Try
+
     End Sub
 End Class

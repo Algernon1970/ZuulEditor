@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PrinterAssignButton = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'PrinterAssignButton
@@ -35,11 +36,22 @@ Partial Class Form1
         Me.PrinterAssignButton.Text = "Assign Printers"
         Me.PrinterAssignButton.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button1.Location = New System.Drawing.Point(0, 23)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(257, 23)
+        Me.Button1.TabIndex = 1
+        Me.Button1.Text = "Printer Details"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(257, 405)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.PrinterAssignButton)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -48,4 +60,5 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents PrinterAssignButton As Button
+    Friend WithEvents Button1 As Button
 End Class
