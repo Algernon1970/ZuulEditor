@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class AssignPrintersForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class AssignPrintersForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.PrinterListBox = New System.Windows.Forms.ListBox()
@@ -39,7 +39,6 @@ Partial Class AssignPrintersForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.EditPrinterButton = New System.Windows.Forms.Button()
-        Me.DeletePrinterButton = New System.Windows.Forms.Button()
         Me.Tbl_PrinterTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter()
         Me.Tbl_ComputerTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_ComputerTableAdapter()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -210,7 +209,6 @@ Partial Class AssignPrintersForm
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel3.Controls.Add(Me.EditPrinterButton, 1, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.DeletePrinterButton, 0, 0)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(251, 535)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
@@ -228,16 +226,6 @@ Partial Class AssignPrintersForm
         Me.EditPrinterButton.TabIndex = 0
         Me.EditPrinterButton.Text = "Edit Printers"
         Me.EditPrinterButton.UseVisualStyleBackColor = True
-        '
-        'DeletePrinterButton
-        '
-        Me.DeletePrinterButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DeletePrinterButton.Location = New System.Drawing.Point(3, 3)
-        Me.DeletePrinterButton.Name = "DeletePrinterButton"
-        Me.DeletePrinterButton.Size = New System.Drawing.Size(115, 23)
-        Me.DeletePrinterButton.TabIndex = 1
-        Me.DeletePrinterButton.Text = "Delete Printer"
-        Me.DeletePrinterButton.UseVisualStyleBackColor = True
         '
         'Tbl_PrinterTableAdapter
         '
@@ -284,5 +272,4 @@ Partial Class AssignPrintersForm
     Friend WithEvents UnAssignButton As Button
     Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents EditPrinterButton As Button
-    Friend WithEvents DeletePrinterButton As Button
 End Class

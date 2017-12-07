@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class PrinterDetail
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class PrinterDetail
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
@@ -31,6 +31,12 @@ Partial Class PrinterDetail
         Me.ZuulDataSet = New ZuulEditor.ZuulDataSet()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.InventoryBox = New System.Windows.Forms.TextBox()
+        Me.SerialNumberBox = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.DisposedTick = New System.Windows.Forms.CheckBox()
         Me.NameLabel = New System.Windows.Forms.Label()
         Me.PurchaseCostBox = New System.Windows.Forms.TextBox()
         Me.ConnectionStringBox = New System.Windows.Forms.TextBox()
@@ -54,7 +60,10 @@ Partial Class PrinterDetail
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.PrinterInfoList = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.CreatePrinterButton = New System.Windows.Forms.Button()
+        Me.ShowDisposedButton = New System.Windows.Forms.CheckBox()
         Me.SavePrinterButton = New System.Windows.Forms.Button()
         Me.TblSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Tbl_PrinterTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter()
@@ -62,7 +71,7 @@ Partial Class PrinterDetail
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Lnk_PrinterInfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter()
         Me.Tbl_InfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_InfoTableAdapter()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.DeletePrinterButton = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,11 +80,13 @@ Partial Class PrinterDetail
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblSupplierBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblLocationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.PrinterInfoList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -88,8 +99,7 @@ Partial Class PrinterDetail
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.PrinterListBox, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.CreatePrinterButton, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.SavePrinterButton, 1, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 2)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -97,6 +107,7 @@ Partial Class PrinterDetail
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(927, 531)
         Me.TableLayoutPanel1.TabIndex = 0
         '
@@ -163,6 +174,12 @@ Partial Class PrinterDetail
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.PictureBox1)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.InventoryBox)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SerialNumberBox)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label4)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label3)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.DisposedTick)
         Me.SplitContainer1.Panel1.Controls.Add(Me.NameLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.PurchaseCostBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ConnectionStringBox)
@@ -189,6 +206,58 @@ Partial Class PrinterDetail
         Me.SplitContainer1.SplitterDistance = 195
         Me.SplitContainer1.TabIndex = 18
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.ZuulEditor.My.Resources.Resources.Printer
+        Me.PictureBox1.Location = New System.Drawing.Point(315, 75)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(150, 108)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 23
+        Me.PictureBox1.TabStop = False
+        '
+        'InventoryBox
+        '
+        Me.InventoryBox.Location = New System.Drawing.Point(422, 35)
+        Me.InventoryBox.Name = "InventoryBox"
+        Me.InventoryBox.Size = New System.Drawing.Size(100, 20)
+        Me.InventoryBox.TabIndex = 22
+        '
+        'SerialNumberBox
+        '
+        Me.SerialNumberBox.Location = New System.Drawing.Point(422, 9)
+        Me.SerialNumberBox.Name = "SerialNumberBox"
+        Me.SerialNumberBox.Size = New System.Drawing.Size(100, 20)
+        Me.SerialNumberBox.TabIndex = 21
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(346, 38)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(70, 13)
+        Me.Label4.TabIndex = 20
+        Me.Label4.Text = "InventoryTag"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(343, 12)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(73, 13)
+        Me.Label3.TabIndex = 19
+        Me.Label3.Text = "Serial Number"
+        '
+        'DisposedTick
+        '
+        Me.DisposedTick.AutoSize = True
+        Me.DisposedTick.Location = New System.Drawing.Point(626, 19)
+        Me.DisposedTick.Name = "DisposedTick"
+        Me.DisposedTick.Size = New System.Drawing.Size(70, 17)
+        Me.DisposedTick.TabIndex = 18
+        Me.DisposedTick.Text = "Disposed"
+        Me.DisposedTick.UseVisualStyleBackColor = True
+        '
         'NameLabel
         '
         Me.NameLabel.AutoSize = True
@@ -200,7 +269,7 @@ Partial Class PrinterDetail
         '
         'PurchaseCostBox
         '
-        Me.PurchaseCostBox.Location = New System.Drawing.Point(594, 109)
+        Me.PurchaseCostBox.Location = New System.Drawing.Point(596, 144)
         Me.PurchaseCostBox.Name = "PurchaseCostBox"
         Me.PurchaseCostBox.Size = New System.Drawing.Size(100, 20)
         Me.PurchaseCostBox.TabIndex = 17
@@ -209,12 +278,12 @@ Partial Class PrinterDetail
         '
         Me.ConnectionStringBox.Location = New System.Drawing.Point(113, 35)
         Me.ConnectionStringBox.Name = "ConnectionStringBox"
-        Me.ConnectionStringBox.Size = New System.Drawing.Size(234, 20)
+        Me.ConnectionStringBox.Size = New System.Drawing.Size(209, 20)
         Me.ConnectionStringBox.TabIndex = 0
         '
         'PurchaseDateBox
         '
-        Me.PurchaseDateBox.Location = New System.Drawing.Point(380, 109)
+        Me.PurchaseDateBox.Location = New System.Drawing.Point(596, 117)
         Me.PurchaseDateBox.Name = "PurchaseDateBox"
         Me.PurchaseDateBox.Size = New System.Drawing.Size(100, 20)
         Me.PurchaseDateBox.TabIndex = 16
@@ -233,7 +302,7 @@ Partial Class PrinterDetail
         Me.SupplierCombo.DataSource = Me.TblSupplierBindingSource1
         Me.SupplierCombo.DisplayMember = "Name"
         Me.SupplierCombo.FormattingEnabled = True
-        Me.SupplierCombo.Location = New System.Drawing.Point(380, 162)
+        Me.SupplierCombo.Location = New System.Drawing.Point(596, 167)
         Me.SupplierCombo.Name = "SupplierCombo"
         Me.SupplierCombo.Size = New System.Drawing.Size(121, 21)
         Me.SupplierCombo.TabIndex = 15
@@ -318,7 +387,7 @@ Partial Class PrinterDetail
         'SupplierLabel
         '
         Me.SupplierLabel.AutoSize = True
-        Me.SupplierLabel.Location = New System.Drawing.Point(329, 165)
+        Me.SupplierLabel.Location = New System.Drawing.Point(545, 170)
         Me.SupplierLabel.Name = "SupplierLabel"
         Me.SupplierLabel.Size = New System.Drawing.Size(45, 13)
         Me.SupplierLabel.TabIndex = 6
@@ -334,7 +403,7 @@ Partial Class PrinterDetail
         'PurchaseDateLabel
         '
         Me.PurchaseDateLabel.AutoSize = True
-        Me.PurchaseDateLabel.Location = New System.Drawing.Point(296, 112)
+        Me.PurchaseDateLabel.Location = New System.Drawing.Point(512, 120)
         Me.PurchaseDateLabel.Name = "PurchaseDateLabel"
         Me.PurchaseDateLabel.Size = New System.Drawing.Size(78, 13)
         Me.PurchaseDateLabel.TabIndex = 7
@@ -343,7 +412,7 @@ Partial Class PrinterDetail
         'PurchaseCostLabel
         '
         Me.PurchaseCostLabel.AutoSize = True
-        Me.PurchaseCostLabel.Location = New System.Drawing.Point(512, 112)
+        Me.PurchaseCostLabel.Location = New System.Drawing.Point(514, 147)
         Me.PurchaseCostLabel.Name = "PurchaseCostLabel"
         Me.PurchaseCostLabel.Size = New System.Drawing.Size(76, 13)
         Me.PurchaseCostLabel.TabIndex = 8
@@ -385,23 +454,64 @@ Partial Class PrinterDetail
         Me.Panel2.Size = New System.Drawing.Size(125, 248)
         Me.Panel2.TabIndex = 1
         '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Button1.Location = New System.Drawing.Point(0, 225)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(125, 23)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Add Note"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel3
+        '
+        Me.TableLayoutPanel3.ColumnCount = 4
+        Me.TableLayoutPanel1.SetColumnSpan(Me.TableLayoutPanel3, 2)
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132.0!))
+        Me.TableLayoutPanel3.Controls.Add(Me.CreatePrinterButton, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.ShowDisposedButton, 1, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.SavePrinterButton, 3, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.DeletePrinterButton, 2, 0)
+        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 499)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 1
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(921, 29)
+        Me.TableLayoutPanel3.TabIndex = 4
+        '
         'CreatePrinterButton
         '
-        Me.CreatePrinterButton.Location = New System.Drawing.Point(3, 499)
+        Me.CreatePrinterButton.Location = New System.Drawing.Point(3, 3)
         Me.CreatePrinterButton.Name = "CreatePrinterButton"
-        Me.CreatePrinterButton.Size = New System.Drawing.Size(99, 23)
-        Me.CreatePrinterButton.TabIndex = 4
-        Me.CreatePrinterButton.Text = "Add New Printer"
+        Me.CreatePrinterButton.Size = New System.Drawing.Size(107, 23)
+        Me.CreatePrinterButton.TabIndex = 6
+        Me.CreatePrinterButton.Text = "Create Printer"
         Me.CreatePrinterButton.UseVisualStyleBackColor = True
+        '
+        'ShowDisposedButton
+        '
+        Me.ShowDisposedButton.AutoSize = True
+        Me.ShowDisposedButton.Location = New System.Drawing.Point(116, 3)
+        Me.ShowDisposedButton.Name = "ShowDisposedButton"
+        Me.ShowDisposedButton.Size = New System.Drawing.Size(100, 17)
+        Me.ShowDisposedButton.TabIndex = 7
+        Me.ShowDisposedButton.Text = "Show Disposed"
+        Me.ShowDisposedButton.ThreeState = True
+        Me.ShowDisposedButton.UseVisualStyleBackColor = True
         '
         'SavePrinterButton
         '
         Me.SavePrinterButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SavePrinterButton.Enabled = False
-        Me.SavePrinterButton.Location = New System.Drawing.Point(793, 499)
+        Me.SavePrinterButton.Location = New System.Drawing.Point(792, 3)
         Me.SavePrinterButton.Name = "SavePrinterButton"
-        Me.SavePrinterButton.Size = New System.Drawing.Size(131, 23)
-        Me.SavePrinterButton.TabIndex = 5
+        Me.SavePrinterButton.Size = New System.Drawing.Size(126, 23)
+        Me.SavePrinterButton.TabIndex = 8
         Me.SavePrinterButton.Text = "Save Printer Details"
         Me.SavePrinterButton.UseVisualStyleBackColor = True
         '
@@ -430,15 +540,14 @@ Partial Class PrinterDetail
         '
         Me.Tbl_InfoTableAdapter1.ClearBeforeFill = True
         '
-        'Button1
+        'DeletePrinterButton
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Button1.Location = New System.Drawing.Point(0, 225)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(125, 23)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Add Note"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.DeletePrinterButton.Location = New System.Drawing.Point(448, 3)
+        Me.DeletePrinterButton.Name = "DeletePrinterButton"
+        Me.DeletePrinterButton.Size = New System.Drawing.Size(91, 23)
+        Me.DeletePrinterButton.TabIndex = 9
+        Me.DeletePrinterButton.Text = "Delete Printer"
+        Me.DeletePrinterButton.UseVisualStyleBackColor = True
         '
         'PrinterDetail
         '
@@ -458,11 +567,14 @@ Partial Class PrinterDetail
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TblSupplierBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TblLocationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
         CType(Me.PrinterInfoList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        Me.TableLayoutPanel3.ResumeLayout(False)
+        Me.TableLayoutPanel3.PerformLayout()
         CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -498,9 +610,7 @@ Partial Class PrinterDetail
     Friend WithEvents Tbl_SupplierTableAdapter As ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter
     Friend WithEvents TblLocationBindingSource As BindingSource
     Friend WithEvents Tbl_LocationTableAdapter As ZuulDataSetTableAdapters.Tbl_LocationTableAdapter
-    Friend WithEvents CreatePrinterButton As Button
     Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents SavePrinterButton As Button
     Friend WithEvents TblSupplierBindingSource1 As BindingSource
     Friend WithEvents Lnk_PrinterInfoTableAdapter1 As ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter
     Friend WithEvents Tbl_InfoTableAdapter1 As ZuulDataSetTableAdapters.Tbl_InfoTableAdapter
@@ -508,4 +618,15 @@ Partial Class PrinterDetail
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Button1 As Button
+    Friend WithEvents InventoryBox As TextBox
+    Friend WithEvents SerialNumberBox As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents DisposedTick As CheckBox
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents CreatePrinterButton As Button
+    Friend WithEvents ShowDisposedButton As CheckBox
+    Friend WithEvents SavePrinterButton As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents DeletePrinterButton As Button
 End Class

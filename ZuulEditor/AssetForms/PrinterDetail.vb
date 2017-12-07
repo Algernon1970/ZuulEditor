@@ -4,6 +4,7 @@
     Private Sub AddHandlers()
         Dim box As TextBox
         Dim cbox As ComboBox
+        Dim chbox As CheckBox
         Dim panel As SplitterPanel = SplitContainer1.Panel1
         For Each control In panel.Controls
             If TypeOf control Is TextBox Then
@@ -12,6 +13,9 @@
             ElseIf TypeOf control Is combobox Then
                 cbox = DirectCast(control, ComboBox)
                 AddHandler cbox.SelectedIndexChanged, AddressOf FormChanged
+            ElseIf TypeOf control Is checkbox Then
+                chbox = DirectCast(control, CheckBox)
+                AddHandler chbox.CheckStateChanged, AddressOf FormChanged
             End If
         Next
     End Sub
@@ -23,38 +27,55 @@
     Private Sub PrinterDetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Tbl_LocationTableAdapter.Fill(Me.ZuulDataSet.Tbl_Location)
         Me.Tbl_SupplierTableAdapter.Fill(Me.ZuulDataSet.Tbl_Supplier)
-        LoadDetails()
-        SelectPrinter()
+        Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
         AddHandlers()
     End Sub
 
-    Private Sub LoadDetails()
-        Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
-    End Sub
-
-    Private Sub SelectPrinter()
-        Try
-            Dim printerName As String = Tbl_PrinterTableAdapter.GetPrinterByPrinterID(defaultPid).Rows(0).Field(Of String)("Name")
-            Dim index As Integer = PrinterListBox.FindString(printerName)
-            If index > -1 Then
-                PrinterListBox.SetSelected(index, True)
-            End If
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
-    Public Sub SelectPrinter(ByVal pid As Integer)
-        defaultPid = pid
-        SelectPrinter()
-    End Sub
+    Public Function SelectPrinterByName(ByVal printerName As String) As Boolean
+        Dim index As Integer = PrinterListBox.FindString(printerName)
+        If index > -1 Then
+            PrinterListBox.SetSelected(index, True)
+            Return True
+        Else
+            'PrinterListBox.SetSelected(1, True)
+            Return False
+        End If
+    End Function
 
     Private Sub PrinterListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PrinterListBox.SelectedIndexChanged
-        Dim printerrow As DataRow = GetSelectedPrinter()
-        defaultPid = printerrow.Field(Of Integer)("PrinterID")
-        DisplayPrinter(printerrow)
-        DisplayNotesForPrinter(printerrow)
+        If PrinterListBox.SelectedIndex > -1 Then
+            Try
+                Dim printerrow As DataRow = GetSelectedPrinter()
+                defaultPid = printerrow.Field(Of Integer)("PrinterID")
+                DisplayPrinter(printerrow)
+                DisplayNotesForPrinter(printerrow)
+            Catch ex As Exception
+                ClearDisplay()
+                SelectByIndex(-1)
+            End Try
+        Else
+            ClearDisplay()
+        End If
+    End Sub
+
+    Private Sub ClearDisplay()
+        Dim LocationTableAdapter As New ZuulDataSetTableAdapters.Tbl_LocationTableAdapter
+        NameBox.Text = ""
+        ConnectionStringBox.Text = ""
+        MakeBox.Text = ""
+        ModelBox.Text = ""
+        IPAddressBox.Text = ""
+        Dim LocationNumber As Integer = 1
+        PurchaseDateBox.Text = ""
+        PurchaseCostBox.Text = ""
+        Dim LocationName As String = ""
+        LocationCombo.SelectedIndex = 1
+        DisposedTick.Checked = False
+        PictureBox1.Image = My.Resources.Printer
+
+        InventoryBox.Text = ""
+        SerialNumberBox.Text = ""
+        SavePrinterButton.Enabled = False
     End Sub
 
     Private Function GetSelectedPrinter() As DataRow
@@ -62,7 +83,13 @@
         If PrinterListBox.SelectedItems.Count = 1 Then
             printerrow = PrinterListBox.SelectedItem.row
         Else
-            printerrow = Tbl_PrinterTableAdapter.GetPrinterByPrinterID(defaultPid)(0)
+            Try
+                printerrow = Tbl_PrinterTableAdapter.GetPrinterByPrinterID(defaultPid)(0)
+            Catch ex As Exception
+                PrinterListBox.SelectedIndex = 1
+                printerrow = PrinterListBox.SelectedItem.row
+            End Try
+
         End If
         Return printerrow
     End Function
@@ -79,6 +106,14 @@
         PurchaseCostBox.Text = printerrow.Field(Of Decimal)("PurchaseCost").ToString
         Dim LocationName As String = LocationTableAdapter.GetLocationName(LocationNumber).Rows(0).Field(Of String)("LocationName")
         LocationCombo.SelectedIndex = LocationCombo.FindString(LocationName)
+        DisposedTick.Checked = printerrow.Field(Of Boolean)("Disposed")
+        If DisposedTick.Checked Then
+            PictureBox1.Image = My.Resources.DisposedPrinter
+        Else
+            PictureBox1.Image = My.Resources.Printer
+        End If
+        InventoryBox.Text = printerrow.Field(Of String)("InventoryNumber")
+        SerialNumberBox.Text = printerrow.Field(Of String)("SerialNumber")
         SavePrinterButton.Enabled = False
     End Sub
 
@@ -87,7 +122,9 @@
         Dim res As DialogResult = req.ShowDialog
         If res.Equals(DialogResult.OK) Then
             CreatePrinter(req.ResultTextBox.Text)
-            LoadDetails()
+            PrinterListBox.SelectedIndex = -1
+            Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+            SelectPrinterByName(req.ResultTextBox.Text)
         End If
     End Sub
 
@@ -99,9 +136,7 @@
 
             Tbl_PrinterTableAdapter.CreatePrinter(name, "", "", "", "", 1, 1, todaysDate.ToLongDateString, 0)
 
-            defaultPid = Tbl_PrinterTableAdapter.GetPrinterByName(name).Rows(0).Field(Of Integer)("PrinterID")
-
-            SelectPrinter()
+            SelectPrinterByName(Tbl_PrinterTableAdapter.GetPrinterByName(name).Rows(0).Field(Of String)("Name"))
         End If
     End Sub
 
@@ -113,11 +148,21 @@
 
         Dim sup As DataRow = DirectCast(SupplierCombo.SelectedItem, DataRowView).Row
 
-        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), Decimal.Parse(PurchaseCostBox.Text), PurchaseDateBox.Text, pid)
+        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), Decimal.Parse(PurchaseCostBox.Text), PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, pid)
+        Dim name As String = NameBox.Text
+        PrinterListBox.SelectedIndex = -1
+        FillByDisposedButton()
+        SelectPrinterByName(name)
+    End Sub
 
-        Tbl_PrinterTableAdapter.Fill(ZuulDataSet.Tbl_Printer)
-        SelectPrinter()
-        DisplayPrinter(GetSelectedPrinter())
+    Private Sub FillByDisposedButton()
+        If ShowDisposedButton.CheckState = CheckState.Checked Then
+            Me.Tbl_PrinterTableAdapter.FillByDisposed(Me.ZuulDataSet.Tbl_Printer)
+        ElseIf ShowDisposedButton.CheckState = CheckState.Unchecked Then
+            Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+        ElseIf ShowDisposedButton.CheckState = CheckState.Indeterminate Then
+            Me.Tbl_PrinterTableAdapter.FillByAll(Me.ZuulDataSet.Tbl_Printer)
+        End If
     End Sub
 
     Private Sub DisplayNotesForPrinter(ByVal printerrow As DataRow)
@@ -145,5 +190,38 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         MsgBox("Not yet")
+    End Sub
+
+    Public Sub SelectByIndex(ByVal index As Integer)
+        PrinterListBox.SelectedIndex = index
+    End Sub
+
+    Private Sub ShowDisposedButton_CheckStateChanged(sender As Object, e As EventArgs) Handles ShowDisposedButton.CheckStateChanged
+        PrinterListBox.SelectedIndex = -1
+        FillByDisposedButton()
+
+        Dim printerrow As DataRow = GetSelectedPrinter()
+        defaultPid = printerrow.Field(Of Integer)("PrinterID")
+        DisplayPrinter(printerrow)
+        DisplayNotesForPrinter(printerrow)
+    End Sub
+
+    Public Sub SetState(ByVal check As CheckState)
+        ShowDisposedButton.CheckState = check
+    End Sub
+
+    Private Sub DeletePrinterButton_Click(sender As Object, e As EventArgs) Handles DeletePrinterButton.Click
+        Dim pid As Integer = 0
+        Dim plural As String = If(PrinterListBox.SelectedItems.Count = 1, "", "s")
+        Dim warn As String = String.Format("Are you sure you wish to delete {0} printer{1} permanently from the database?", PrinterListBox.SelectedItems.Count, plural)
+        Dim res As DialogResult = MsgBox(warn, MsgBoxStyle.YesNo)
+        If res.Equals(DialogResult.Yes) Then
+            For Each printer As DataRowView In PrinterListBox.SelectedItems
+                pid = printer.Row.Field(Of Integer)("PrinterID")
+                Tbl_PrinterTableAdapter.DeleteByID(pid)
+            Next
+        End If
+        PrinterListBox.SelectedIndex = -1
+        FillByDisposedButton()
     End Sub
 End Class

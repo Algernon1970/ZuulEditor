@@ -101,7 +101,7 @@
         PrinterLinkTableAdapter.DeleteByInstance(cid, pid)
     End Sub
 
-    Private Sub DeletePrinterButton_Click(sender As Object, e As EventArgs) Handles DeletePrinterButton.Click
+    Private Sub DeletePrinterButton_Click(sender As Object, e As EventArgs) 
         Dim PrinterTableAdapter As New ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter
         Dim pid As Integer = 0
         Dim plural As String = If(PrinterListBox.SelectedItems.Count = 1, "", "s")
@@ -118,17 +118,14 @@
 
     Private Sub EditPrinterButton_Click(sender As Object, e As EventArgs) Handles EditPrinterButton.Click
         Dim pd As New PrinterDetail
-        Try
 
-            Dim selectedPrinter As DataRow = PrinterListBox.SelectedItems(0).row
-            Dim pid As Integer = selectedPrinter.Field(Of Integer)("PrinterID")
-            pd.SelectPrinter(pid)
 
-        Catch ex As Exception
-        Finally
-            pd.ShowDialog()
-            Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
-        End Try
+        Dim selectedPrinter As DataRow = PrinterListBox.SelectedItems(0).row
+        Dim pid As String = selectedPrinter.Field(Of String)("Name")
+        pd.Show()
+        pd.SelectPrinterByName(pid)
+        Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+
 
     End Sub
 End Class
