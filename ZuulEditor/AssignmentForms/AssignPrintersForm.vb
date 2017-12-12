@@ -60,14 +60,14 @@
         OperationBox.Clear()
         For Each computerRow As DataRowView In ComputerListBox.SelectedItems
             OperationBox.AppendText(computerRow.Row.Field(Of String)("Name") & vbCrLf)
-            Dim plist As List(Of String) = GetPrinterListFor(computerRow.Row.Field(Of Integer)("ComputerID").ToString)
+            Dim plist As List(Of String) = GetPrinterListFor(computerRow.Row.Field(Of Integer)("ComputerID"))
             For Each printer As String In plist
                 OperationBox.AppendText(vbTab & printer & vbCrLf)
             Next
         Next
     End Sub
 
-    Private Function GetPrinterListFor(ByRef cid As String) As List(Of String)
+    Private Function GetPrinterListFor(ByRef cid As Integer) As List(Of String)
         Dim PrinterLinks As DataTable = PrinterLinkTableAdapter.GetPrinterLinkByComputerID(cid)
         Dim plist As New List(Of String)
         For Each printerlink As DataRow In PrinterLinks.Rows
@@ -106,8 +106,8 @@
         Dim pid As Integer = 0
         Dim plural As String = If(PrinterListBox.SelectedItems.Count = 1, "", "s")
         Dim warn As String = String.Format("Are you sure you wish to delete {0} printer{1} permanently from the database?", PrinterListBox.SelectedItems.Count, plural)
-        Dim res As DialogResult = MsgBox(warn, MsgBoxStyle.YesNo)
-        If res.Equals(DialogResult.Yes) Then
+        Dim res As MsgBoxResult = MsgBox(warn, MsgBoxStyle.YesNo)
+        If res.Equals(MsgBoxResult.Yes) Then
             For Each printer As DataRowView In PrinterListBox.SelectedItems
                 pid = printer.Row.Field(Of Integer)("PrinterID")
                 PrinterTableAdapter.DeleteByID(pid)
@@ -119,13 +119,23 @@
     Private Sub EditPrinterButton_Click(sender As Object, e As EventArgs) Handles EditPrinterButton.Click
         Dim pd As New PrinterDetail
 
-
-        Dim selectedPrinter As DataRow = PrinterListBox.SelectedItems(0).row
+        Dim pselected As ListBox.SelectedObjectCollection = PrinterListBox.SelectedItems
+        Dim pselecteditem As DataRowView = DirectCast(pselected.Item(0), DataRowView)
+        Dim selectedPrinter As DataRow = pselecteditem.row
         Dim pid As String = selectedPrinter.Field(Of String)("Name")
         pd.Show()
         pd.SelectPrinterByName(pid)
         Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
 
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim cd As New ComputerDetails
+        Dim selectedComputer As DataRow = DirectCast(ComputerListBox.SelectedItems(0), DataRowView).Row
+        Dim cid As String = selectedComputer.Field(Of String)("Name")
+        cd.Show()
+        'cd.selectComputerByName(cid)
+        Me.Tbl_ComputerTableAdapter.Fill(Me.ZuulDataSet.Tbl_Computer)
     End Sub
 End Class
