@@ -1,5 +1,8 @@
-﻿Public Class PrinterDetail
+﻿Imports System.ComponentModel
+
+Public Class PrinterDetail
     Dim defaultPid As Integer = 0
+    Dim PrinterWMI As New PrinterInfo
 
     Private Sub AddHandlers()
         Dim box As TextBox
@@ -10,10 +13,10 @@
             If TypeOf control Is TextBox Then
                 box = DirectCast(control, TextBox)
                 AddHandler box.TextChanged, AddressOf FormChanged
-            ElseIf TypeOf control Is combobox Then
+            ElseIf TypeOf control Is ComboBox Then
                 cbox = DirectCast(control, ComboBox)
                 AddHandler cbox.SelectedIndexChanged, AddressOf FormChanged
-            ElseIf TypeOf control Is checkbox Then
+            ElseIf TypeOf control Is CheckBox Then
                 chbox = DirectCast(control, CheckBox)
                 AddHandler chbox.CheckStateChanged, AddressOf FormChanged
             End If
@@ -155,8 +158,9 @@
         Dim loc As DataRow = DirectCast(LocationCombo.SelectedItem, DataRowView).Row
 
         Dim sup As DataRow = DirectCast(SupplierCombo.SelectedItem, DataRowView).Row
-
-        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), Decimal.Parse(PurchaseCostBox.Text), PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, pid)
+        Dim cost As Decimal
+        cost = Decimal.Parse(PurchaseCostBox.Text.Replace("£", ""))
+        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), cost, PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, pid)
         Dim name As String = NameBox.Text
         PrinterListBox.SelectedIndex = -1
         FillByDisposedButton()
@@ -179,8 +183,13 @@
     Private Sub DisplayNotesForPrinter(ByVal printerrow As DataRow)
         Dim infotable As DataTable = Lnk_PrinterInfoTableAdapter1.GetInfoByPID(printerrow.Field(Of Integer)("PrinterID"))
         PrinterInfoList.DataSource = New DataView(infotable)
-        For Each col As DataGridView In PrinterInfoList.Columns
-            col.Visible = False
+        'For Each col As DataGridViewColumnCollection In PrinterInfoList.Columns
+        '    For Each item As DataGridViewColumn In col
+        '        item.Visible = False
+        '    Next
+        'Next
+        For x As Integer = 0 To PrinterInfoList.Columns.GetColumnCount(DataGridViewElementStates.Visible)
+            PrinterInfoList.Columns(x).Visible = False
         Next
         PrinterInfoList.Columns("Datestamp").Visible = True
         PrinterInfoList.Columns("Title").Visible = True
@@ -229,5 +238,28 @@
         End If
         PrinterListBox.SelectedIndex = -1
         FillByDisposedButton()
+    End Sub
+
+    Private Sub GetInfoButton_Click(sender As Object, e As EventArgs) Handles GetInfoButton.Click
+
+        Dim bg As New BackgroundWorker
+        AddHandler bg.DoWork, AddressOf bg_dowork
+        AddHandler bg.RunWorkerCompleted, AddressOf bg_RunWorkerCompleted
+        GetInfoButton.Enabled = False
+        bg.RunWorkerAsync()
+    End Sub
+
+    Private Sub bg_dowork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
+
+        PrinterWMI.Gather()
+    End Sub
+
+    Private Sub bg_RunWorkerCompleted(ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs)
+        GetInfoButton.Enabled = True
+    End Sub
+
+    Private Sub ShowDictButton_Click(sender As Object, e As EventArgs) Handles ShowDictButton.Click
+        Dim mydic = PrinterWMI.GetPrintersWMI
+        MsgBox(mydic.Count)
     End Sub
 End Class

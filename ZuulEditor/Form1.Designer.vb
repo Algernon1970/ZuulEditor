@@ -29,6 +29,7 @@ Partial Class Form1
         Me.ComputerDetailButton = New System.Windows.Forms.Button()
         Me.ProjectorDetailButton = New System.Windows.Forms.Button()
         Me.OtherHardwareButton = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'PrinterAssignButton
@@ -101,11 +102,22 @@ Partial Class Form1
         Me.OtherHardwareButton.Text = "Other Hardware"
         Me.OtherHardwareButton.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Button1.Location = New System.Drawing.Point(0, 161)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(369, 23)
+        Me.Button1.TabIndex = 7
+        Me.Button1.Text = "Upload Files"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(369, 162)
+        Me.ClientSize = New System.Drawing.Size(369, 224)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.OtherHardwareButton)
         Me.Controls.Add(Me.ProjectorDetailButton)
         Me.Controls.Add(Me.ComputerDetailButton)
@@ -127,4 +139,5 @@ Partial Class Form1
     Friend WithEvents ComputerDetailButton As Button
     Friend WithEvents ProjectorDetailButton As Button
     Friend WithEvents OtherHardwareButton As Button
+    Friend WithEvents Button1 As Button
 End Class

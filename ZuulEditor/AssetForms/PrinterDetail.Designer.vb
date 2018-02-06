@@ -60,18 +60,20 @@ Partial Class PrinterDetail
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.PrinterInfoList = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.GetInfoButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.CreatePrinterButton = New System.Windows.Forms.Button()
         Me.ShowDisposedButton = New System.Windows.Forms.CheckBox()
         Me.SavePrinterButton = New System.Windows.Forms.Button()
+        Me.DeletePrinterButton = New System.Windows.Forms.Button()
         Me.TblSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Tbl_PrinterTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter()
         Me.Tbl_SupplierTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter()
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Lnk_PrinterInfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter()
         Me.Tbl_InfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_InfoTableAdapter()
-        Me.DeletePrinterButton = New System.Windows.Forms.Button()
+        Me.ShowDictButton = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -447,12 +449,24 @@ Partial Class PrinterDetail
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.ShowDictButton)
+        Me.Panel2.Controls.Add(Me.GetInfoButton)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(596, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(125, 248)
         Me.Panel2.TabIndex = 1
+        '
+        'GetInfoButton
+        '
+        Me.GetInfoButton.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.GetInfoButton.Location = New System.Drawing.Point(0, 202)
+        Me.GetInfoButton.Name = "GetInfoButton"
+        Me.GetInfoButton.Size = New System.Drawing.Size(125, 23)
+        Me.GetInfoButton.TabIndex = 1
+        Me.GetInfoButton.Text = "WMI"
+        Me.GetInfoButton.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -515,6 +529,15 @@ Partial Class PrinterDetail
         Me.SavePrinterButton.Text = "Save Printer Details"
         Me.SavePrinterButton.UseVisualStyleBackColor = True
         '
+        'DeletePrinterButton
+        '
+        Me.DeletePrinterButton.Location = New System.Drawing.Point(448, 3)
+        Me.DeletePrinterButton.Name = "DeletePrinterButton"
+        Me.DeletePrinterButton.Size = New System.Drawing.Size(91, 23)
+        Me.DeletePrinterButton.TabIndex = 9
+        Me.DeletePrinterButton.Text = "Delete Printer"
+        Me.DeletePrinterButton.UseVisualStyleBackColor = True
+        '
         'TblSupplierBindingSource
         '
         Me.TblSupplierBindingSource.DataSource = Me.ZuulDataSet
@@ -540,14 +563,15 @@ Partial Class PrinterDetail
         '
         Me.Tbl_InfoTableAdapter1.ClearBeforeFill = True
         '
-        'DeletePrinterButton
+        'ShowDictButton
         '
-        Me.DeletePrinterButton.Location = New System.Drawing.Point(448, 3)
-        Me.DeletePrinterButton.Name = "DeletePrinterButton"
-        Me.DeletePrinterButton.Size = New System.Drawing.Size(91, 23)
-        Me.DeletePrinterButton.TabIndex = 9
-        Me.DeletePrinterButton.Text = "Delete Printer"
-        Me.DeletePrinterButton.UseVisualStyleBackColor = True
+        Me.ShowDictButton.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ShowDictButton.Location = New System.Drawing.Point(0, 179)
+        Me.ShowDictButton.Name = "ShowDictButton"
+        Me.ShowDictButton.Size = New System.Drawing.Size(125, 23)
+        Me.ShowDictButton.TabIndex = 2
+        Me.ShowDictButton.Text = "Show Dict"
+        Me.ShowDictButton.UseVisualStyleBackColor = True
         '
         'PrinterDetail
         '
@@ -629,4 +653,6 @@ Partial Class PrinterDetail
     Friend WithEvents SavePrinterButton As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents DeletePrinterButton As Button
+    Friend WithEvents GetInfoButton As Button
+    Friend WithEvents ShowDictButton As Button
 End Class

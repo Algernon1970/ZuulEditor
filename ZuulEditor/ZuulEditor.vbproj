@@ -56,6 +56,7 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -107,6 +108,12 @@
     <Compile Include="AssignmentForms\AssignPrivUser.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AssignmentForms\UploadFileForm.Designer.vb">
+      <DependentUpon>UploadFileForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AssignmentForms\UploadFileForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Dialogues\AD\LocalADTools.vb" />
     <Compile Include="Dialogues\RequestString.Designer.vb">
       <DependentUpon>RequestString.vb</DependentUpon>
@@ -136,6 +143,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="WMI\PrinterInfo.vb" />
     <Compile Include="ZuulDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AssignmentForms\AssignPrintersForm.resx">
       <DependentUpon>AssignPrintersForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssignmentForms\UploadFileForm.resx">
+      <DependentUpon>UploadFileForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogues\RequestString.resx">
       <DependentUpon>RequestString.vb</DependentUpon>
