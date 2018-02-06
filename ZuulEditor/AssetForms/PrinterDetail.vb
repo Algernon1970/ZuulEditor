@@ -243,18 +243,18 @@ Public Class PrinterDetail
     Private Sub GetInfoButton_Click(sender As Object, e As EventArgs) Handles GetInfoButton.Click
 
         Dim bg As New BackgroundWorker
-        AddHandler bg.DoWork, AddressOf bg_dowork
-        AddHandler bg.RunWorkerCompleted, AddressOf bg_RunWorkerCompleted
+        AddHandler bg.DoWork, AddressOf Bg_dowork
+        AddHandler bg.RunWorkerCompleted, AddressOf Bg_RunWorkerCompleted
         GetInfoButton.Enabled = False
         bg.RunWorkerAsync()
     End Sub
 
-    Private Sub bg_dowork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
+    Private Sub Bg_dowork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
 
         PrinterWMI.Gather()
     End Sub
 
-    Private Sub bg_RunWorkerCompleted(ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs)
+    Private Sub Bg_RunWorkerCompleted(ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs)
         GetInfoButton.Enabled = True
     End Sub
 

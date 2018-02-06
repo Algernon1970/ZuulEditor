@@ -3,6 +3,11 @@
 Public Class PrinterInfo
     Dim dict As New Dictionary(Of String, Details)
     Dim tempdict As New Dictionary(Of String, Details)
+
+    ''' <summary>
+    ''' Gather printer details from the Docupro server and store them key'ed on printer name
+    ''' Takes about 30 seconds to enumerate all printers, so call from a background worker.
+    ''' </summary>
     Public Sub Gather()
         Dim options As New ConnectionOptions With
     {
@@ -46,6 +51,10 @@ Public Class PrinterInfo
         End SyncLock
     End Sub
 
+    ''' <summary>
+    ''' Get the dictionary of printers that has previously been <seealso cref="Gather()"/> Gathered.
+    ''' </summary>
+    ''' <returns></returns>
     Public Function GetPrintersWMI() As Dictionary(Of String, Details)
         SyncLock dict
             Return dict

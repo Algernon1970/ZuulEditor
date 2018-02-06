@@ -25,7 +25,7 @@ Partial Class RequestString
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.OKButton = New System.Windows.Forms.Button()
-        Me.CancelButton = New System.Windows.Forms.Button()
+        Me.MyCancelButton = New System.Windows.Forms.Button()
         Me.PromptLabel = New System.Windows.Forms.Label()
         Me.ResultTextBox = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -52,7 +52,7 @@ Partial Class RequestString
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.Controls.Add(Me.OKButton)
-        Me.FlowLayoutPanel1.Controls.Add(Me.CancelButton)
+        Me.FlowLayoutPanel1.Controls.Add(Me.MyCancelButton)
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 83)
@@ -70,15 +70,15 @@ Partial Class RequestString
         Me.OKButton.Text = "OK"
         Me.OKButton.UseVisualStyleBackColor = True
         '
-        'CancelButton
+        'MyCancelButton
         '
-        Me.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.CancelButton.Location = New System.Drawing.Point(303, 3)
-        Me.CancelButton.Name = "CancelButton"
-        Me.CancelButton.Size = New System.Drawing.Size(80, 26)
-        Me.CancelButton.TabIndex = 1
-        Me.CancelButton.Text = "Cancel"
-        Me.CancelButton.UseVisualStyleBackColor = True
+        Me.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.MyCancelButton.Location = New System.Drawing.Point(303, 3)
+        Me.MyCancelButton.Name = "MyCancelButton"
+        Me.MyCancelButton.Size = New System.Drawing.Size(80, 26)
+        Me.MyCancelButton.TabIndex = 1
+        Me.MyCancelButton.Text = "Cancel"
+        Me.MyCancelButton.UseVisualStyleBackColor = True
         '
         'PromptLabel
         '
@@ -120,7 +120,7 @@ Partial Class RequestString
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents OKButton As Button
-    Friend WithEvents CancelButton As Button
+    Friend WithEvents MyCancelButton As Button
     Friend WithEvents PromptLabel As Label
     Friend WithEvents ResultTextBox As TextBox
 End Class
