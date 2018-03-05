@@ -25,8 +25,9 @@ Module LocalADTools
 
     Public Function GetUserPrincipalByID(ByRef ctx As PrincipalContext, ByRef admission As String) As DirectoryServices.AccountManagement.UserPrincipal
         Dim userList As New List(Of DirectoryServices.AccountManagement.UserPrincipal)
-        Dim searchusr As DirectoryServices.AccountManagement.UserPrincipal = New DirectoryServices.AccountManagement.UserPrincipal(ctx)
-        searchusr.EmployeeId = admission
+        Dim searchusr As DirectoryServices.AccountManagement.UserPrincipal = New DirectoryServices.AccountManagement.UserPrincipal(ctx) With {
+            .EmployeeId = admission
+        }
         Dim searcher As PrincipalSearcher = New PrincipalSearcher(searchusr)
         For Each user As DirectoryServices.AccountManagement.UserPrincipal In searcher.FindAll()
             userList.Add(user)
@@ -57,9 +58,10 @@ Module LocalADTools
 
     Public Function GetUserPrincipalsByFullName(ByRef ctx As PrincipalContext, fullname As String) As List(Of DirectoryServices.AccountManagement.UserPrincipal)
         Dim userlist As New List(Of DirectoryServices.AccountManagement.UserPrincipal)
-        Dim searchusr As DirectoryServices.AccountManagement.UserPrincipal = New DirectoryServices.AccountManagement.UserPrincipal(ctx)
-        searchusr.GivenName = fullname.Split(" "c)(0)
-        searchusr.Surname = fullname.Split(" "c)(1)
+        Dim searchusr As DirectoryServices.AccountManagement.UserPrincipal = New DirectoryServices.AccountManagement.UserPrincipal(ctx) With {
+            .GivenName = fullname.Split(" "c)(0),
+            .Surname = fullname.Split(" "c)(1)
+        }
         Dim searcher As PrincipalSearcher = New PrincipalSearcher(searchusr)
         For Each user As DirectoryServices.AccountManagement.UserPrincipal In searcher.FindAll()
             userlist.Add(user)
@@ -115,7 +117,7 @@ Public Class UserPrincipalex
     End Sub
 
     <DirectoryProperty("pager")>
-    Public Property pager() As String
+    Public Property Pager() As String
         Get
             If ExtensionGet("pager").Length <> 1 Then
                 Return String.Empty
@@ -127,68 +129,68 @@ Public Class UserPrincipalex
         End Set
     End Property
 
-    <DirectoryProperty("extensionAttribute1")>
-    Public Property extensionAttribute1() As String
+    <DirectoryProperty("ExtensionAttribute1")>
+    Public Property ExtensionAttribute1() As String
         Get
-            If ExtensionGet("extensionAttribute1").Length <> 1 Then
+            If ExtensionGet("ExtensionAttribute1").Length <> 1 Then
                 Return String.Empty
             End If
-            Return DirectCast(ExtensionGet("extensionAttribute1")(0), String)
+            Return DirectCast(ExtensionGet("ExtensionAttribute1")(0), String)
         End Get
         Set(value As String)
-            ExtensionSet("extensionAttribute1", value)
+            ExtensionSet("ExtensionAttribute1", value)
         End Set
     End Property
 
-    <DirectoryProperty("extensionAttribute2")>
-    Public Property extensionAttribute2() As String
+    <DirectoryProperty("ExtensionAttribute2")>
+    Public Property ExtensionAttribute2() As String
         Get
-            If ExtensionGet("extensionAttribute2").Length <> 1 Then
+            If ExtensionGet("ExtensionAttribute2").Length <> 1 Then
                 Return String.Empty
             End If
-            Return DirectCast(ExtensionGet("extensionAttribute2")(0), String)
+            Return DirectCast(ExtensionGet("ExtensionAttribute2")(0), String)
         End Get
         Set(value As String)
-            ExtensionSet("extensionAttribute2", value)
+            ExtensionSet("ExtensionAttribute2", value)
         End Set
     End Property
 
-    <DirectoryProperty("extensionAttribute3")>
-    Public Property extensionAttribute3() As String
+    <DirectoryProperty("ExtensionAttribute3")>
+    Public Property ExtensionAttribute3() As String
         Get
-            If ExtensionGet("extensionAttribute3").Length <> 1 Then
+            If ExtensionGet("ExtensionAttribute3").Length <> 1 Then
                 Return String.Empty
             End If
-            Return DirectCast(ExtensionGet("extensionAttribute3")(0), String)
+            Return DirectCast(ExtensionGet("ExtensionAttribute3")(0), String)
         End Get
         Set(value As String)
-            ExtensionSet("extensionAttribute3", value)
+            ExtensionSet("ExtensionAttribute3", value)
         End Set
     End Property
 
-    <DirectoryProperty("extensionAttribute4")>
-    Public Property extensionAttribute4() As String
+    <DirectoryProperty("ExtensionAttribute4")>
+    Public Property ExtensionAttribute4() As String
         Get
-            If ExtensionGet("extensionAttribute4").Length <> 1 Then
+            If ExtensionGet("ExtensionAttribute4").Length <> 1 Then
                 Return String.Empty
             End If
-            Return DirectCast(ExtensionGet("extensionAttribute4")(0), String)
+            Return DirectCast(ExtensionGet("ExtensionAttribute4")(0), String)
         End Get
         Set(value As String)
-            ExtensionSet("extensionAttribute4", value)
+            ExtensionSet("ExtensionAttribute4", value)
         End Set
     End Property
 
-    <DirectoryProperty("extensionAttribute5")>
-    Public Property extensionAttribute5() As String
+    <DirectoryProperty("ExtensionAttribute5")>
+    Public Property ExtensionAttribute5() As String
         Get
-            If ExtensionGet("extensionAttribute5").Length <> 1 Then
+            If ExtensionGet("ExtensionAttribute5").Length <> 1 Then
                 Return String.Empty
             End If
-            Return DirectCast(ExtensionGet("extensionAttribute5")(0), String)
+            Return DirectCast(ExtensionGet("ExtensionAttribute5")(0), String)
         End Get
         Set(value As String)
-            ExtensionSet("extensionAttribute5", value)
+            ExtensionSet("ExtensionAttribute5", value)
         End Set
     End Property
 

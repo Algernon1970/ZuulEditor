@@ -60,6 +60,7 @@ Partial Class PrinterDetail
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.PrinterInfoList = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ShowDictButton = New System.Windows.Forms.Button()
         Me.GetInfoButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
@@ -73,7 +74,6 @@ Partial Class PrinterDetail
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Lnk_PrinterInfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter()
         Me.Tbl_InfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_InfoTableAdapter()
-        Me.ShowDictButton = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -458,6 +458,16 @@ Partial Class PrinterDetail
         Me.Panel2.Size = New System.Drawing.Size(125, 248)
         Me.Panel2.TabIndex = 1
         '
+        'ShowDictButton
+        '
+        Me.ShowDictButton.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ShowDictButton.Location = New System.Drawing.Point(0, 179)
+        Me.ShowDictButton.Name = "ShowDictButton"
+        Me.ShowDictButton.Size = New System.Drawing.Size(125, 23)
+        Me.ShowDictButton.TabIndex = 2
+        Me.ShowDictButton.Text = "Show Dict"
+        Me.ShowDictButton.UseVisualStyleBackColor = True
+        '
         'GetInfoButton
         '
         Me.GetInfoButton.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -562,16 +572,6 @@ Partial Class PrinterDetail
         'Tbl_InfoTableAdapter1
         '
         Me.Tbl_InfoTableAdapter1.ClearBeforeFill = True
-        '
-        'ShowDictButton
-        '
-        Me.ShowDictButton.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ShowDictButton.Location = New System.Drawing.Point(0, 179)
-        Me.ShowDictButton.Name = "ShowDictButton"
-        Me.ShowDictButton.Size = New System.Drawing.Size(125, 23)
-        Me.ShowDictButton.TabIndex = 2
-        Me.ShowDictButton.Text = "Show Dict"
-        Me.ShowDictButton.UseVisualStyleBackColor = True
         '
         'PrinterDetail
         '

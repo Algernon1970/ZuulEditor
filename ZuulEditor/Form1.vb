@@ -57,4 +57,25 @@
         Dim uploader As New UploadFileForm
         uploader.Show()
     End Sub
+
+    Private Sub ComputerDetailButton_Click(sender As Object, e As EventArgs) Handles ComputerDetailButton.Click
+        Dim compForm As New ComputerDetails
+        compForm.Show()
+    End Sub
+
+    Private Sub ImportComputersButton_Click(sender As Object, e As EventArgs) Handles ImportComputersButton.Click
+        Dim impcomp As New Import(Importer.computers)
+        impcomp.Show()
+
+    End Sub
+
+    Private Sub ImportUsersButton_Click(sender As Object, e As EventArgs) Handles ImportUsersButton.Click
+        Dim impcomp As New Import(Importer.users)
+        impcomp.Show()
+    End Sub
+
+    Private Sub PrivAssignButton_Click(sender As Object, e As EventArgs) Handles PrivAssignButton.Click
+        Dim privform As New AssignPrivUser()
+        privform.Show()
+    End Sub
 End Class

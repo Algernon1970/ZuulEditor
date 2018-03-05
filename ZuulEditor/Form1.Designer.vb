@@ -30,6 +30,9 @@ Partial Class Form1
         Me.ProjectorDetailButton = New System.Windows.Forms.Button()
         Me.OtherHardwareButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ImportComputersButton = New System.Windows.Forms.Button()
+        Me.ImportUsersButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'PrinterAssignButton
@@ -112,11 +115,43 @@ Partial Class Form1
         Me.Button1.Text = "Upload Files"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label1.Location = New System.Drawing.Point(0, 184)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(0, 13)
+        Me.Label1.TabIndex = 8
+        '
+        'ImportComputersButton
+        '
+        Me.ImportComputersButton.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ImportComputersButton.Location = New System.Drawing.Point(0, 197)
+        Me.ImportComputersButton.Name = "ImportComputersButton"
+        Me.ImportComputersButton.Size = New System.Drawing.Size(369, 23)
+        Me.ImportComputersButton.TabIndex = 9
+        Me.ImportComputersButton.Text = "Import Computers from AD"
+        Me.ImportComputersButton.UseVisualStyleBackColor = True
+        '
+        'ImportUsersButton
+        '
+        Me.ImportUsersButton.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ImportUsersButton.Location = New System.Drawing.Point(0, 220)
+        Me.ImportUsersButton.Name = "ImportUsersButton"
+        Me.ImportUsersButton.Size = New System.Drawing.Size(369, 23)
+        Me.ImportUsersButton.TabIndex = 10
+        Me.ImportUsersButton.Text = "Import Users from AD"
+        Me.ImportUsersButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(369, 224)
+        Me.ClientSize = New System.Drawing.Size(369, 294)
+        Me.Controls.Add(Me.ImportUsersButton)
+        Me.Controls.Add(Me.ImportComputersButton)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.OtherHardwareButton)
         Me.Controls.Add(Me.ProjectorDetailButton)
@@ -129,6 +164,7 @@ Partial Class Form1
         Me.ShowIcon = False
         Me.Text = "Network Services Inventory Management"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -140,4 +176,7 @@ Partial Class Form1
     Friend WithEvents ProjectorDetailButton As Button
     Friend WithEvents OtherHardwareButton As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents ImportComputersButton As Button
+    Friend WithEvents ImportUsersButton As Button
 End Class

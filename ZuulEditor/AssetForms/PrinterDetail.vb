@@ -3,6 +3,7 @@
 Public Class PrinterDetail
     Dim defaultPid As Integer = 0
     Dim PrinterWMI As New PrinterInfo
+    Dim bg As New BackgroundWorker
 
     Private Sub AddHandlers()
         Dim box As TextBox
@@ -183,12 +184,8 @@ Public Class PrinterDetail
     Private Sub DisplayNotesForPrinter(ByVal printerrow As DataRow)
         Dim infotable As DataTable = Lnk_PrinterInfoTableAdapter1.GetInfoByPID(printerrow.Field(Of Integer)("PrinterID"))
         PrinterInfoList.DataSource = New DataView(infotable)
-        'For Each col As DataGridViewColumnCollection In PrinterInfoList.Columns
-        '    For Each item As DataGridViewColumn In col
-        '        item.Visible = False
-        '    Next
-        'Next
-        For x As Integer = 0 To PrinterInfoList.Columns.GetColumnCount(DataGridViewElementStates.Visible)
+
+        For x As Integer = 0 To PrinterInfoList.Columns.GetColumnCount(DataGridViewElementStates.Visible) - 1
             PrinterInfoList.Columns(x).Visible = False
         Next
         PrinterInfoList.Columns("Datestamp").Visible = True
@@ -242,7 +239,8 @@ Public Class PrinterDetail
 
     Private Sub GetInfoButton_Click(sender As Object, e As EventArgs) Handles GetInfoButton.Click
 
-        Dim bg As New BackgroundWorker
+
+        bg.WorkerSupportsCancellation = True
         AddHandler bg.DoWork, AddressOf Bg_dowork
         AddHandler bg.RunWorkerCompleted, AddressOf Bg_RunWorkerCompleted
         GetInfoButton.Enabled = False
@@ -260,6 +258,11 @@ Public Class PrinterDetail
 
     Private Sub ShowDictButton_Click(sender As Object, e As EventArgs) Handles ShowDictButton.Click
         Dim mydic = PrinterWMI.GetPrintersWMI
-        MsgBox(mydic.Count)
+        MsgBox(mydic.Count & " " & mydic("S9-Lsr").PortName)
+    End Sub
+
+    Private Sub PrinterDetail_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        bg.WorkerSupportsCancellation = True
+        bg.CancelAsync()
     End Sub
 End Class
