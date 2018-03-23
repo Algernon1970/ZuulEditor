@@ -33,6 +33,11 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ImportComputersButton = New System.Windows.Forms.Button()
         Me.ImportUsersButton = New System.Windows.Forms.Button()
+        Me.PrivImportButton = New System.Windows.Forms.Button()
+        Me.AssignPrintersToComptuersCSVButton = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ImportPrinterDetailsButton = New System.Windows.Forms.Button()
+        Me.ImportComputersFromCSVButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'PrinterAssignButton
@@ -144,11 +149,65 @@ Partial Class Form1
         Me.ImportUsersButton.Text = "Import Users from AD"
         Me.ImportUsersButton.UseVisualStyleBackColor = True
         '
+        'PrivImportButton
+        '
+        Me.PrivImportButton.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PrivImportButton.Location = New System.Drawing.Point(0, 243)
+        Me.PrivImportButton.Name = "PrivImportButton"
+        Me.PrivImportButton.Size = New System.Drawing.Size(369, 23)
+        Me.PrivImportButton.TabIndex = 11
+        Me.PrivImportButton.Text = "Import Priv User Allocation from CSV"
+        Me.PrivImportButton.UseVisualStyleBackColor = True
+        '
+        'AssignPrintersToComptuersCSVButton
+        '
+        Me.AssignPrintersToComptuersCSVButton.Dock = System.Windows.Forms.DockStyle.Top
+        Me.AssignPrintersToComptuersCSVButton.Location = New System.Drawing.Point(0, 266)
+        Me.AssignPrintersToComptuersCSVButton.Name = "AssignPrintersToComptuersCSVButton"
+        Me.AssignPrintersToComptuersCSVButton.Size = New System.Drawing.Size(369, 23)
+        Me.AssignPrintersToComptuersCSVButton.TabIndex = 12
+        Me.AssignPrintersToComptuersCSVButton.Text = "Import Printers Allocation from CSV"
+        Me.AssignPrintersToComptuersCSVButton.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Label2.Location = New System.Drawing.Point(0, 289)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(0, 13)
+        Me.Label2.TabIndex = 13
+        '
+        'ImportPrinterDetailsButton
+        '
+        Me.ImportPrinterDetailsButton.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ImportPrinterDetailsButton.Location = New System.Drawing.Point(0, 302)
+        Me.ImportPrinterDetailsButton.Name = "ImportPrinterDetailsButton"
+        Me.ImportPrinterDetailsButton.Size = New System.Drawing.Size(369, 23)
+        Me.ImportPrinterDetailsButton.TabIndex = 14
+        Me.ImportPrinterDetailsButton.Text = "Import Printer Details From CSV"
+        Me.ImportPrinterDetailsButton.UseVisualStyleBackColor = True
+        '
+        'ImportComputersFromCSVButton
+        '
+        Me.ImportComputersFromCSVButton.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ImportComputersFromCSVButton.Location = New System.Drawing.Point(0, 325)
+        Me.ImportComputersFromCSVButton.Name = "ImportComputersFromCSVButton"
+        Me.ImportComputersFromCSVButton.Size = New System.Drawing.Size(369, 23)
+        Me.ImportComputersFromCSVButton.TabIndex = 15
+        Me.ImportComputersFromCSVButton.Text = "Import ComputerDetails From CSV"
+        Me.ImportComputersFromCSVButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(369, 294)
+        Me.ClientSize = New System.Drawing.Size(369, 384)
+        Me.Controls.Add(Me.ImportComputersFromCSVButton)
+        Me.Controls.Add(Me.ImportPrinterDetailsButton)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.AssignPrintersToComptuersCSVButton)
+        Me.Controls.Add(Me.PrivImportButton)
         Me.Controls.Add(Me.ImportUsersButton)
         Me.Controls.Add(Me.ImportComputersButton)
         Me.Controls.Add(Me.Label1)
@@ -179,4 +238,9 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents ImportComputersButton As Button
     Friend WithEvents ImportUsersButton As Button
+    Friend WithEvents PrivImportButton As Button
+    Friend WithEvents AssignPrintersToComptuersCSVButton As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ImportPrinterDetailsButton As Button
+    Friend WithEvents ImportComputersFromCSVButton As Button
 End Class

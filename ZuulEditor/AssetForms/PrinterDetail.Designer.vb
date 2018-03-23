@@ -31,6 +31,12 @@ Partial Class PrinterDetail
         Me.ZuulDataSet = New ZuulEditor.ZuulDataSet()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.SearchModelRadio = New System.Windows.Forms.RadioButton()
+        Me.SearchInvRadio = New System.Windows.Forms.RadioButton()
+        Me.SearchSerialRadio = New System.Windows.Forms.RadioButton()
+        Me.SearchMakeRadio = New System.Windows.Forms.RadioButton()
+        Me.IPAddressButton = New System.Windows.Forms.Button()
+        Me.SupplierButton = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.InventoryBox = New System.Windows.Forms.TextBox()
         Me.SerialNumberBox = New System.Windows.Forms.TextBox()
@@ -49,19 +55,15 @@ Partial Class PrinterDetail
         Me.TblLocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ModelLabel = New System.Windows.Forms.Label()
         Me.IPAddressBox = New System.Windows.Forms.TextBox()
-        Me.IPAddressLabel = New System.Windows.Forms.Label()
         Me.ModelBox = New System.Windows.Forms.TextBox()
         Me.LocationLabel = New System.Windows.Forms.Label()
         Me.MakeBox = New System.Windows.Forms.TextBox()
-        Me.SupplierLabel = New System.Windows.Forms.Label()
         Me.NameBox = New System.Windows.Forms.TextBox()
         Me.PurchaseDateLabel = New System.Windows.Forms.Label()
         Me.PurchaseCostLabel = New System.Windows.Forms.Label()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.PrinterInfoList = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ShowDictButton = New System.Windows.Forms.Button()
-        Me.GetInfoButton = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.CreatePrinterButton = New System.Windows.Forms.Button()
@@ -176,6 +178,12 @@ Partial Class PrinterDetail
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchModelRadio)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchInvRadio)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchSerialRadio)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchMakeRadio)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.IPAddressButton)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SupplierButton)
         Me.SplitContainer1.Panel1.Controls.Add(Me.PictureBox1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.InventoryBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SerialNumberBox)
@@ -192,11 +200,9 @@ Partial Class PrinterDetail
         Me.SplitContainer1.Panel1.Controls.Add(Me.LocationCombo)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ModelLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.IPAddressBox)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.IPAddressLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.ModelBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.LocationLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.MakeBox)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.SupplierLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.NameBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.PurchaseDateLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.PurchaseCostLabel)
@@ -207,6 +213,70 @@ Partial Class PrinterDetail
         Me.SplitContainer1.Size = New System.Drawing.Size(726, 455)
         Me.SplitContainer1.SplitterDistance = 195
         Me.SplitContainer1.TabIndex = 18
+        '
+        'SearchModelRadio
+        '
+        Me.SearchModelRadio.AutoSize = True
+        Me.SearchModelRadio.Location = New System.Drawing.Point(219, 88)
+        Me.SearchModelRadio.Name = "SearchModelRadio"
+        Me.SearchModelRadio.Size = New System.Drawing.Size(59, 17)
+        Me.SearchModelRadio.TabIndex = 29
+        Me.SearchModelRadio.TabStop = True
+        Me.SearchModelRadio.Text = "Search"
+        Me.SearchModelRadio.UseVisualStyleBackColor = True
+        '
+        'SearchInvRadio
+        '
+        Me.SearchInvRadio.AutoSize = True
+        Me.SearchInvRadio.Location = New System.Drawing.Point(528, 38)
+        Me.SearchInvRadio.Name = "SearchInvRadio"
+        Me.SearchInvRadio.Size = New System.Drawing.Size(59, 17)
+        Me.SearchInvRadio.TabIndex = 28
+        Me.SearchInvRadio.TabStop = True
+        Me.SearchInvRadio.Text = "Search"
+        Me.SearchInvRadio.UseVisualStyleBackColor = True
+        '
+        'SearchSerialRadio
+        '
+        Me.SearchSerialRadio.AutoSize = True
+        Me.SearchSerialRadio.Location = New System.Drawing.Point(528, 12)
+        Me.SearchSerialRadio.Name = "SearchSerialRadio"
+        Me.SearchSerialRadio.Size = New System.Drawing.Size(59, 17)
+        Me.SearchSerialRadio.TabIndex = 27
+        Me.SearchSerialRadio.TabStop = True
+        Me.SearchSerialRadio.Text = "Search"
+        Me.SearchSerialRadio.UseVisualStyleBackColor = True
+        '
+        'SearchMakeRadio
+        '
+        Me.SearchMakeRadio.AutoSize = True
+        Me.SearchMakeRadio.Location = New System.Drawing.Point(219, 64)
+        Me.SearchMakeRadio.Name = "SearchMakeRadio"
+        Me.SearchMakeRadio.Size = New System.Drawing.Size(59, 17)
+        Me.SearchMakeRadio.TabIndex = 26
+        Me.SearchMakeRadio.TabStop = True
+        Me.SearchMakeRadio.Text = "Search"
+        Me.SearchMakeRadio.UseVisualStyleBackColor = True
+        '
+        'IPAddressButton
+        '
+        Me.IPAddressButton.Location = New System.Drawing.Point(-1, 111)
+        Me.IPAddressButton.Name = "IPAddressButton"
+        Me.IPAddressButton.Size = New System.Drawing.Size(82, 23)
+        Me.IPAddressButton.TabIndex = 25
+        Me.IPAddressButton.Text = "IP Address"
+        Me.IPAddressButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.IPAddressButton.UseVisualStyleBackColor = True
+        '
+        'SupplierButton
+        '
+        Me.SupplierButton.Location = New System.Drawing.Point(509, 165)
+        Me.SupplierButton.Name = "SupplierButton"
+        Me.SupplierButton.Size = New System.Drawing.Size(81, 23)
+        Me.SupplierButton.TabIndex = 24
+        Me.SupplierButton.Text = "Supplier"
+        Me.SupplierButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.SupplierButton.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -354,15 +424,6 @@ Partial Class PrinterDetail
         Me.IPAddressBox.Size = New System.Drawing.Size(100, 20)
         Me.IPAddressBox.TabIndex = 13
         '
-        'IPAddressLabel
-        '
-        Me.IPAddressLabel.AutoSize = True
-        Me.IPAddressLabel.Location = New System.Drawing.Point(4, 116)
-        Me.IPAddressLabel.Name = "IPAddressLabel"
-        Me.IPAddressLabel.Size = New System.Drawing.Size(55, 13)
-        Me.IPAddressLabel.TabIndex = 4
-        Me.IPAddressLabel.Text = "IPAddress"
-        '
         'ModelBox
         '
         Me.ModelBox.Location = New System.Drawing.Point(113, 87)
@@ -386,15 +447,6 @@ Partial Class PrinterDetail
         Me.MakeBox.Size = New System.Drawing.Size(100, 20)
         Me.MakeBox.TabIndex = 11
         '
-        'SupplierLabel
-        '
-        Me.SupplierLabel.AutoSize = True
-        Me.SupplierLabel.Location = New System.Drawing.Point(545, 170)
-        Me.SupplierLabel.Name = "SupplierLabel"
-        Me.SupplierLabel.Size = New System.Drawing.Size(45, 13)
-        Me.SupplierLabel.TabIndex = 6
-        Me.SupplierLabel.Text = "Supplier"
-        '
         'NameBox
         '
         Me.NameBox.Location = New System.Drawing.Point(113, 9)
@@ -414,7 +466,7 @@ Partial Class PrinterDetail
         'PurchaseCostLabel
         '
         Me.PurchaseCostLabel.AutoSize = True
-        Me.PurchaseCostLabel.Location = New System.Drawing.Point(514, 147)
+        Me.PurchaseCostLabel.Location = New System.Drawing.Point(512, 147)
         Me.PurchaseCostLabel.Name = "PurchaseCostLabel"
         Me.PurchaseCostLabel.Size = New System.Drawing.Size(76, 13)
         Me.PurchaseCostLabel.TabIndex = 8
@@ -449,34 +501,12 @@ Partial Class PrinterDetail
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.ShowDictButton)
-        Me.Panel2.Controls.Add(Me.GetInfoButton)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(596, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(125, 248)
         Me.Panel2.TabIndex = 1
-        '
-        'ShowDictButton
-        '
-        Me.ShowDictButton.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ShowDictButton.Location = New System.Drawing.Point(0, 179)
-        Me.ShowDictButton.Name = "ShowDictButton"
-        Me.ShowDictButton.Size = New System.Drawing.Size(125, 23)
-        Me.ShowDictButton.TabIndex = 2
-        Me.ShowDictButton.Text = "Show Dict"
-        Me.ShowDictButton.UseVisualStyleBackColor = True
-        '
-        'GetInfoButton
-        '
-        Me.GetInfoButton.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GetInfoButton.Location = New System.Drawing.Point(0, 202)
-        Me.GetInfoButton.Name = "GetInfoButton"
-        Me.GetInfoButton.Size = New System.Drawing.Size(125, 23)
-        Me.GetInfoButton.TabIndex = 1
-        Me.GetInfoButton.Text = "WMI"
-        Me.GetInfoButton.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -620,9 +650,7 @@ Partial Class PrinterDetail
     Friend WithEvents NameLabel As Label
     Friend WithEvents PurchaseCostLabel As Label
     Friend WithEvents PurchaseDateLabel As Label
-    Friend WithEvents SupplierLabel As Label
     Friend WithEvents LocationLabel As Label
-    Friend WithEvents IPAddressLabel As Label
     Friend WithEvents ModelLabel As Label
     Friend WithEvents MakeLabel As Label
     Friend WithEvents ConnectionStringLabel As Label
@@ -653,6 +681,10 @@ Partial Class PrinterDetail
     Friend WithEvents SavePrinterButton As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents DeletePrinterButton As Button
-    Friend WithEvents GetInfoButton As Button
-    Friend WithEvents ShowDictButton As Button
+    Friend WithEvents IPAddressButton As Button
+    Friend WithEvents SupplierButton As Button
+    Friend WithEvents SearchModelRadio As RadioButton
+    Friend WithEvents SearchInvRadio As RadioButton
+    Friend WithEvents SearchSerialRadio As RadioButton
+    Friend WithEvents SearchMakeRadio As RadioButton
 End Class

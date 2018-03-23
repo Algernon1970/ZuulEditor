@@ -1,5 +1,6 @@
 ﻿Public Class ComputerDetails
     Dim defaultCid As Integer = 0
+    Dim searchPaused As Boolean = False
     Private Sub AddHandlers()
         Dim box As TextBox
         Dim cbox As ComboBox
@@ -45,21 +46,6 @@
         ComputerListBox.SelectedIndex = index
     End Sub
 
-    Private Sub ComputerListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComputerListBox.SelectedIndexChanged
-        If ComputerListBox.SelectedIndex > -1 Then
-            Try
-                Dim computerrow As DataRow = GetSelectedComputer()
-                defaultCid = computerrow.Field(Of Integer)("ComputerID")
-                DisplayComputer(computerrow)
-                DisplayNotesForComputer(computerrow)
-            Catch ex As Exception
-                ClearDisplay()
-                SelectByIndex(-1)
-            End Try
-        Else
-            ClearDisplay()
-        End If
-    End Sub
     Private Function GetSelectedComputer() As DataRow
         Dim computerrow As DataRow = Nothing
         If ComputerListBox.SelectedItems.Count = 1 Then
@@ -102,13 +88,21 @@
     End Sub
 
     Private Sub DisplayComputer(ByVal computerrow As DataRow)
+        searchPaused = True
         Dim LocationTableAdapter As New ZuulDataSetTableAdapters.Tbl_LocationTableAdapter
+        Dim SupplierTableAdapter As New ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter
 
         Dim LocationNumber As Integer = computerrow.Field(Of Integer)("Location")
+        Dim SupplierNumber As Integer = computerrow.Field(Of Integer)("Supplier")
         PurchaseDateBox.Text = computerrow.Field(Of Date)("PurchaseDate").ToShortDateString
         PurchaseCostBox.Text = computerrow.Field(Of Decimal)("PurchaseCost").ToString("£0.00")
+        MakeBox.Text = computerrow.Field(Of String)("Make").ToString
+
         Dim LocationName As String = LocationTableAdapter.GetLocationName(LocationNumber).Rows(0).Field(Of String)("LocationName")
         LocationCombo.SelectedIndex = LocationCombo.FindString(LocationName)
+        Dim SupplierName As String = SupplierTableAdapter.GetSupplierName(SupplierNumber).Rows(0).Field(Of String)("Name")
+        SupplierCombo.SelectedIndex = SupplierCombo.FindString(SupplierName)
+
         DisposedTick.Checked = computerrow.Field(Of Boolean)("Disposed")
         If DisposedTick.Checked Then
             PictureBox1.Image = My.Resources.DisposedComputer
@@ -117,7 +111,20 @@
         End If
         InventoryBox.Text = computerrow.Field(Of String)("InventoryNumber")
         SerialNumberBox.Text = computerrow.Field(Of String)("SerialNumber")
+
+        NameBox.Text = computerrow.Field(Of String)("Name")
+        ModelBox.Text = computerrow.Field(Of String)("Model")
+        RamBox.Text = computerrow.Field(Of Integer)("RamGB").ToString
+        HDDBox.Text = computerrow.Field(Of Integer)("HDDGB").ToString
+        SSDBox.Checked = computerrow.Field(Of Boolean)("SSD")
+        DisposedTick.Checked = computerrow.Field(Of Boolean)("Disposed")
+        If DisposedTick.Checked Then
+            PictureBox1.Image = My.Resources.DisposedComputer
+        Else
+            PictureBox1.Image = My.Resources.Computer
+        End If
         SaveComputerButton.Enabled = False
+        searchPaused = False
     End Sub
     Private Sub CreateComputerButton_Click(sender As Object, e As EventArgs) Handles CreateComputerButton.Click
         Dim req As New RequestString("Name", "New Computer", 300)
@@ -136,7 +143,7 @@
         Else
             Dim todaysDate As Date = Now().Date
 
-            Tbl_ComputerTableAdapter.CreateComputer(name, "", "", "", "", 0, 0, False, 2, 2, "", "", "", 0, False, "")
+            Tbl_ComputerTableAdapter.CreateComputer(name, "", "", "", "", 0, 0, False, 2, 2, "", "", "", 0, False, "", "")
 
             SelectComputerByName(Tbl_ComputerTableAdapter.GetComputerByName(name).Rows(0).Field(Of String)("Name"))
         End If
@@ -225,5 +232,45 @@
         End If
         ComputerListBox.SelectedIndex = -1
         FillByDisposedButton()
+    End Sub
+
+    Private Sub FilterBox_TextChanged(sender As Object, e As EventArgs) Handles FilterBox.TextChanged
+        Tbl_ComputerTableAdapter.FillByPartialName(Me.ZuulDataSet.Tbl_Computer, "%" & FilterBox.Text & "%")
+    End Sub
+
+    Private Sub MakeBox_TextChanged(sender As Object, e As EventArgs) Handles MakeBox.TextChanged
+        If SearchMake.Checked And Not searchPaused Then
+            Tbl_ComputerTableAdapter.FillByMake(Me.ZuulDataSet.Tbl_Computer, "%" & MakeBox.Text & "%")
+            If ZuulDataSet.Tbl_Computer.Rows.Count = 1 Then
+                Dim computerrow As DataRow
+                Try
+                    computerrow = ZuulDataSet.Tbl_Computer.Rows(0)
+                    defaultCid = computerrow.Field(Of Integer)("ComputerID")
+                    DisplayComputer(computerrow)
+                    DisplayNotesForComputer(computerrow)
+                Catch ex As Exception
+                    ClearDisplay()
+                    SelectByIndex(-1)
+                End Try
+            End If
+        Else
+            SaveComputerButton.Enabled = True
+        End If
+    End Sub
+
+    Private Sub ComputerListBox_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ComputerListBox.MouseDoubleClick
+        If ComputerListBox.SelectedIndex > -1 Then
+            Try
+                Dim computerrow As DataRow = GetSelectedComputer()
+                defaultCid = computerrow.Field(Of Integer)("ComputerID")
+                DisplayComputer(computerrow)
+                DisplayNotesForComputer(computerrow)
+            Catch ex As Exception
+                ClearDisplay()
+                SelectByIndex(-1)
+            End Try
+        Else
+            ClearDisplay()
+        End If
     End Sub
 End Class

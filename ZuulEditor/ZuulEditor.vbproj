@@ -51,6 +51,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="KBCsv, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc96fa93a217f7a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\KBCsv.5.0.0\lib\netstandard1.0\KBCsv.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -115,7 +118,13 @@
     <Compile Include="AssignmentForms\UploadFileForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AD\LocalADTools.vb" />
+    <Compile Include="Processes\ImportFromCSV.Designer.vb">
+      <DependentUpon>ImportFromCSV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Processes\ImportFromCSV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\LocalADTools.vb" />
     <Compile Include="Dialogues\RequestString.Designer.vb">
       <DependentUpon>RequestString.vb</DependentUpon>
     </Compile>
@@ -144,13 +153,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Processes\Import.Designer.vb">
-      <DependentUpon>Import.vb</DependentUpon>
+    <Compile Include="Processes\ImportFromAD.Designer.vb">
+      <DependentUpon>ImportFromAD.vb</DependentUpon>
     </Compile>
-    <Compile Include="Processes\Import.vb">
+    <Compile Include="Processes\ImportFromAD.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\Utils.vb" />
+    <Compile Include="Utils\WebBrowserForm.Designer.vb">
+      <DependentUpon>WebBrowserForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\WebBrowserForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="WMI\PrinterInfo.vb" />
     <Compile Include="ZuulDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -189,8 +204,14 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Processes\Import.resx">
-      <DependentUpon>Import.vb</DependentUpon>
+    <EmbeddedResource Include="Processes\ImportFromAD.resx">
+      <DependentUpon>ImportFromAD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Processes\ImportFromCSV.resx">
+      <DependentUpon>ImportFromCSV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\WebBrowserForm.resx">
+      <DependentUpon>WebBrowserForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +225,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="ZuulDataSet.xsc">
       <DependentUpon>ZuulDataSet.xsd</DependentUpon>
     </None>

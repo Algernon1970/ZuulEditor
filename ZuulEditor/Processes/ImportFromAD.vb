@@ -1,7 +1,7 @@
 ﻿Imports System.DirectoryServices
 Imports System.DirectoryServices.AccountManagement
 
-Public Class Import
+Public Class ImportFromAD
     Dim OptType As New Importer
     Dim OUS As New TreeNode("Internal")
     Dim ParentNode As TreeNode
@@ -13,10 +13,12 @@ Public Class Import
         ' This call is required by the designer.
         InitializeComponent()
         OptType = opt
-        If opt = Importer.computers Then
+        If opt = Importer.computersFromAD Then
             Me.Text = "Import Computers"
-        Else
+        ElseIf opt = Importer.usersFromAD Then
             Me.Text = "Import Users"
+        Else
+            MsgBox("Unknown Importer Option Type")
         End If
         ' Add any initialization after the InitializeComponent() call.
 
@@ -29,7 +31,6 @@ Public Class Import
         Dim LDAPChildren As DirectoryEntries
         LDAPChildren = ldap.Children
         ParentNode = OUS
-
         FillTreeView(ldap, LDAPChildren)
     End Sub
 
@@ -72,10 +73,12 @@ Public Class Import
         Dim node As String = SelectedADPathLabel.Text
         If Not node.Equals("Internal") Then
             Dim adPath As String = PathToOU(node)
-            If OptType = Importer.computers Then
+            If OptType = Importer.computersFromAD Then
                 ImportComputers(adPath)
-            Else
+            ElseIf OptType = Importer.usersFromAD Then
                 ImportUsers(adPath)
+            Else
+                MsgBox("Unknown Importer Type")
             End If
         End If
     End Sub
@@ -107,7 +110,7 @@ Public Class Import
     Private Sub AddComputerToDB(ByRef computer As ComputerPrincipal)
         Dim cnt As Integer = CType(ComputerTableAdapter.alreadyExists(computer.Name), Integer)
         If cnt = 0 Then
-            ComputerTableAdapter.CreateComputer(computer.Name, "0", "0", "", "", 0, 0, False, 1, 1, "0", "0", Now.ToShortDateString, 0, False, computer.DistinguishedName)
+            ComputerTableAdapter.CreateComputer(computer.Name, "0", "0", "", "", 0, 0, False, 1, 1, "0", "0", Now.ToShortDateString, 0, False, computer.DistinguishedName, "")
         End If
     End Sub
 
@@ -127,6 +130,10 @@ Public Class Import
 End Class
 
 Public Enum Importer
-    users
-    computers
+    usersFromAD
+    computersFromAD
+    privs
+    assignPrinters
+    printerDetails
+    computerDetails
 End Enum

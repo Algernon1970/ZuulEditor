@@ -4,6 +4,9 @@ Public Class PrinterDetail
     Dim defaultPid As Integer = 0
     Dim PrinterWMI As New PrinterInfo
     Dim bg As New BackgroundWorker
+    Dim currentPrinterRow As DataRow
+    Dim searchMode As SearchField
+    Dim lastkey As Keys = Keys.A
 
     Private Sub AddHandlers()
         Dim box As TextBox
@@ -107,17 +110,22 @@ Public Class PrinterDetail
     End Sub
 
     Private Sub DisplayPrinter(ByVal printerrow As DataRow)
+        currentPrinterRow = printerrow
         Dim LocationTableAdapter As New ZuulDataSetTableAdapters.Tbl_LocationTableAdapter
+        Dim SupplierTableAdapter As New ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter
         NameBox.Text = printerrow.Field(Of String)("Name")
         ConnectionStringBox.Text = printerrow.Field(Of String)("ConnectionString")
         MakeBox.Text = printerrow.Field(Of String)("Make")
         ModelBox.Text = printerrow.Field(Of String)("Model")
         IPAddressBox.Text = printerrow.Field(Of String)("IPAddress")
         Dim LocationNumber As Integer = printerrow.Field(Of Integer)("Location")
+        Dim SupplierNumber As Integer = printerrow.Field(Of Integer)("Supplier")
         PurchaseDateBox.Text = printerrow.Field(Of Date)("PurchaseDate").ToShortDateString
         PurchaseCostBox.Text = printerrow.Field(Of Decimal)("PurchaseCost").ToString("£0.00")
         Dim LocationName As String = LocationTableAdapter.GetLocationName(LocationNumber).Rows(0).Field(Of String)("LocationName")
         LocationCombo.SelectedIndex = LocationCombo.FindString(LocationName)
+        Dim SupplierName As String = Tbl_SupplierTableAdapter.GetSupplierName(SupplierNumber).Rows(0).Field(Of String)("Name")
+        SupplierCombo.SelectedIndex = SupplierCombo.FindString(SupplierName)
         DisposedTick.Checked = printerrow.Field(Of Boolean)("Disposed")
         If DisposedTick.Checked Then
             PictureBox1.Image = My.Resources.DisposedPrinter
@@ -237,32 +245,75 @@ Public Class PrinterDetail
         FillByDisposedButton()
     End Sub
 
-    Private Sub GetInfoButton_Click(sender As Object, e As EventArgs) Handles GetInfoButton.Click
-
-
-        bg.WorkerSupportsCancellation = True
-        AddHandler bg.DoWork, AddressOf Bg_dowork
-        AddHandler bg.RunWorkerCompleted, AddressOf Bg_RunWorkerCompleted
-        GetInfoButton.Enabled = False
-        bg.RunWorkerAsync()
+    Private Sub DisposedTick_CheckedChanged(sender As Object, e As EventArgs) Handles DisposedTick.CheckedChanged
+        If DisposedTick.Checked Then
+            NameBox.Text = String.Format("{0}({1})", NameBox.Text, Now.ToShortDateString)
+        Else
+            NameBox.Text = NameBox.Text.Split("("c)(0)
+        End If
     End Sub
 
-    Private Sub Bg_dowork(ByVal sender As Object, ByVal e As DoWorkEventArgs)
+#Region "Search"
+#Region "Serial"
 
-        PrinterWMI.Gather()
+    Private Sub SearchSerialRadio_CheckedChanged(sender As Object, e As EventArgs) Handles SearchSerialRadio.CheckedChanged
+        If SearchSerialRadio.Checked Then
+            searchMode = SearchField.Serial
+            SerialNumberBox.Clear()
+            SerialNumberBox.Focus()
+        Else
+            SerialNumberBox.Text = currentPrinterRow.Field(Of String)("SerialNumber")
+        End If
     End Sub
 
-    Private Sub Bg_RunWorkerCompleted(ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs)
-        GetInfoButton.Enabled = True
+    Private Sub SerialNumberBox_Leave(sender As Object, e As EventArgs) Handles SerialNumberBox.Leave
+        If SearchSerialRadio.Checked Then
+            SerialNumberBox.Text = currentPrinterRow.Field(Of String)("SerialNumber")
+            SearchSerialRadio.Checked = False
+        End If
     End Sub
 
-    Private Sub ShowDictButton_Click(sender As Object, e As EventArgs) Handles ShowDictButton.Click
-        Dim mydic = PrinterWMI.GetPrintersWMI
-        MsgBox(mydic.Count & " " & mydic("S9-Lsr").PortName)
+    Private Sub SerialNumberBox_KeyDown(sender As Object, e As KeyEventArgs) Handles SerialNumberBox.KeyDown
+        If lastkey = Keys.Return Then
+            SerialNumberBox.Clear()
+        End If
+        lastkey = CType(e.KeyValue, Keys)
+        If SearchSerialRadio.Checked Then
+            If e.KeyValue = Keys.Return Then
+                'find and display record from serialbox.text
+                Dim dt As DataTable = Tbl_PrinterTableAdapter.GetPrinterBySerial(SerialNumberBox.Text)
+                If dt.Rows.Count = 1 Then
+                    DisplayPrinter(dt.Rows(0))
+                    PrinterListBox.SelectedIndex = PrinterListBox.FindString(NameBox.Text)
+                ElseIf dt.Rows.Count > 1 Then
+                    MsgBox(String.Format("Error: {0} Printers have the same Serial Number", dt.Rows.Count))
+                Else
+                    SearchInvRadio.Checked = True
+                End If
+            End If
+        End If
+
     End Sub
 
-    Private Sub PrinterDetail_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        bg.WorkerSupportsCancellation = True
-        bg.CancelAsync()
+#End Region
+#Region "Inventory"
+
+#End Region
+#End Region
+
+    Private Sub IPAddressButton_Click(sender As Object, e As EventArgs) Handles IPAddressButton.Click
+        Dim iface As New WebBrowserForm
+        iface.Text = IPAddressBox.Text
+        iface.WebBrowser1.Url = New Uri("http://" & IPAddressBox.Text)
+        iface.Show()
     End Sub
+
 End Class
+
+Public Enum SearchField
+    Inventory
+    Make
+    Model
+    Serial
+    None
+End Enum

@@ -29,9 +29,12 @@ Partial Class ComputerDetails
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.CreateComputerButton = New System.Windows.Forms.Button()
-        Me.ShowDisposedButton = New System.Windows.Forms.CheckBox()
         Me.SaveComputerButton = New System.Windows.Forms.Button()
         Me.DeleteComputerButton = New System.Windows.Forms.Button()
+        Me.ShowDisposedButton = New System.Windows.Forms.CheckBox()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.FilterLabel = New System.Windows.Forms.Label()
+        Me.FilterBox = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.InventoryBox = New System.Windows.Forms.TextBox()
         Me.SerialNumberBox = New System.Windows.Forms.TextBox()
@@ -56,6 +59,17 @@ Partial Class ComputerDetails
         Me.TblComputerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.SearchInv = New System.Windows.Forms.CheckBox()
+        Me.SearchSerial = New System.Windows.Forms.CheckBox()
+        Me.SearchMake = New System.Windows.Forms.CheckBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.WirelessMACBox = New System.Windows.Forms.TextBox()
+        Me.WiredMACBox = New System.Windows.Forms.TextBox()
+        Me.SSDBox = New System.Windows.Forms.CheckBox()
+        Me.HDDBox = New System.Windows.Forms.TextBox()
+        Me.HDDLabel = New System.Windows.Forms.Label()
         Me.RamLabel = New System.Windows.Forms.Label()
         Me.ModelBox = New System.Windows.Forms.TextBox()
         Me.LocationLabel = New System.Windows.Forms.Label()
@@ -70,17 +84,11 @@ Partial Class ComputerDetails
         Me.Lnk_ComputerInfoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Lnk_ComputerInfoTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_ComputerInfoTableAdapter()
         Me.TableAdapterManager = New ZuulEditor.ZuulDataSetTableAdapters.TableAdapterManager()
-        Me.HDDBox = New System.Windows.Forms.TextBox()
-        Me.HDDLabel = New System.Windows.Forms.Label()
-        Me.SSDBox = New System.Windows.Forms.CheckBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.WirelessMACBox = New System.Windows.Forms.TextBox()
-        Me.WiredMACBox = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.ComputerInfoList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,16 +152,18 @@ Partial Class ComputerDetails
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.AutoScroll = True
-        Me.TableLayoutPanel3.ColumnCount = 4
+        Me.TableLayoutPanel3.ColumnCount = 5
         Me.TableLayoutPanel1.SetColumnSpan(Me.TableLayoutPanel3, 2)
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113.0!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 332.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135.0!))
         Me.TableLayoutPanel3.Controls.Add(Me.CreateComputerButton, 0, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.ShowDisposedButton, 1, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.SaveComputerButton, 3, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.DeleteComputerButton, 2, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.SaveComputerButton, 4, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.DeleteComputerButton, 3, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.ShowDisposedButton, 2, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel1, 1, 0)
         Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 520)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
@@ -171,17 +181,6 @@ Partial Class ComputerDetails
         Me.CreateComputerButton.Text = "Create Computer"
         Me.CreateComputerButton.UseVisualStyleBackColor = True
         '
-        'ShowDisposedButton
-        '
-        Me.ShowDisposedButton.AutoSize = True
-        Me.ShowDisposedButton.Location = New System.Drawing.Point(116, 3)
-        Me.ShowDisposedButton.Name = "ShowDisposedButton"
-        Me.ShowDisposedButton.Size = New System.Drawing.Size(100, 17)
-        Me.ShowDisposedButton.TabIndex = 7
-        Me.ShowDisposedButton.Text = "Show Disposed"
-        Me.ShowDisposedButton.ThreeState = True
-        Me.ShowDisposedButton.UseVisualStyleBackColor = True
-        '
         'SaveComputerButton
         '
         Me.SaveComputerButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -195,12 +194,51 @@ Partial Class ComputerDetails
         '
         'DeleteComputerButton
         '
-        Me.DeleteComputerButton.Location = New System.Drawing.Point(448, 3)
+        Me.DeleteComputerButton.Location = New System.Drawing.Point(558, 3)
         Me.DeleteComputerButton.Name = "DeleteComputerButton"
         Me.DeleteComputerButton.Size = New System.Drawing.Size(91, 23)
         Me.DeleteComputerButton.TabIndex = 9
         Me.DeleteComputerButton.Text = "Delete Computer"
         Me.DeleteComputerButton.UseVisualStyleBackColor = True
+        '
+        'ShowDisposedButton
+        '
+        Me.ShowDisposedButton.AutoSize = True
+        Me.ShowDisposedButton.Location = New System.Drawing.Point(353, 3)
+        Me.ShowDisposedButton.Name = "ShowDisposedButton"
+        Me.ShowDisposedButton.Size = New System.Drawing.Size(100, 17)
+        Me.ShowDisposedButton.TabIndex = 7
+        Me.ShowDisposedButton.Text = "Show Disposed"
+        Me.ShowDisposedButton.ThreeState = True
+        Me.ShowDisposedButton.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Controls.Add(Me.FilterLabel)
+        Me.FlowLayoutPanel1.Controls.Add(Me.FilterBox)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(122, 3)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(225, 23)
+        Me.FlowLayoutPanel1.TabIndex = 10
+        '
+        'FilterLabel
+        '
+        Me.FilterLabel.AutoSize = True
+        Me.FilterLabel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FilterLabel.Location = New System.Drawing.Point(3, 0)
+        Me.FilterLabel.Name = "FilterLabel"
+        Me.FilterLabel.Size = New System.Drawing.Size(29, 26)
+        Me.FilterLabel.TabIndex = 0
+        Me.FilterLabel.Text = "Filter"
+        Me.FilterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'FilterBox
+        '
+        Me.FilterBox.Location = New System.Drawing.Point(38, 3)
+        Me.FilterBox.Name = "FilterBox"
+        Me.FilterBox.Size = New System.Drawing.Size(134, 20)
+        Me.FilterBox.TabIndex = 1
         '
         'PictureBox1
         '
@@ -416,6 +454,10 @@ Partial Class ComputerDetails
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.CheckBox1)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchInv)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchSerial)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.SearchMake)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label5)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label6)
         Me.SplitContainer1.Panel1.Controls.Add(Me.WirelessMACBox)
@@ -452,6 +494,104 @@ Partial Class ComputerDetails
         Me.SplitContainer1.Size = New System.Drawing.Size(726, 476)
         Me.SplitContainer1.SplitterDistance = 204
         Me.SplitContainer1.TabIndex = 18
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(164, 89)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(60, 17)
+        Me.CheckBox1.TabIndex = 34
+        Me.CheckBox1.Text = "Search"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'SearchInv
+        '
+        Me.SearchInv.AutoSize = True
+        Me.SearchInv.Location = New System.Drawing.Point(528, 37)
+        Me.SearchInv.Name = "SearchInv"
+        Me.SearchInv.Size = New System.Drawing.Size(60, 17)
+        Me.SearchInv.TabIndex = 33
+        Me.SearchInv.Text = "Search"
+        Me.SearchInv.UseVisualStyleBackColor = True
+        '
+        'SearchSerial
+        '
+        Me.SearchSerial.AutoSize = True
+        Me.SearchSerial.Location = New System.Drawing.Point(528, 11)
+        Me.SearchSerial.Name = "SearchSerial"
+        Me.SearchSerial.Size = New System.Drawing.Size(60, 17)
+        Me.SearchSerial.TabIndex = 32
+        Me.SearchSerial.Text = "Search"
+        Me.SearchSerial.UseVisualStyleBackColor = True
+        '
+        'SearchMake
+        '
+        Me.SearchMake.AutoSize = True
+        Me.SearchMake.Location = New System.Drawing.Point(164, 63)
+        Me.SearchMake.Name = "SearchMake"
+        Me.SearchMake.Size = New System.Drawing.Size(60, 17)
+        Me.SearchMake.TabIndex = 31
+        Me.SearchMake.Text = "Search"
+        Me.SearchMake.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(529, 64)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(61, 13)
+        Me.Label5.TabIndex = 27
+        Me.Label5.Text = "Wired MAC"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(517, 90)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(73, 13)
+        Me.Label6.TabIndex = 28
+        Me.Label6.Text = "Wireless MAC"
+        '
+        'WirelessMACBox
+        '
+        Me.WirelessMACBox.Location = New System.Drawing.Point(596, 87)
+        Me.WirelessMACBox.Name = "WirelessMACBox"
+        Me.WirelessMACBox.Size = New System.Drawing.Size(120, 20)
+        Me.WirelessMACBox.TabIndex = 30
+        '
+        'WiredMACBox
+        '
+        Me.WiredMACBox.Location = New System.Drawing.Point(596, 61)
+        Me.WiredMACBox.Name = "WiredMACBox"
+        Me.WiredMACBox.Size = New System.Drawing.Size(120, 20)
+        Me.WiredMACBox.TabIndex = 29
+        '
+        'SSDBox
+        '
+        Me.SSDBox.AutoSize = True
+        Me.SSDBox.Location = New System.Drawing.Point(246, 116)
+        Me.SSDBox.Name = "SSDBox"
+        Me.SSDBox.Size = New System.Drawing.Size(48, 17)
+        Me.SSDBox.TabIndex = 26
+        Me.SSDBox.Text = "SSD"
+        Me.SSDBox.UseVisualStyleBackColor = True
+        '
+        'HDDBox
+        '
+        Me.HDDBox.Location = New System.Drawing.Point(189, 114)
+        Me.HDDBox.Name = "HDDBox"
+        Me.HDDBox.Size = New System.Drawing.Size(51, 20)
+        Me.HDDBox.TabIndex = 25
+        '
+        'HDDLabel
+        '
+        Me.HDDLabel.AutoSize = True
+        Me.HDDLabel.Location = New System.Drawing.Point(152, 117)
+        Me.HDDLabel.Name = "HDDLabel"
+        Me.HDDLabel.Size = New System.Drawing.Size(31, 13)
+        Me.HDDLabel.TabIndex = 24
+        Me.HDDLabel.Text = "HDD"
         '
         'RamLabel
         '
@@ -559,64 +699,6 @@ Partial Class ComputerDetails
         Me.TableAdapterManager.Tbl_SupplierTableAdapter = Me.Tbl_SupplierTableAdapter
         Me.TableAdapterManager.UpdateOrder = ZuulEditor.ZuulDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'HDDBox
-        '
-        Me.HDDBox.Location = New System.Drawing.Point(189, 114)
-        Me.HDDBox.Name = "HDDBox"
-        Me.HDDBox.Size = New System.Drawing.Size(51, 20)
-        Me.HDDBox.TabIndex = 25
-        '
-        'HDDLabel
-        '
-        Me.HDDLabel.AutoSize = True
-        Me.HDDLabel.Location = New System.Drawing.Point(152, 117)
-        Me.HDDLabel.Name = "HDDLabel"
-        Me.HDDLabel.Size = New System.Drawing.Size(31, 13)
-        Me.HDDLabel.TabIndex = 24
-        Me.HDDLabel.Text = "HDD"
-        '
-        'SSDBox
-        '
-        Me.SSDBox.AutoSize = True
-        Me.SSDBox.Location = New System.Drawing.Point(246, 116)
-        Me.SSDBox.Name = "SSDBox"
-        Me.SSDBox.Size = New System.Drawing.Size(48, 17)
-        Me.SSDBox.TabIndex = 26
-        Me.SSDBox.Text = "SSD"
-        Me.SSDBox.UseVisualStyleBackColor = True
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(529, 64)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 13)
-        Me.Label5.TabIndex = 27
-        Me.Label5.Text = "Wired MAC"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(517, 90)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(73, 13)
-        Me.Label6.TabIndex = 28
-        Me.Label6.Text = "Wireless MAC"
-        '
-        'WirelessMACBox
-        '
-        Me.WirelessMACBox.Location = New System.Drawing.Point(596, 87)
-        Me.WirelessMACBox.Name = "WirelessMACBox"
-        Me.WirelessMACBox.Size = New System.Drawing.Size(120, 20)
-        Me.WirelessMACBox.TabIndex = 30
-        '
-        'WiredMACBox
-        '
-        Me.WiredMACBox.Location = New System.Drawing.Point(596, 61)
-        Me.WiredMACBox.Name = "WiredMACBox"
-        Me.WiredMACBox.Size = New System.Drawing.Size(120, 20)
-        Me.WiredMACBox.TabIndex = 29
-        '
         'ComputerDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -630,6 +712,8 @@ Partial Class ComputerDetails
         Me.Panel2.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.FlowLayoutPanel1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -702,4 +786,11 @@ Partial Class ComputerDetails
     Friend WithEvents SSDBox As CheckBox
     Friend WithEvents HDDBox As TextBox
     Friend WithEvents HDDLabel As Label
+    Friend WithEvents SearchInv As CheckBox
+    Friend WithEvents SearchSerial As CheckBox
+    Friend WithEvents SearchMake As CheckBox
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents FilterLabel As Label
+    Friend WithEvents FilterBox As TextBox
 End Class

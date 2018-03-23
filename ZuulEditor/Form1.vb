@@ -64,18 +64,38 @@
     End Sub
 
     Private Sub ImportComputersButton_Click(sender As Object, e As EventArgs) Handles ImportComputersButton.Click
-        Dim impcomp As New Import(Importer.computers)
+        Dim impcomp As New ImportFromAD(Importer.computersFromAD)
         impcomp.Show()
 
     End Sub
 
     Private Sub ImportUsersButton_Click(sender As Object, e As EventArgs) Handles ImportUsersButton.Click
-        Dim impcomp As New Import(Importer.users)
+        Dim impcomp As New ImportFromAD(Importer.usersFromAD)
         impcomp.Show()
     End Sub
 
     Private Sub PrivAssignButton_Click(sender As Object, e As EventArgs) Handles PrivAssignButton.Click
         Dim privform As New AssignPrivUser()
         privform.Show()
+    End Sub
+
+    Private Sub PrivImportButton_Click(sender As Object, e As EventArgs) Handles PrivImportButton.Click
+        Dim privimport As New ImportFromCSV(Importer.privs)
+        privimport.Show()
+    End Sub
+
+    Private Sub AssignPrintersToComptuersCSVButton_Click(sender As Object, e As EventArgs) Handles AssignPrintersToComptuersCSVButton.Click
+        Dim assignPrinterImport As New ImportFromCSV(Importer.assignPrinters)
+        assignPrinterImport.Show()
+    End Sub
+
+    Private Sub ImportPrinterDetailsButton_Click(sender As Object, e As EventArgs) Handles ImportPrinterDetailsButton.Click
+        Dim printerDetailsImport As New ImportFromCSV(Importer.printerDetails)
+        printerDetailsImport.Show()
+    End Sub
+
+    Private Sub ImportComputersFromCSVButton_Click(sender As Object, e As EventArgs) Handles ImportComputersFromCSVButton.Click
+        Dim computerDetailsImport As New ImportFromCSV(Importer.computerDetails)
+        computerDetailsImport.Show()
     End Sub
 End Class
