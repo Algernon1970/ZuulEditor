@@ -1,4 +1,6 @@
-﻿Public Class ComputerDetails
+﻿Imports System.Management
+
+Public Class ComputerDetails
     Dim defaultCid As Integer = 0
     Dim searchPaused As Boolean = False
     Private Sub AddHandlers()
@@ -118,6 +120,9 @@
         HDDBox.Text = computerrow.Field(Of Integer)("HDDGB").ToString
         SSDBox.Checked = computerrow.Field(Of Boolean)("SSD")
         DisposedTick.Checked = computerrow.Field(Of Boolean)("Disposed")
+        WiredMACBox.Text = computerrow.Field(Of String)("WiredMac")
+        WirelessMACBox.Text = computerrow.Field(Of String)("WirelessMac")
+        ADPathBox.Text = OUToPath(computerrow.Field(Of String)("ADPath"))
         If DisposedTick.Checked Then
             PictureBox1.Image = My.Resources.DisposedComputer
         Else
@@ -272,5 +277,21 @@
         Else
             ClearDisplay()
         End If
+    End Sub
+
+    Private Sub LiveCheck_Click(sender As Object, e As EventArgs) Handles LiveCheck.Click
+        Dim res As ManagementObjectCollection = GetWMI("netserv-stn1")
+        WMIOut.Items.Clear()
+
+        For Each m As ManagementObject In res
+            For Each mp As PropertyData In m.Properties
+                WMIOut.Items.Add(String.Format("{0} - {1}", mp.Name, m(mp.Name)))
+            Next
+        Next
+        Dim dsize As String = GetWMI("netserv-stn1", "size", "win32_logicaldisk where deviceID='c:'")
+        Dim fsize As String = GetWMI("netserv-stn1", "freespace", "win32_logicaldisk where deviceID='c:'")
+        Dim intsize As Integer = CInt(Math.Abs(Int64.Parse(dsize) / (1000 * 1000 * 1000)))
+        Dim fintsize As Integer = CInt(Math.Abs(Int64.Parse(fsize) / (1024 * 1024 * 1024)))
+        MsgBox(String.Format("C = {1}GB ({3} free) {0}Serial = {2}", vbCrLf, intsize, GetWMI("netserv-stn1", "SerialNumber", "win32_SystemEnclosure"), fintsize))
     End Sub
 End Class

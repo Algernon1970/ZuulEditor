@@ -84,6 +84,10 @@ Partial Class ComputerDetails
         Me.Lnk_ComputerInfoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Lnk_ComputerInfoTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_ComputerInfoTableAdapter()
         Me.TableAdapterManager = New ZuulEditor.ZuulDataSetTableAdapters.TableAdapterManager()
+        Me.ADPathBox = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.LiveCheck = New System.Windows.Forms.Button()
+        Me.WMIOut = New System.Windows.Forms.ListBox()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.ComputerInfoList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -115,7 +119,7 @@ Partial Class ComputerDetails
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(724, 266)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(725, 266)
         Me.TableLayoutPanel2.TabIndex = 1
         '
         'ComputerInfoList
@@ -127,14 +131,15 @@ Partial Class ComputerDetails
         Me.ComputerInfoList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.ComputerInfoList.Location = New System.Drawing.Point(3, 3)
         Me.ComputerInfoList.Name = "ComputerInfoList"
-        Me.ComputerInfoList.Size = New System.Drawing.Size(587, 260)
+        Me.ComputerInfoList.Size = New System.Drawing.Size(588, 260)
         Me.ComputerInfoList.TabIndex = 0
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.LiveCheck)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(596, 3)
+        Me.Panel2.Location = New System.Drawing.Point(597, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(125, 260)
         Me.Panel2.TabIndex = 1
@@ -169,7 +174,7 @@ Partial Class ComputerDetails
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(921, 29)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(862, 29)
         Me.TableLayoutPanel3.TabIndex = 4
         '
         'CreateComputerButton
@@ -185,7 +190,7 @@ Partial Class ComputerDetails
         '
         Me.SaveComputerButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SaveComputerButton.Enabled = False
-        Me.SaveComputerButton.Location = New System.Drawing.Point(792, 3)
+        Me.SaveComputerButton.Location = New System.Drawing.Point(733, 3)
         Me.SaveComputerButton.Name = "SaveComputerButton"
         Me.SaveComputerButton.Size = New System.Drawing.Size(126, 23)
         Me.SaveComputerButton.TabIndex = 8
@@ -194,7 +199,7 @@ Partial Class ComputerDetails
         '
         'DeleteComputerButton
         '
-        Me.DeleteComputerButton.Location = New System.Drawing.Point(558, 3)
+        Me.DeleteComputerButton.Location = New System.Drawing.Point(499, 3)
         Me.DeleteComputerButton.Name = "DeleteComputerButton"
         Me.DeleteComputerButton.Size = New System.Drawing.Size(91, 23)
         Me.DeleteComputerButton.TabIndex = 9
@@ -252,14 +257,14 @@ Partial Class ComputerDetails
         '
         'InventoryBox
         '
-        Me.InventoryBox.Location = New System.Drawing.Point(422, 35)
+        Me.InventoryBox.Location = New System.Drawing.Point(471, 35)
         Me.InventoryBox.Name = "InventoryBox"
         Me.InventoryBox.Size = New System.Drawing.Size(100, 20)
         Me.InventoryBox.TabIndex = 22
         '
         'SerialNumberBox
         '
-        Me.SerialNumberBox.Location = New System.Drawing.Point(422, 9)
+        Me.SerialNumberBox.Location = New System.Drawing.Point(471, 9)
         Me.SerialNumberBox.Name = "SerialNumberBox"
         Me.SerialNumberBox.Size = New System.Drawing.Size(100, 20)
         Me.SerialNumberBox.TabIndex = 21
@@ -267,7 +272,7 @@ Partial Class ComputerDetails
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(346, 38)
+        Me.Label4.Location = New System.Drawing.Point(392, 38)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(70, 13)
         Me.Label4.TabIndex = 20
@@ -276,7 +281,7 @@ Partial Class ComputerDetails
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(343, 12)
+        Me.Label3.Location = New System.Drawing.Point(392, 12)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(73, 13)
         Me.Label3.TabIndex = 19
@@ -285,7 +290,7 @@ Partial Class ComputerDetails
         'DisposedTick
         '
         Me.DisposedTick.AutoSize = True
-        Me.DisposedTick.Location = New System.Drawing.Point(626, 19)
+        Me.DisposedTick.Location = New System.Drawing.Point(651, 2)
         Me.DisposedTick.Name = "DisposedTick"
         Me.DisposedTick.Size = New System.Drawing.Size(70, 17)
         Me.DisposedTick.TabIndex = 18
@@ -377,14 +382,16 @@ Partial Class ComputerDetails
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.0356!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.9644!))
+        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.54935!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.45065!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 404.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ComputerListBox, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.WMIOut, 2, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -392,8 +399,7 @@ Partial Class ComputerDetails
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(927, 552)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1273, 552)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'Label1
@@ -402,7 +408,7 @@ Partial Class ComputerDetails
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(189, 35)
+        Me.Label1.Size = New System.Drawing.Size(129, 35)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Computers"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -411,9 +417,9 @@ Partial Class ComputerDetails
         '
         Me.Label2.AutoSize = True
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label2.Location = New System.Drawing.Point(198, 0)
+        Me.Label2.Location = New System.Drawing.Point(138, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(726, 35)
+        Me.Label2.Size = New System.Drawing.Size(727, 35)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Detail"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -426,7 +432,7 @@ Partial Class ComputerDetails
         Me.ComputerListBox.FormattingEnabled = True
         Me.ComputerListBox.Location = New System.Drawing.Point(3, 38)
         Me.ComputerListBox.Name = "ComputerListBox"
-        Me.ComputerListBox.Size = New System.Drawing.Size(189, 476)
+        Me.ComputerListBox.Size = New System.Drawing.Size(129, 476)
         Me.ComputerListBox.Sorted = True
         Me.ComputerListBox.TabIndex = 2
         '
@@ -439,9 +445,9 @@ Partial Class ComputerDetails
         '
         Me.Panel1.Controls.Add(Me.SplitContainer1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(198, 38)
+        Me.Panel1.Location = New System.Drawing.Point(138, 38)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(726, 476)
+        Me.Panel1.Size = New System.Drawing.Size(727, 476)
         Me.Panel1.TabIndex = 3
         '
         'SplitContainer1
@@ -454,6 +460,8 @@ Partial Class ComputerDetails
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label7)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.ADPathBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.CheckBox1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchInv)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchSerial)
@@ -491,7 +499,7 @@ Partial Class ComputerDetails
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.TableLayoutPanel2)
-        Me.SplitContainer1.Size = New System.Drawing.Size(726, 476)
+        Me.SplitContainer1.Size = New System.Drawing.Size(727, 476)
         Me.SplitContainer1.SplitterDistance = 204
         Me.SplitContainer1.TabIndex = 18
         '
@@ -508,7 +516,7 @@ Partial Class ComputerDetails
         'SearchInv
         '
         Me.SearchInv.AutoSize = True
-        Me.SearchInv.Location = New System.Drawing.Point(528, 37)
+        Me.SearchInv.Location = New System.Drawing.Point(577, 37)
         Me.SearchInv.Name = "SearchInv"
         Me.SearchInv.Size = New System.Drawing.Size(60, 17)
         Me.SearchInv.TabIndex = 33
@@ -518,7 +526,7 @@ Partial Class ComputerDetails
         'SearchSerial
         '
         Me.SearchSerial.AutoSize = True
-        Me.SearchSerial.Location = New System.Drawing.Point(528, 11)
+        Me.SearchSerial.Location = New System.Drawing.Point(577, 11)
         Me.SearchSerial.Name = "SearchSerial"
         Me.SearchSerial.Size = New System.Drawing.Size(60, 17)
         Me.SearchSerial.TabIndex = 32
@@ -699,11 +707,47 @@ Partial Class ComputerDetails
         Me.TableAdapterManager.Tbl_SupplierTableAdapter = Me.Tbl_SupplierTableAdapter
         Me.TableAdapterManager.UpdateOrder = ZuulEditor.ZuulDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'ADPathBox
+        '
+        Me.ADPathBox.Location = New System.Drawing.Point(58, 35)
+        Me.ADPathBox.Name = "ADPathBox"
+        Me.ADPathBox.Size = New System.Drawing.Size(331, 20)
+        Me.ADPathBox.TabIndex = 35
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(4, 38)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(47, 13)
+        Me.Label7.TabIndex = 36
+        Me.Label7.Text = "AD Path"
+        '
+        'LiveCheck
+        '
+        Me.LiveCheck.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.LiveCheck.Location = New System.Drawing.Point(0, 214)
+        Me.LiveCheck.Name = "LiveCheck"
+        Me.LiveCheck.Size = New System.Drawing.Size(125, 23)
+        Me.LiveCheck.TabIndex = 1
+        Me.LiveCheck.Text = "Live Check"
+        Me.LiveCheck.UseVisualStyleBackColor = True
+        '
+        'WMIOut
+        '
+        Me.WMIOut.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.WMIOut.FormattingEnabled = True
+        Me.WMIOut.HorizontalScrollbar = True
+        Me.WMIOut.Location = New System.Drawing.Point(871, 38)
+        Me.WMIOut.Name = "WMIOut"
+        Me.WMIOut.Size = New System.Drawing.Size(399, 476)
+        Me.WMIOut.TabIndex = 5
+        '
         'ComputerDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(927, 552)
+        Me.ClientSize = New System.Drawing.Size(1273, 552)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "ComputerDetails"
         Me.Text = "ComputerDetails"
@@ -793,4 +837,8 @@ Partial Class ComputerDetails
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents FilterLabel As Label
     Friend WithEvents FilterBox As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ADPathBox As TextBox
+    Friend WithEvents LiveCheck As Button
+    Friend WithEvents WMIOut As ListBox
 End Class
