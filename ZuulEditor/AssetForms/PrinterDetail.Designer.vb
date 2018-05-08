@@ -76,6 +76,7 @@ Partial Class PrinterDetail
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Lnk_PrinterInfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter()
         Me.Tbl_InfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_InfoTableAdapter()
+        Me.UserSelectable = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +179,7 @@ Partial Class PrinterDetail
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.UserSelectable)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchModelRadio)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchInvRadio)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchSerialRadio)
@@ -323,7 +325,7 @@ Partial Class PrinterDetail
         'DisposedTick
         '
         Me.DisposedTick.AutoSize = True
-        Me.DisposedTick.Location = New System.Drawing.Point(626, 19)
+        Me.DisposedTick.Location = New System.Drawing.Point(610, 13)
         Me.DisposedTick.Name = "DisposedTick"
         Me.DisposedTick.Size = New System.Drawing.Size(70, 17)
         Me.DisposedTick.TabIndex = 18
@@ -603,6 +605,16 @@ Partial Class PrinterDetail
         '
         Me.Tbl_InfoTableAdapter1.ClearBeforeFill = True
         '
+        'UserSelectable
+        '
+        Me.UserSelectable.AutoSize = True
+        Me.UserSelectable.Location = New System.Drawing.Point(610, 34)
+        Me.UserSelectable.Name = "UserSelectable"
+        Me.UserSelectable.Size = New System.Drawing.Size(101, 17)
+        Me.UserSelectable.TabIndex = 30
+        Me.UserSelectable.Text = "User Selectable"
+        Me.UserSelectable.UseVisualStyleBackColor = True
+        '
         'PrinterDetail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -687,4 +699,5 @@ Partial Class PrinterDetail
     Friend WithEvents SearchInvRadio As RadioButton
     Friend WithEvents SearchSerialRadio As RadioButton
     Friend WithEvents SearchMakeRadio As RadioButton
+    Friend WithEvents UserSelectable As CheckBox
 End Class

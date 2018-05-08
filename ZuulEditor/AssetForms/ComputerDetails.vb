@@ -280,7 +280,7 @@ Public Class ComputerDetails
     End Sub
 
     Private Sub LiveCheck_Click(sender As Object, e As EventArgs) Handles LiveCheck.Click
-        Dim res As ManagementObjectCollection = GetWMI("netserv-stn1")
+        Dim res As ManagementObjectCollection = GetWMI("laptop-182")
         WMIOut.Items.Clear()
 
         For Each m As ManagementObject In res
@@ -292,6 +292,6 @@ Public Class ComputerDetails
         Dim fsize As String = GetWMI("netserv-stn1", "freespace", "win32_logicaldisk where deviceID='c:'")
         Dim intsize As Integer = CInt(Math.Abs(Int64.Parse(dsize) / (1000 * 1000 * 1000)))
         Dim fintsize As Integer = CInt(Math.Abs(Int64.Parse(fsize) / (1024 * 1024 * 1024)))
-        MsgBox(String.Format("C = {1}GB ({3} free) {0}Serial = {2}", vbCrLf, intsize, GetWMI("netserv-stn1", "SerialNumber", "win32_SystemEnclosure"), fintsize))
+        ' MsgBox(String.Format("C = {1}GB ({3} free) {0}Serial = {2}", vbCrLf, intsize, GetWMI("netserv-stn1", "SerialNumber", "win32_SystemEnclosure"), fintsize))
     End Sub
 End Class

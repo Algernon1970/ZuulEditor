@@ -134,6 +134,7 @@ Public Class PrinterDetail
         End If
         InventoryBox.Text = printerrow.Field(Of String)("InventoryNumber")
         SerialNumberBox.Text = printerrow.Field(Of String)("SerialNumber")
+        UserSelectable.Checked = printerrow.Field(Of Boolean)("UserSelectable")
         SavePrinterButton.Enabled = False
     End Sub
 
@@ -154,7 +155,7 @@ Public Class PrinterDetail
         Else
             Dim todaysDate As Date = Now().Date
 
-            Tbl_PrinterTableAdapter.CreatePrinter(name, "", "", "", "", 1, 1, todaysDate.ToLongDateString, 0)
+            Tbl_PrinterTableAdapter.CreatePrinter(name, "", "", "", "", 1, 1, todaysDate.ToLongDateString, 0, False)
 
             SelectPrinterByName(Tbl_PrinterTableAdapter.GetPrinterByName(name).Rows(0).Field(Of String)("Name"))
         End If
@@ -169,7 +170,7 @@ Public Class PrinterDetail
         Dim sup As DataRow = DirectCast(SupplierCombo.SelectedItem, DataRowView).Row
         Dim cost As Decimal
         cost = Decimal.Parse(PurchaseCostBox.Text.Replace("£", ""))
-        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), cost, PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, pid)
+        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), cost, PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, UserSelectable.Checked, pid)
         Dim name As String = NameBox.Text
         PrinterListBox.SelectedIndex = -1
         FillByDisposedButton()

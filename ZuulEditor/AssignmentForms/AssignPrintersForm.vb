@@ -116,12 +116,12 @@
         Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
     End Sub
 
-    Private Sub EditPrinterButton_Click(sender As Object, e As EventArgs) Handles EditPrinterButton.Click
+    Private Sub EditPrinterButton_Click(sender As Object, e As EventArgs)
         Dim pd As New PrinterDetail
 
         Dim pselected As ListBox.SelectedObjectCollection = PrinterListBox.SelectedItems
         Dim pselecteditem As DataRowView = DirectCast(pselected.Item(0), DataRowView)
-        Dim selectedPrinter As DataRow = pselecteditem.row
+        Dim selectedPrinter As DataRow = pselecteditem.Row
         Dim pid As String = selectedPrinter.Field(Of String)("Name")
         pd.Show()
         pd.SelectPrinterByName(pid)
@@ -130,12 +130,21 @@
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Dim cd As New ComputerDetails
         Dim selectedComputer As DataRow = DirectCast(ComputerListBox.SelectedItems(0), DataRowView).Row
         Dim cid As String = selectedComputer.Field(Of String)("Name")
         cd.Show()
         'cd.selectComputerByName(cid)
         Me.Tbl_ComputerTableAdapter.Fill(Me.ZuulDataSet.Tbl_Computer)
+    End Sub
+
+    Private Sub ComputerListFilterBox_TextChanged(sender As Object, e As EventArgs) Handles ComputerListFilterBox.TextChanged
+        'Me.Tbl_ComputerTableAdapter.Fill(Me.ZuulDataSet.Tbl_Computer)
+        TblComputerBindingSource.Filter = "[Name] like '" & ComputerListFilterBox.Text & "%'"
+    End Sub
+
+    Private Sub PrinterListFilterBox_TextChanged(sender As Object, e As EventArgs) Handles PrinterListFilterBox.TextChanged
+        TblPrinterBindingSource.Filter = "[Name] like '" & PrinterListFilterBox.Text & "%'"
     End Sub
 End Class

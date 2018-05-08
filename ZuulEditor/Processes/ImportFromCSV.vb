@@ -160,10 +160,10 @@ Public Class ImportFromCSV
         If Tbl_PrinterTableAdapter1.alreadyExists(record("PrinterName")) > 0 Then
             Dim pid As Integer = Tbl_PrinterTableAdapter1.GetPrinterByName(record("PrinterName"))(0).Field(Of Integer)("PrinterID")
             'Update existing record
-            Tbl_PrinterTableAdapter1.UpdatePrinterByID(record("PrinterName"), record("ConnectionString"), record("Make"), record("Model"), record("IPAddress"), locationNumber, supplierNumber, Decimal.Parse((record("PurchaseCost"))), record("PurchaseDate"), False, record("Inventory"), record("SerialNo"), pid)
+            Tbl_PrinterTableAdapter1.UpdatePrinterByID(record("PrinterName"), record("ConnectionString"), record("Make"), record("Model"), record("IPAddress"), locationNumber, supplierNumber, Decimal.Parse((record("PurchaseCost"))), record("PurchaseDate"), False, record("Inventory"), record("SerialNo"), False, pid)
         Else
             'Create new record
-            Tbl_PrinterTableAdapter1.CreateFullPrinter(record("PrinterName"), record("ConnectionString"), record("Make"), record("Model"), record("IPAddress"), locationNumber, supplierNumber, Decimal.Parse((record("PurchaseCost"))), record("PurchaseDate"), False, record("Inventory"), record("SerialNo"))
+            Tbl_PrinterTableAdapter1.CreateFullPrinter(record("PrinterName"), record("ConnectionString"), record("Make"), record("Model"), record("IPAddress"), locationNumber, supplierNumber, Decimal.Parse((record("PurchaseCost"))), record("PurchaseDate"), False, record("Inventory"), record("SerialNo"), False)
         End If
     End Sub
 

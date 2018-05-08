@@ -103,8 +103,8 @@ Module Utils
                 ' Error connecting to computer 
                 Return Nothing
             End If
-            'Dim query As New ObjectQuery("SELECT * FROM Win32_LogicalDisk where DEVICEID = 'C:'")
-            Dim query As New ObjectQuery("SELECT * FROM Win32_LogicalDisk")
+            Dim query As New ObjectQuery("SELECT * FROM Win32_VideoController")
+            'Dim query As New ObjectQuery("SELECT Capacity FROM Win32_PhysicalMemory where tag = 'Physical Memory 0'")
             Dim searcher As New ManagementObjectSearcher(scope, query)
 
             Dim queryCollection As ManagementObjectCollection = searcher.Get()

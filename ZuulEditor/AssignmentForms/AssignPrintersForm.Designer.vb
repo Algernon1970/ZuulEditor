@@ -39,13 +39,25 @@ Partial Class AssignPrintersForm
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Tbl_PrinterTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter()
         Me.Tbl_ComputerTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_ComputerTableAdapter()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.EditPrinterButton = New System.Windows.Forms.Button()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ComputerListFilterBox = New System.Windows.Forms.TextBox()
+        Me.PrinterListFilterBox = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblComputerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
+        Me.TableLayoutPanel3.SuspendLayout()
+        Me.TableLayoutPanel4.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.FlowLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'PrinterListBox
@@ -57,7 +69,7 @@ Partial Class AssignPrintersForm
         Me.PrinterListBox.Location = New System.Drawing.Point(251, 38)
         Me.PrinterListBox.Name = "PrinterListBox"
         Me.PrinterListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.PrinterListBox.Size = New System.Drawing.Size(242, 491)
+        Me.PrinterListBox.Size = New System.Drawing.Size(242, 457)
         Me.PrinterListBox.Sorted = True
         Me.PrinterListBox.TabIndex = 0
         '
@@ -77,7 +89,6 @@ Partial Class AssignPrintersForm
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.89667!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.89667!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.20666!))
-        Me.TableLayoutPanel1.Controls.Add(Me.EditPrinterButton, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.ComputerListBox, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.OperationBox, 2, 1)
@@ -85,14 +96,15 @@ Partial Class AssignPrintersForm
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 2, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.PrinterListBox, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel4, 1, 2)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(958, 567)
         Me.TableLayoutPanel1.TabIndex = 1
         '
@@ -105,7 +117,7 @@ Partial Class AssignPrintersForm
         Me.ComputerListBox.Location = New System.Drawing.Point(3, 38)
         Me.ComputerListBox.Name = "ComputerListBox"
         Me.ComputerListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.ComputerListBox.Size = New System.Drawing.Size(242, 491)
+        Me.ComputerListBox.Size = New System.Drawing.Size(242, 457)
         Me.ComputerListBox.Sorted = True
         Me.ComputerListBox.TabIndex = 2
         '
@@ -130,7 +142,7 @@ Partial Class AssignPrintersForm
         Me.OperationBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.OperationBox.Location = New System.Drawing.Point(499, 38)
         Me.OperationBox.Name = "OperationBox"
-        Me.OperationBox.Size = New System.Drawing.Size(456, 491)
+        Me.OperationBox.Size = New System.Drawing.Size(456, 457)
         Me.OperationBox.TabIndex = 4
         Me.OperationBox.Text = ""
         '
@@ -151,23 +163,24 @@ Partial Class AssignPrintersForm
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.Controls.Add(Me.AssignButton, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.DefaultButton, 1, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.UnAssignButton, 2, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.AssignButton, 0, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.DefaultButton, 1, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.UnAssignButton, 2, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(499, 535)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(499, 501)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 1
+        Me.TableLayoutPanel2.RowCount = 2
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(456, 29)
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(456, 63)
         Me.TableLayoutPanel2.TabIndex = 6
         '
         'AssignButton
         '
         Me.AssignButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AssignButton.Location = New System.Drawing.Point(3, 3)
+        Me.AssignButton.Location = New System.Drawing.Point(3, 35)
         Me.AssignButton.Name = "AssignButton"
-        Me.AssignButton.Size = New System.Drawing.Size(146, 23)
+        Me.AssignButton.Size = New System.Drawing.Size(146, 25)
         Me.AssignButton.TabIndex = 0
         Me.AssignButton.Text = "Assign"
         Me.AssignButton.UseVisualStyleBackColor = True
@@ -175,9 +188,9 @@ Partial Class AssignPrintersForm
         'DefaultButton
         '
         Me.DefaultButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DefaultButton.Location = New System.Drawing.Point(155, 3)
+        Me.DefaultButton.Location = New System.Drawing.Point(155, 35)
         Me.DefaultButton.Name = "DefaultButton"
-        Me.DefaultButton.Size = New System.Drawing.Size(146, 23)
+        Me.DefaultButton.Size = New System.Drawing.Size(146, 25)
         Me.DefaultButton.TabIndex = 1
         Me.DefaultButton.Text = "Default"
         Me.DefaultButton.UseVisualStyleBackColor = True
@@ -185,9 +198,9 @@ Partial Class AssignPrintersForm
         'UnAssignButton
         '
         Me.UnAssignButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.UnAssignButton.Location = New System.Drawing.Point(307, 3)
+        Me.UnAssignButton.Location = New System.Drawing.Point(307, 35)
         Me.UnAssignButton.Name = "UnAssignButton"
-        Me.UnAssignButton.Size = New System.Drawing.Size(146, 23)
+        Me.UnAssignButton.Size = New System.Drawing.Size(146, 25)
         Me.UnAssignButton.TabIndex = 2
         Me.UnAssignButton.Text = "UnAssign"
         Me.UnAssignButton.UseVisualStyleBackColor = True
@@ -211,25 +224,111 @@ Partial Class AssignPrintersForm
         '
         Me.Tbl_ComputerTableAdapter.ClearBeforeFill = True
         '
+        'TableLayoutPanel3
+        '
+        Me.TableLayoutPanel3.ColumnCount = 1
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.Controls.Add(Me.Button1, 0, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel1, 0, 0)
+        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 501)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 2
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(242, 63)
+        Me.TableLayoutPanel3.TabIndex = 10
+        '
         'Button1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(3, 535)
+        Me.Button1.Location = New System.Drawing.Point(3, 34)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(242, 29)
-        Me.Button1.TabIndex = 8
+        Me.Button1.Size = New System.Drawing.Size(236, 26)
+        Me.Button1.TabIndex = 9
         Me.Button1.Text = "Computer Details"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel4
+        '
+        Me.TableLayoutPanel4.ColumnCount = 1
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel4.Controls.Add(Me.EditPrinterButton, 0, 1)
+        Me.TableLayoutPanel4.Controls.Add(Me.FlowLayoutPanel2, 0, 0)
+        Me.TableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(251, 501)
+        Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
+        Me.TableLayoutPanel4.RowCount = 2
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(242, 63)
+        Me.TableLayoutPanel4.TabIndex = 11
         '
         'EditPrinterButton
         '
         Me.EditPrinterButton.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EditPrinterButton.Location = New System.Drawing.Point(251, 535)
+        Me.EditPrinterButton.Location = New System.Drawing.Point(3, 34)
         Me.EditPrinterButton.Name = "EditPrinterButton"
-        Me.EditPrinterButton.Size = New System.Drawing.Size(242, 29)
-        Me.EditPrinterButton.TabIndex = 9
+        Me.EditPrinterButton.Size = New System.Drawing.Size(236, 26)
+        Me.EditPrinterButton.TabIndex = 10
         Me.EditPrinterButton.Text = "Printer Details"
         Me.EditPrinterButton.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Controls.Add(Me.Label4)
+        Me.FlowLayoutPanel1.Controls.Add(Me.ComputerListFilterBox)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(236, 25)
+        Me.FlowLayoutPanel1.TabIndex = 10
+        '
+        'FlowLayoutPanel2
+        '
+        Me.FlowLayoutPanel2.Controls.Add(Me.Label5)
+        Me.FlowLayoutPanel2.Controls.Add(Me.PrinterListFilterBox)
+        Me.FlowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(3, 3)
+        Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(236, 25)
+        Me.FlowLayoutPanel2.TabIndex = 11
+        '
+        'ComputerListFilterBox
+        '
+        Me.ComputerListFilterBox.Location = New System.Drawing.Point(38, 3)
+        Me.ComputerListFilterBox.Name = "ComputerListFilterBox"
+        Me.ComputerListFilterBox.Size = New System.Drawing.Size(100, 20)
+        Me.ComputerListFilterBox.TabIndex = 1
+        '
+        'PrinterListFilterBox
+        '
+        Me.PrinterListFilterBox.Location = New System.Drawing.Point(38, 3)
+        Me.PrinterListFilterBox.Name = "PrinterListFilterBox"
+        Me.PrinterListFilterBox.Size = New System.Drawing.Size(100, 20)
+        Me.PrinterListFilterBox.TabIndex = 1
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label4.Location = New System.Drawing.Point(3, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(29, 26)
+        Me.Label4.TabIndex = 2
+        Me.Label4.Text = "Filter"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label5.Location = New System.Drawing.Point(3, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(29, 26)
+        Me.Label5.TabIndex = 3
+        Me.Label5.Text = "Filter"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'AssignPrintersForm
         '
@@ -245,6 +344,12 @@ Partial Class AssignPrintersForm
         Me.TableLayoutPanel1.PerformLayout()
         CType(Me.TblComputerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.TableLayoutPanel3.ResumeLayout(False)
+        Me.TableLayoutPanel4.ResumeLayout(False)
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.FlowLayoutPanel1.PerformLayout()
+        Me.FlowLayoutPanel2.ResumeLayout(False)
+        Me.FlowLayoutPanel2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -265,6 +370,14 @@ Partial Class AssignPrintersForm
     Friend WithEvents AssignButton As Button
     Friend WithEvents DefaultButton As Button
     Friend WithEvents UnAssignButton As Button
-    Friend WithEvents EditPrinterButton As Button
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents Button1 As Button
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents ComputerListFilterBox As TextBox
+    Friend WithEvents TableLayoutPanel4 As TableLayoutPanel
+    Friend WithEvents EditPrinterButton As Button
+    Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
+    Friend WithEvents PrinterListFilterBox As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label5 As Label
 End Class
