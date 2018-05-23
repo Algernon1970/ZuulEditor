@@ -174,7 +174,7 @@ Public Class ImportFromCSV
         If Tbl_ComputerTableAdapter1.alreadyExists(record("Computer Name")) > 0 Then
             Dim cid As Integer = Tbl_ComputerTableAdapter1.GetComputerByName(record("Computer Name"))(0).Field(Of Integer)("ComputerID")
             'updatecomputerbyid
-            Tbl_ComputerTableAdapter1.UpdateDetails(record("Computer Name"), "", record("Computer Serial Number"), record("Computer Processor Name"), record("Computer AD Path"), False, 0, "1/1/1970", "", record("Computer MAC Address"), supplierNumber, locationNumber, False, 0, Integer.Parse(record("Computer Memory").Replace(" GB", "")), record("Computer Model"), record("Computer Manufacturer"), cid)
+            Tbl_ComputerTableAdapter1.UpdateDetails(record("Computer Name"), "", record("Computer Serial Number"), record("Computer Processor Name"), record("Computer AD Path"), False, 0, "1/1/1970", "", record("Computer MAC Address"), supplierNumber, locationNumber, False, 0, Integer.Parse(record("Computer Memory").Replace(" GB", "")), record("Computer Model"), record("Computer Manufacturer"))
         Else
             'createnewrecord
             Tbl_ComputerTableAdapter1.CreateComputer(record("Computer Name"), "", record("Computer Serial Number"), record("Computer Manufacturer"), record("Computer Model"), Integer.Parse(record("Computer Memory").Replace(" GB", "")), 0, False, locationNumber, supplierNumber, record("Computer MAC Address"), "", "1/1/1970", 0, False, record("Computer AD Path"), record("Computer Processor Name"))

@@ -31,6 +31,7 @@ Partial Class PrinterDetail
         Me.ZuulDataSet = New ZuulEditor.ZuulDataSet()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.UserSelectable = New System.Windows.Forms.CheckBox()
         Me.SearchModelRadio = New System.Windows.Forms.RadioButton()
         Me.SearchInvRadio = New System.Windows.Forms.RadioButton()
         Me.SearchSerialRadio = New System.Windows.Forms.RadioButton()
@@ -76,7 +77,7 @@ Partial Class PrinterDetail
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Lnk_PrinterInfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter()
         Me.Tbl_InfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_InfoTableAdapter()
-        Me.UserSelectable = New System.Windows.Forms.CheckBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -179,6 +180,7 @@ Partial Class PrinterDetail
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.RadioButton1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.UserSelectable)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchModelRadio)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchInvRadio)
@@ -215,6 +217,16 @@ Partial Class PrinterDetail
         Me.SplitContainer1.Size = New System.Drawing.Size(726, 455)
         Me.SplitContainer1.SplitterDistance = 195
         Me.SplitContainer1.TabIndex = 18
+        '
+        'UserSelectable
+        '
+        Me.UserSelectable.AutoSize = True
+        Me.UserSelectable.Location = New System.Drawing.Point(610, 34)
+        Me.UserSelectable.Name = "UserSelectable"
+        Me.UserSelectable.Size = New System.Drawing.Size(101, 17)
+        Me.UserSelectable.TabIndex = 30
+        Me.UserSelectable.Text = "User Selectable"
+        Me.UserSelectable.UseVisualStyleBackColor = True
         '
         'SearchModelRadio
         '
@@ -605,15 +617,16 @@ Partial Class PrinterDetail
         '
         Me.Tbl_InfoTableAdapter1.ClearBeforeFill = True
         '
-        'UserSelectable
+        'RadioButton1
         '
-        Me.UserSelectable.AutoSize = True
-        Me.UserSelectable.Location = New System.Drawing.Point(610, 34)
-        Me.UserSelectable.Name = "UserSelectable"
-        Me.UserSelectable.Size = New System.Drawing.Size(101, 17)
-        Me.UserSelectable.TabIndex = 30
-        Me.UserSelectable.Text = "User Selectable"
-        Me.UserSelectable.UseVisualStyleBackColor = True
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(219, 10)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(59, 17)
+        Me.RadioButton1.TabIndex = 31
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Search"
+        Me.RadioButton1.UseVisualStyleBackColor = True
         '
         'PrinterDetail
         '
@@ -700,4 +713,5 @@ Partial Class PrinterDetail
     Friend WithEvents SearchSerialRadio As RadioButton
     Friend WithEvents SearchMakeRadio As RadioButton
     Friend WithEvents UserSelectable As CheckBox
+    Friend WithEvents RadioButton1 As RadioButton
 End Class

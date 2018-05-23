@@ -303,8 +303,9 @@ Public Class PrinterDetail
 #End Region
 
     Private Sub IPAddressButton_Click(sender As Object, e As EventArgs) Handles IPAddressButton.Click
-        Dim iface As New WebBrowserForm
-        iface.Text = IPAddressBox.Text
+        Dim iface As New WebBrowserForm With {
+            .Text = IPAddressBox.Text
+        }
         iface.WebBrowser1.Url = New Uri("http://" & IPAddressBox.Text)
         iface.Show()
     End Sub

@@ -183,6 +183,9 @@
     <EmbeddedResource Include="AssetForms\PrinterDetail.resx">
       <DependentUpon>PrinterDetail.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AssetForms\ProjectorDetails.resx">
+      <DependentUpon>ProjectorDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AssignmentForms\AssignPrintersForm.resx">
       <DependentUpon>AssignPrintersForm.vb</DependentUpon>
     </EmbeddedResource>

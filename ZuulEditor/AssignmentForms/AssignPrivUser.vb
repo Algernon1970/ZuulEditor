@@ -12,11 +12,13 @@
     End Sub
 
     Private Sub ComputerFilterBox_TextChanged(sender As Object, e As EventArgs) Handles ComputerFilterBox.TextChanged
-        Me.Tbl_ComputerTableAdapter.FillByPartialName(Me.ZuulDataSet.Tbl_Computer, ComputerFilterBox.Text & "%")
+        'Me.Tbl_ComputerTableAdapter.FillByPartialName(Me.ZuulDataSet.Tbl_Computer, ComputerFilterBox.Text & "%")
+        TblComputerBindingSource.Filter = "[Name] like '" & ComputerFilterBox.Text & "%'"
     End Sub
 
     Private Sub UserFilterBox_TextChanged(sender As Object, e As EventArgs) Handles UserFilterBox.TextChanged
-        Me.Tbl_PersonTableAdapter.FillByPartial(Me.ZuulDataSet.Tbl_Person, "%" & UserFilterBox.Text & "%")
+        'Me.Tbl_PersonTableAdapter.FillByPartial(Me.ZuulDataSet.Tbl_Person, "%" & UserFilterBox.Text & "%")
+        TblPersonBindingSource.Filter = "[SamAccount] like '" & UserFilterBox.Text & "%'"
     End Sub
 
     Private Sub AssignPrivButton_Click(sender As Object, e As EventArgs) Handles AssignPrivButton.Click

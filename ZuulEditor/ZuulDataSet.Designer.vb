@@ -85,6 +85,10 @@ Partial Public Class ZuulDataSet
     
     Private relationFK_Tbl_Equipment_Tbl_Supplier As Global.System.Data.DataRelation
     
+    Private relationFK_Tbl_Projector_Tbl_Location As Global.System.Data.DataRelation
+    
+    Private relationFK_Tbl_Projector_Tbl_Supplier As Global.System.Data.DataRelation
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -554,6 +558,8 @@ Partial Public Class ZuulDataSet
         Me.relationFK_Lnk_ProjectorInfo_Tbl_Projector = Me.Relations("FK_Lnk_ProjectorInfo_Tbl_Projector")
         Me.relationFK_Tbl_Equipment_Tbl_Location = Me.Relations("FK_Tbl_Equipment_Tbl_Location")
         Me.relationFK_Tbl_Equipment_Tbl_Supplier = Me.Relations("FK_Tbl_Equipment_Tbl_Supplier")
+        Me.relationFK_Tbl_Projector_Tbl_Location = Me.Relations("FK_Tbl_Projector_Tbl_Location")
+        Me.relationFK_Tbl_Projector_Tbl_Supplier = Me.Relations("FK_Tbl_Projector_Tbl_Supplier")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -624,6 +630,10 @@ Partial Public Class ZuulDataSet
         Me.Relations.Add(Me.relationFK_Tbl_Equipment_Tbl_Location)
         Me.relationFK_Tbl_Equipment_Tbl_Supplier = New Global.System.Data.DataRelation("FK_Tbl_Equipment_Tbl_Supplier", New Global.System.Data.DataColumn() {Me.tableTbl_Supplier.SupplierIDColumn}, New Global.System.Data.DataColumn() {Me.tableTbl_Equipment.SupplierColumn}, false)
         Me.Relations.Add(Me.relationFK_Tbl_Equipment_Tbl_Supplier)
+        Me.relationFK_Tbl_Projector_Tbl_Location = New Global.System.Data.DataRelation("FK_Tbl_Projector_Tbl_Location", New Global.System.Data.DataColumn() {Me.tableTbl_Location.LocationIDColumn}, New Global.System.Data.DataColumn() {Me.tableTbl_Projector.LocationColumn}, false)
+        Me.Relations.Add(Me.relationFK_Tbl_Projector_Tbl_Location)
+        Me.relationFK_Tbl_Projector_Tbl_Supplier = New Global.System.Data.DataRelation("FK_Tbl_Projector_Tbl_Supplier", New Global.System.Data.DataColumn() {Me.tableTbl_Supplier.SupplierIDColumn}, New Global.System.Data.DataColumn() {Me.tableTbl_Projector.SupplierColumn}, false)
+        Me.Relations.Add(Me.relationFK_Tbl_Projector_Tbl_Supplier)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2058,6 +2068,8 @@ Partial Public Class ZuulDataSet
         
         Private columnADPath As Global.System.Data.DataColumn
         
+        Private columnProcessor As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -2230,6 +2242,14 @@ Partial Public Class ZuulDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property ProcessorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProcessor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2282,9 +2302,10 @@ Partial Public Class ZuulDataSet
                     ByVal PurchaseDate As Date,  _
                     ByVal PurchaseCost As Decimal,  _
                     ByVal Disposed As Boolean,  _
-                    ByVal ADPath As String) As Tbl_ComputerRow
+                    ByVal ADPath As String,  _
+                    ByVal Processor As String) As Tbl_ComputerRow
             Dim rowTbl_ComputerRow As Tbl_ComputerRow = CType(Me.NewRow,Tbl_ComputerRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Nothing, Nothing, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Disposed, ADPath}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Nothing, Nothing, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Disposed, ADPath, Processor}
             If (Not (parentTbl_LocationRowByFK_Tbl_Computer_Tbl_Location) Is Nothing) Then
                 columnValuesArray(9) = parentTbl_LocationRowByFK_Tbl_Computer_Tbl_Location(0)
             End If
@@ -2336,6 +2357,7 @@ Partial Public Class ZuulDataSet
             Me.columnPurchaseCost = MyBase.Columns("PurchaseCost")
             Me.columnDisposed = MyBase.Columns("Disposed")
             Me.columnADPath = MyBase.Columns("ADPath")
+            Me.columnProcessor = MyBase.Columns("Processor")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2375,6 +2397,8 @@ Partial Public Class ZuulDataSet
             MyBase.Columns.Add(Me.columnDisposed)
             Me.columnADPath = New Global.System.Data.DataColumn("ADPath", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnADPath)
+            Me.columnProcessor = New Global.System.Data.DataColumn("Processor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProcessor)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnComputerID}, true))
             Me.columnComputerID.AutoIncrement = true
             Me.columnComputerID.AutoIncrementSeed = -1
@@ -2393,6 +2417,7 @@ Partial Public Class ZuulDataSet
             Me.columnWirelessMac.MaxLength = 32
             Me.columnDisposed.AllowDBNull = false
             Me.columnADPath.MaxLength = 150
+            Me.columnProcessor.MaxLength = 70
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4547,6 +4572,8 @@ Partial Public Class ZuulDataSet
         
         Private columnLastCleaned As Global.System.Data.DataColumn
         
+        Private columnName As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -4671,6 +4698,14 @@ Partial Public Class ZuulDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property NameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4707,9 +4742,15 @@ Partial Public Class ZuulDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddTbl_ProjectorRow(ByVal InventoryNumber As String, ByVal SerialNumber As String, ByVal Make As String, ByVal Model As String, ByVal Location As Integer, ByVal Supplier As Integer, ByVal PurchaseDate As Date, ByVal PurchaseCost As Decimal, ByVal Disposed As Boolean, ByVal LastCleaned As Date) As Tbl_ProjectorRow
+        Public Overloads Function AddTbl_ProjectorRow(ByVal InventoryNumber As String, ByVal SerialNumber As String, ByVal Make As String, ByVal Model As String, ByVal parentTbl_LocationRowByFK_Tbl_Projector_Tbl_Location As Tbl_LocationRow, ByVal parentTbl_SupplierRowByFK_Tbl_Projector_Tbl_Supplier As Tbl_SupplierRow, ByVal PurchaseDate As Date, ByVal PurchaseCost As Decimal, ByVal Disposed As Boolean, ByVal LastCleaned As Date, ByVal Name As String) As Tbl_ProjectorRow
             Dim rowTbl_ProjectorRow As Tbl_ProjectorRow = CType(Me.NewRow,Tbl_ProjectorRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, InventoryNumber, SerialNumber, Make, Model, Location, Supplier, PurchaseDate, PurchaseCost, Disposed, LastCleaned}
+            Dim columnValuesArray() As Object = New Object() {Nothing, InventoryNumber, SerialNumber, Make, Model, Nothing, Nothing, PurchaseDate, PurchaseCost, Disposed, LastCleaned, Name}
+            If (Not (parentTbl_LocationRowByFK_Tbl_Projector_Tbl_Location) Is Nothing) Then
+                columnValuesArray(5) = parentTbl_LocationRowByFK_Tbl_Projector_Tbl_Location(0)
+            End If
+            If (Not (parentTbl_SupplierRowByFK_Tbl_Projector_Tbl_Supplier) Is Nothing) Then
+                columnValuesArray(6) = parentTbl_SupplierRowByFK_Tbl_Projector_Tbl_Supplier(0)
+            End If
             rowTbl_ProjectorRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTbl_ProjectorRow)
             Return rowTbl_ProjectorRow
@@ -4749,6 +4790,7 @@ Partial Public Class ZuulDataSet
             Me.columnPurchaseCost = MyBase.Columns("PurchaseCost")
             Me.columnDisposed = MyBase.Columns("Disposed")
             Me.columnLastCleaned = MyBase.Columns("LastCleaned")
+            Me.columnName = MyBase.Columns("Name")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4776,6 +4818,8 @@ Partial Public Class ZuulDataSet
             MyBase.Columns.Add(Me.columnDisposed)
             Me.columnLastCleaned = New Global.System.Data.DataColumn("LastCleaned", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnLastCleaned)
+            Me.columnName = New Global.System.Data.DataColumn("Name", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnName)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnProjectID}, true))
             Me.columnProjectID.AutoIncrement = true
             Me.columnProjectID.AutoIncrementSeed = -1
@@ -4788,7 +4832,10 @@ Partial Public Class ZuulDataSet
             Me.columnMake.MaxLength = 50
             Me.columnModel.MaxLength = 50
             Me.columnLocation.AllowDBNull = false
+            Me.columnSupplier.AllowDBNull = false
             Me.columnDisposed.AllowDBNull = false
+            Me.columnName.AllowDBNull = false
+            Me.columnName.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6217,6 +6264,21 @@ Partial Public Class ZuulDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Processor() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTbl_Computer.ProcessorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Processor' in table 'Tbl_Computer' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTbl_Computer.ProcessorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Tbl_SupplierRow() As Tbl_SupplierRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Tbl_Computer_Tbl_Supplier1")),Tbl_SupplierRow)
@@ -6391,6 +6453,18 @@ Partial Public Class ZuulDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetADPathNull()
             Me(Me.tableTbl_Computer.ADPathColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsProcessorNull() As Boolean
+            Return Me.IsNull(Me.tableTbl_Computer.ProcessorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetProcessorNull()
+            Me(Me.tableTbl_Computer.ProcessorColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6594,6 +6668,16 @@ Partial Public Class ZuulDataSet
                 Return New Tbl_EquipmentRow(-1) {}
             Else
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Tbl_Equipment_Tbl_Location")),Tbl_EquipmentRow())
+            End If
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function GetTbl_ProjectorRows() As Tbl_ProjectorRow()
+            If (Me.Table.ChildRelations("FK_Tbl_Projector_Tbl_Location") Is Nothing) Then
+                Return New Tbl_ProjectorRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Tbl_Projector_Tbl_Location")),Tbl_ProjectorRow())
             End If
         End Function
     End Class
@@ -7273,6 +7357,16 @@ Partial Public Class ZuulDataSet
                 Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Tbl_Equipment_Tbl_Supplier")),Tbl_EquipmentRow())
             End If
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function GetTbl_ProjectorRows() As Tbl_ProjectorRow()
+            If (Me.Table.ChildRelations("FK_Tbl_Projector_Tbl_Supplier") Is Nothing) Then
+                Return New Tbl_ProjectorRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Tbl_Projector_Tbl_Supplier")),Tbl_ProjectorRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -7447,11 +7541,7 @@ Partial Public Class ZuulDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property Supplier() As Integer
             Get
-                Try 
-                    Return CType(Me(Me.tableTbl_Projector.SupplierColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Supplier' in table 'Tbl_Projector' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableTbl_Projector.SupplierColumn),Integer)
             End Get
             Set
                 Me(Me.tableTbl_Projector.SupplierColumn) = value
@@ -7516,6 +7606,39 @@ Partial Public Class ZuulDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Name() As String
+            Get
+                Return CType(Me(Me.tableTbl_Projector.NameColumn),String)
+            End Get
+            Set
+                Me(Me.tableTbl_Projector.NameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tbl_LocationRow() As Tbl_LocationRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Tbl_Projector_Tbl_Location")),Tbl_LocationRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_Tbl_Projector_Tbl_Location"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property Tbl_SupplierRow() As Tbl_SupplierRow
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Tbl_Projector_Tbl_Supplier")),Tbl_SupplierRow)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_Tbl_Projector_Tbl_Supplier"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsInventoryNumberNull() As Boolean
             Return Me.IsNull(Me.tableTbl_Projector.InventoryNumberColumn)
         End Function
@@ -7560,18 +7683,6 @@ Partial Public Class ZuulDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetModelNull()
             Me(Me.tableTbl_Projector.ModelColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsSupplierNull() As Boolean
-            Return Me.IsNull(Me.tableTbl_Projector.SupplierColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetSupplierNull()
-            Me(Me.tableTbl_Projector.SupplierColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10314,6 +10425,7 @@ Namespace ZuulDataSetTableAdapters
             tableMapping.ColumnMappings.Add("PurchaseCost", "PurchaseCost")
             tableMapping.ColumnMappings.Add("Disposed", "Disposed")
             tableMapping.ColumnMappings.Add("ADPath", "ADPath")
+            tableMapping.ColumnMappings.Add("Processor", "Processor")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -10333,7 +10445,8 @@ Namespace ZuulDataSetTableAdapters
                 "= 1 AND [PurchaseDate] IS NULL) OR ([PurchaseDate] = @Original_PurchaseDate)) AN"& _ 
                 "D ((@IsNull_PurchaseCost = 1 AND [PurchaseCost] IS NULL) OR ([PurchaseCost] = @O"& _ 
                 "riginal_PurchaseCost)) AND ([Disposed] = @Original_Disposed) AND ((@IsNull_ADPat"& _ 
-                "h = 1 AND [ADPath] IS NULL) OR ([ADPath] = @Original_ADPath)))"
+                "h = 1 AND [ADPath] IS NULL) OR ([ADPath] = @Original_ADPath)) AND ((@IsNull_Proc"& _ 
+                "essor = 1 AND [Processor] IS NULL) OR ([Processor] = @Original_Processor)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComputerID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -10365,16 +10478,19 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ADPath", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ADPath", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Processor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Processor", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Computer] ([Name], [InventoryNumber], [SerialNumber], [Make], [M"& _ 
                 "odel], [RamGB], [HDDGB], [SSD], [Location], [Supplier], [WiredMac], [WirelessMac"& _ 
-                "], [PurchaseDate], [PurchaseCost], [Disposed], [ADPath]) VALUES (@Name, @Invento"& _ 
-                "ryNumber, @SerialNumber, @Make, @Model, @RamGB, @HDDGB, @SSD, @Location, @Suppli"& _ 
-                "er, @WiredMac, @WirelessMac, @PurchaseDate, @PurchaseCost, @Disposed, @ADPath);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDD"& _ 
-                "GB, SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, "& _ 
-                "Disposed, ADPath FROM Tbl_Computer WHERE (ComputerID = SCOPE_IDENTITY()) ORDER B"& _ 
-                "Y Name"
+                "], [PurchaseDate], [PurchaseCost], [Disposed], [ADPath], [Processor]) VALUES (@N"& _ 
+                "ame, @InventoryNumber, @SerialNumber, @Make, @Model, @RamGB, @HDDGB, @SSD, @Loca"& _ 
+                "tion, @Supplier, @WiredMac, @WirelessMac, @PurchaseDate, @PurchaseCost, @Dispose"& _ 
+                "d, @ADPath, @Processor);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryNumber, SerialNumber"& _ 
+                ", Make, Model, RamGB, HDDGB, SSD, Location, Supplier, WiredMac, WirelessMac, Pur"& _ 
+                "chaseDate, PurchaseCost, Disposed, ADPath, Processor FROM Tbl_Computer WHERE (Co"& _ 
+                "mputerID = SCOPE_IDENTITY()) ORDER BY Name"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10392,6 +10508,7 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PurchaseCost", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseCost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ADPath", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Processor", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Computer] SET [Name] = @Name, [InventoryNumber] = @InventoryNumber, ["& _ 
@@ -10399,26 +10516,28 @@ Namespace ZuulDataSetTableAdapters
                 "B, [HDDGB] = @HDDGB, [SSD] = @SSD, [Location] = @Location, [Supplier] = @Supplie"& _ 
                 "r, [WiredMac] = @WiredMac, [WirelessMac] = @WirelessMac, [PurchaseDate] = @Purch"& _ 
                 "aseDate, [PurchaseCost] = @PurchaseCost, [Disposed] = @Disposed, [ADPath] = @ADP"& _ 
-                "ath WHERE (([ComputerID] = @Original_ComputerID) AND ([Name] = @Original_Name) A"& _ 
-                "ND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNu"& _ 
-                "mber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNu"& _ 
-                "mber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make "& _ 
-                "= 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AN"& _ 
-                "D [Model] IS NULL) OR ([Model] = @Original_Model)) AND ((@IsNull_RamGB = 1 AND ["& _ 
-                "RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND ((@IsNull_HDDGB = 1 AND [HDD"& _ 
-                "GB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@IsNull_SSD = 1 AND [SSD] IS "& _ 
-                "NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @Original_Location) AND ((@I"& _ 
-                "sNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Original_Supplier))"& _ 
-                " AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR ([WiredMac] = @Original_W"& _ 
-                "iredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessMac] IS NULL) OR ([Wireless"& _ 
-                "Mac] = @Original_WirelessMac)) AND ((@IsNull_PurchaseDate = 1 AND [PurchaseDate]"& _ 
-                " IS NULL) OR ([PurchaseDate] = @Original_PurchaseDate)) AND ((@IsNull_PurchaseCo"& _ 
-                "st = 1 AND [PurchaseCost] IS NULL) OR ([PurchaseCost] = @Original_PurchaseCost))"& _ 
-                " AND ([Disposed] = @Original_Disposed) AND ((@IsNull_ADPath = 1 AND [ADPath] IS "& _ 
-                "NULL) OR ([ADPath] = @Original_ADPath)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryNum"& _ 
-                "ber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, WiredMac,"& _ 
-                " WirelessMac, PurchaseDate, PurchaseCost, Disposed, ADPath FROM Tbl_Computer WHE"& _ 
-                "RE (ComputerID = @ComputerID) ORDER BY Name"
+                "ath, [Processor] = @Processor WHERE (([ComputerID] = @Original_ComputerID) AND ("& _ 
+                "[Name] = @Original_Name) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber]"& _ 
+                " IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_Seri"& _ 
+                "alNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNu"& _ 
+                "mber)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) "& _ 
+                "AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND"& _ 
+                " ((@IsNull_RamGB = 1 AND [RamGB] IS NULL) OR ([RamGB] = @Original_RamGB)) AND (("& _ 
+                "@IsNull_HDDGB = 1 AND [HDDGB] IS NULL) OR ([HDDGB] = @Original_HDDGB)) AND ((@Is"& _ 
+                "Null_SSD = 1 AND [SSD] IS NULL) OR ([SSD] = @Original_SSD)) AND ([Location] = @O"& _ 
+                "riginal_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Suppli"& _ 
+                "er] = @Original_Supplier)) AND ((@IsNull_WiredMac = 1 AND [WiredMac] IS NULL) OR"& _ 
+                " ([WiredMac] = @Original_WiredMac)) AND ((@IsNull_WirelessMac = 1 AND [WirelessM"& _ 
+                "ac] IS NULL) OR ([WirelessMac] = @Original_WirelessMac)) AND ((@IsNull_PurchaseD"& _ 
+                "ate = 1 AND [PurchaseDate] IS NULL) OR ([PurchaseDate] = @Original_PurchaseDate)"& _ 
+                ") AND ((@IsNull_PurchaseCost = 1 AND [PurchaseCost] IS NULL) OR ([PurchaseCost] "& _ 
+                "= @Original_PurchaseCost)) AND ([Disposed] = @Original_Disposed) AND ((@IsNull_A"& _ 
+                "DPath = 1 AND [ADPath] IS NULL) OR ([ADPath] = @Original_ADPath)) AND ((@IsNull_"& _ 
+                "Processor = 1 AND [Processor] IS NULL) OR ([Processor] = @Original_Processor)));"& _ 
+                ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HD"& _ 
+                "DGB, SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost,"& _ 
+                " Disposed, ADPath, Processor FROM Tbl_Computer WHERE (ComputerID = @ComputerID) "& _ 
+                "ORDER BY Name"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10436,6 +10555,7 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PurchaseCost", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseCost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ADPath", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Processor", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ComputerID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InventoryNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -10466,6 +10586,8 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ADPath", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ADPath", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Processor", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Processor", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ComputerID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -10479,12 +10601,12 @@ Namespace ZuulDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(11) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(10) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
                 ", SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Di"& _ 
-                "sposed, ADPath FROM Tbl_Computer ORDER BY Name"
+                "sposed, ADPath, Processor FROM Tbl_Computer ORDER BY Name"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -10527,80 +10649,73 @@ Namespace ZuulDataSetTableAdapters
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._commandCollection(4) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
-                ", SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Di"& _ 
-                "sposed, ADPath FROM Tbl_Computer ORDER BY Name"
+            Me._commandCollection(4).CommandText = "SELECT ADPath, ComputerID, Disposed, HDDGB, InventoryNumber, Location, Make, Mode"& _ 
+                "l, Name, Processor, PurchaseCost, PurchaseDate, RamGB, SSD, SerialNumber, Suppli"& _ 
+                "er, WiredMac, WirelessMac FROM Tbl_Computer ORDER BY Name"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
-                ", SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Di"& _ 
-                "sposed, ADPath FROM Tbl_Computer WHERE (Disposed = 1) ORDER BY Name"
+            Me._commandCollection(5).CommandText = "SELECT ADPath, ComputerID, Disposed, HDDGB, InventoryNumber, Location, Make, Mode"& _ 
+                "l, Name, Processor, PurchaseCost, PurchaseDate, RamGB, SSD, SerialNumber, Suppli"& _ 
+                "er, WiredMac, WirelessMac FROM Tbl_Computer WHERE (Disposed = 1) ORDER BY Name"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "SELECT        ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB"& _ 
-                ", HDDGB, SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseC"& _ 
-                "ost, Disposed, ADPath"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Computer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Make like @ma"& _ 
-                "ke)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Name"
+            Me._commandCollection(6).CommandText = "SELECT ADPath, ComputerID, Disposed, HDDGB, InventoryNumber, Location, Make, Mode"& _ 
+                "l, Name, Processor, PurchaseCost, PurchaseDate, RamGB, SSD, SerialNumber, Suppli"& _ 
+                "er, WiredMac, WirelessMac FROM Tbl_Computer WHERE (Make LIKE @make) ORDER BY Nam"& _ 
+                "e"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@make", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(7) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(7).Connection = Me.Connection
-            Me._commandCollection(7).CommandText = "SELECT        ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB"& _ 
-                ", HDDGB, SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseC"& _ 
-                "ost, Disposed, ADPath"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_Computer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        Name like @cna"& _ 
-                "me"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY Name"
+            Me._commandCollection(7).CommandText = "SELECT ADPath, ComputerID, Disposed, HDDGB, InventoryNumber, Location, Make, Mode"& _ 
+                "l, Name, Processor, PurchaseCost, PurchaseDate, RamGB, SSD, SerialNumber, Suppli"& _ 
+                "er, WiredMac, WirelessMac FROM Tbl_Computer WHERE (ComputerID = @cid) ORDER BY N"& _ 
+                "ame"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cname", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(7).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(8) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(8).Connection = Me.Connection
-            Me._commandCollection(8).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
-                ", SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Di"& _ 
-                "sposed, ADPath FROM Tbl_Computer WHERE (ComputerID = @cid) ORDER BY Name"
+            Me._commandCollection(8).CommandText = "SELECT ADPath, ComputerID, Disposed, HDDGB, InventoryNumber, Location, Make, Mode"& _ 
+                "l, Name, Processor, PurchaseCost, PurchaseDate, RamGB, SSD, SerialNumber, Suppli"& _ 
+                "er, WiredMac, WirelessMac FROM Tbl_Computer WHERE (Name = @name) ORDER BY Name"
             Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(8).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(9) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(9).Connection = Me.Connection
-            Me._commandCollection(9).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
-                ", SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Di"& _ 
-                "sposed, ADPath FROM Tbl_Computer WHERE (Name = @name) ORDER BY Name"
+            Me._commandCollection(9).CommandText = "SELECT ADPath, ComputerID, Disposed, HDDGB, InventoryNumber, Location, Make, Mode"& _ 
+                "l, Name, Processor, PurchaseCost, PurchaseDate, RamGB, SSD, SerialNumber, Suppli"& _ 
+                "er, WiredMac, WirelessMac FROM Tbl_Computer WHERE (InventoryNumber = @inv) ORDER"& _ 
+                " BY Name"
             Me._commandCollection(9).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(9).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inv", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(10) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(10).Connection = Me.Connection
-            Me._commandCollection(10).CommandText = "SELECT ComputerID, Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB"& _ 
-                ", SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Di"& _ 
-                "sposed, ADPath FROM Tbl_Computer WHERE (InventoryNumber = @inv) ORDER BY Name"
-            Me._commandCollection(10).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inv", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11) = New Global.System.Data.SqlClient.SqlCommand()
-            Me._commandCollection(11).Connection = Me.Connection
-            Me._commandCollection(11).CommandText = "UPDATE       Tbl_Computer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET               Name = @name, InventoryNumber = @inv"& _ 
+            Me._commandCollection(10).CommandText = "UPDATE       Tbl_Computer"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SET               Name = @name, InventoryNumber = @inv"& _ 
                 ", SerialNumber = @serial, Processor = @proc, ADPath = @adpath, Disposed = @dispo"& _ 
                 "sed, PurchaseCost = @cost, PurchaseDate = @purchased, WirelessMac = @wirelessMac"& _ 
                 ",  WiredMac = @wiredMac, Supplier = @supplier, Location = @location, SSD = @ssd,"& _ 
-                " HDDGB = @hdd, RamGB = @ram, Model = @model, Make = @make"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Compute"& _ 
-                "rID = @id)"
-            Me._commandCollection(11).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inv", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@serial", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@proc", Global.System.Data.SqlDbType.NVarChar, 70, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@adpath", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@disposed", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cost", Global.System.Data.SqlDbType.Money, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseCost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@purchased", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@wirelessMac", Global.System.Data.SqlDbType.NVarChar, 32, Global.System.Data.ParameterDirection.Input, 0, 0, "WirelessMac", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@wiredMac", Global.System.Data.SqlDbType.NVarChar, 32, Global.System.Data.ParameterDirection.Input, 0, 0, "WiredMac", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@supplier", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@location", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ssd", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "SSD", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@hdd", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "HDDGB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ram", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "RamGB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@model", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@make", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(11).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@id", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ComputerID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+                " HDDGB = @hdd, RamGB = @ram, Model = @model, Make = @make"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Name = "& _ 
+                "@name)"
+            Me._commandCollection(10).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@name", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inv", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@serial", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@proc", Global.System.Data.SqlDbType.NVarChar, 70, Global.System.Data.ParameterDirection.Input, 0, 0, "Processor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@adpath", Global.System.Data.SqlDbType.NVarChar, 150, Global.System.Data.ParameterDirection.Input, 0, 0, "ADPath", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@disposed", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@cost", Global.System.Data.SqlDbType.Money, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseCost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@purchased", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@wirelessMac", Global.System.Data.SqlDbType.NVarChar, 32, Global.System.Data.ParameterDirection.Input, 0, 0, "WirelessMac", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@wiredMac", Global.System.Data.SqlDbType.NVarChar, 32, Global.System.Data.ParameterDirection.Input, 0, 0, "WiredMac", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@supplier", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@location", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ssd", Global.System.Data.SqlDbType.Bit, 1, Global.System.Data.ParameterDirection.Input, 0, 0, "SSD", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@hdd", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "HDDGB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ram", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "RamGB", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@model", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(10).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@make", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10712,43 +10827,9 @@ Namespace ZuulDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByPartialName(ByVal dataTable As ZuulDataSet.Tbl_ComputerDataTable, ByVal cname As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(7)
-            If (cname Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("cname")
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(cname,String)
-            End If
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
-            End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
-            Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetByPartialName(ByVal cname As String) As ZuulDataSet.Tbl_ComputerDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(7)
-            If (cname Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("cname")
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(cname,String)
-            End If
-            Dim dataTable As ZuulDataSet.Tbl_ComputerDataTable = New ZuulDataSet.Tbl_ComputerDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetComputerByComputerID(ByVal cid As Integer) As ZuulDataSet.Tbl_ComputerDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(8)
+            Me.Adapter.SelectCommand = Me.CommandCollection(7)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(cid,Integer)
             Dim dataTable As ZuulDataSet.Tbl_ComputerDataTable = New ZuulDataSet.Tbl_ComputerDataTable()
             Me.Adapter.Fill(dataTable)
@@ -10760,7 +10841,7 @@ Namespace ZuulDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetComputerByName(ByVal name As String) As ZuulDataSet.Tbl_ComputerDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(9)
+            Me.Adapter.SelectCommand = Me.CommandCollection(8)
             If (name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("name")
             Else
@@ -10776,7 +10857,7 @@ Namespace ZuulDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataByInv(ByVal inv As String) As ZuulDataSet.Tbl_ComputerDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(10)
+            Me.Adapter.SelectCommand = Me.CommandCollection(9)
             If (inv Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -10836,7 +10917,8 @@ Namespace ZuulDataSetTableAdapters
                     ByVal Original_PurchaseDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Disposed As Boolean,  _
-                    ByVal Original_ADPath As String) As Integer
+                    ByVal Original_ADPath As String,  _
+                    ByVal Original_Processor As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ComputerID,Integer)
             If (Original_Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Name")
@@ -10936,6 +11018,13 @@ Namespace ZuulDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(28).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(Original_ADPath,String)
             End If
+            If (Original_Processor Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(31).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(Original_Processor,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10971,7 +11060,8 @@ Namespace ZuulDataSetTableAdapters
                     ByVal PurchaseDate As Global.System.Nullable(Of Date),  _
                     ByVal PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Disposed As Boolean,  _
-                    ByVal ADPath As String) As Integer
+                    ByVal ADPath As String,  _
+                    ByVal Processor As String) As Integer
             If (Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Name")
             Else
@@ -11044,6 +11134,11 @@ Namespace ZuulDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(15).Value = CType(ADPath,String)
             End If
+            If (Processor Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(Processor,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11080,6 +11175,7 @@ Namespace ZuulDataSetTableAdapters
                     ByVal PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Disposed As Boolean,  _
                     ByVal ADPath As String,  _
+                    ByVal Processor As String,  _
                     ByVal Original_ComputerID As Integer,  _
                     ByVal Original_Name As String,  _
                     ByVal Original_InventoryNumber As String,  _
@@ -11097,6 +11193,7 @@ Namespace ZuulDataSetTableAdapters
                     ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Disposed As Boolean,  _
                     ByVal Original_ADPath As String,  _
+                    ByVal Original_Processor As String,  _
                     ByVal ComputerID As Integer) As Integer
             If (Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Name")
@@ -11170,106 +11267,118 @@ Namespace ZuulDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(ADPath,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_ComputerID,Integer)
+            If (Processor Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Processor,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_ComputerID,Integer)
             If (Original_Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Name")
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Name,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Name,String)
             End If
             If (Original_InventoryNumber Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_InventoryNumber,String)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_InventoryNumber,String)
             End If
             If (Original_SerialNumber Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_SerialNumber,String)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_SerialNumber,String)
             End If
             If (Original_Make Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Make,String)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Make,String)
             End If
             If (Original_Model Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Model,String)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Model,String)
             End If
             If (Original_RamGB.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_RamGB.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_RamGB.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
             End If
             If (Original_HDDGB.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_HDDGB.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_HDDGB.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
             If (Original_SSD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_SSD.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_SSD.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_Location,Integer)
+            Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Location,Integer)
             If (Original_Supplier.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Supplier.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_Supplier.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_WiredMac Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_WiredMac,String)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_WiredMac,String)
             End If
             If (Original_WirelessMac Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_WirelessMac,String)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_WirelessMac,String)
             End If
             If (Original_PurchaseDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_PurchaseDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_PurchaseDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
             If (Original_PurchaseCost.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_PurchaseCost.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_PurchaseCost.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_Disposed,Boolean)
+            Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Disposed,Boolean)
             If (Original_ADPath Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_ADPath,String)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_ADPath,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(46).Value = CType(ComputerID,Integer)
+            If (Original_Processor Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_Processor,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(49).Value = CType(ComputerID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11306,6 +11415,7 @@ Namespace ZuulDataSetTableAdapters
                     ByVal PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Disposed As Boolean,  _
                     ByVal ADPath As String,  _
+                    ByVal Processor As String,  _
                     ByVal Original_ComputerID As Integer,  _
                     ByVal Original_Name As String,  _
                     ByVal Original_InventoryNumber As String,  _
@@ -11322,8 +11432,9 @@ Namespace ZuulDataSetTableAdapters
                     ByVal Original_PurchaseDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Disposed As Boolean,  _
-                    ByVal Original_ADPath As String) As Integer
-            Return Me.Update(Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Disposed, ADPath, Original_ComputerID, Original_Name, Original_InventoryNumber, Original_SerialNumber, Original_Make, Original_Model, Original_RamGB, Original_HDDGB, Original_SSD, Original_Location, Original_Supplier, Original_WiredMac, Original_WirelessMac, Original_PurchaseDate, Original_PurchaseCost, Original_Disposed, Original_ADPath, Original_ComputerID)
+                    ByVal Original_ADPath As String,  _
+                    ByVal Original_Processor As String) As Integer
+            Return Me.Update(Name, InventoryNumber, SerialNumber, Make, Model, RamGB, HDDGB, SSD, Location, Supplier, WiredMac, WirelessMac, PurchaseDate, PurchaseCost, Disposed, ADPath, Processor, Original_ComputerID, Original_Name, Original_InventoryNumber, Original_SerialNumber, Original_Make, Original_Model, Original_RamGB, Original_HDDGB, Original_SSD, Original_Location, Original_Supplier, Original_WiredMac, Original_WirelessMac, Original_PurchaseDate, Original_PurchaseCost, Original_Disposed, Original_ADPath, Original_Processor, Original_ComputerID)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11517,9 +11628,8 @@ Namespace ZuulDataSetTableAdapters
                     ByVal hdd As Global.System.Nullable(Of Integer),  _
                     ByVal ram As Global.System.Nullable(Of Integer),  _
                     ByVal model As String,  _
-                    ByVal make As String,  _
-                    ByVal id As Integer) As Integer
-            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(11)
+                    ByVal make As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(10)
             If (name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("name")
             Else
@@ -11597,7 +11707,6 @@ Namespace ZuulDataSetTableAdapters
             Else
                 command.Parameters(16).Value = CType(make,String)
             End If
-            command.Parameters(17).Value = CType(id,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -14980,26 +15089,26 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Lnk_ProjectorInfo] WHERE (([ID] = @Original_ID) AND ([Projecto"& _ 
-                "rID] = @Original_ProjectorID) AND ([InfoID] = @Original_InfoID))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Lnk_ProjectorInfo] WHERE (([ID] = @Original_ID) AND ([ProjectorID] ="& _ 
+                " @Original_ProjectorID) AND ([InfoID] = @Original_InfoID))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ProjectorID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectorID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InfoID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InfoID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Lnk_ProjectorInfo] ([ProjectorID], [InfoID]) VALUES (@Projecto"& _ 
-                "rID, @InfoID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, ProjectorID, InfoID FROM Lnk_ProjectorInfo WHERE (ID "& _ 
-                "= SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Lnk_ProjectorInfo] ([ProjectorID], [InfoID]) VALUES (@ProjectorID, @"& _ 
+                "InfoID);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, ProjectorID, InfoID FROM Lnk_ProjectorInfo WHERE (ID = SCOP"& _ 
+                "E_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProjectorID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectorID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InfoID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InfoID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Lnk_ProjectorInfo] SET [ProjectorID] = @ProjectorID, [InfoID] = @In"& _ 
-                "foID WHERE (([ID] = @Original_ID) AND ([ProjectorID] = @Original_ProjectorID) AN"& _ 
-                "D ([InfoID] = @Original_InfoID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, ProjectorID, InfoID FROM Lnk_Proje"& _ 
-                "ctorInfo WHERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Lnk_ProjectorInfo] SET [ProjectorID] = @ProjectorID, [InfoID] = @InfoID W"& _ 
+                "HERE (([ID] = @Original_ID) AND ([ProjectorID] = @Original_ProjectorID) AND ([In"& _ 
+                "foID] = @Original_InfoID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, ProjectorID, InfoID FROM Lnk_ProjectorIn"& _ 
+                "fo WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProjectorID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectorID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InfoID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InfoID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15022,7 +15131,7 @@ Namespace ZuulDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, ProjectorID, InfoID FROM dbo.Lnk_ProjectorInfo"
+            Me._commandCollection(0).CommandText = "SELECT        ID, ProjectorID, InfoID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Lnk_ProjectorInfo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -15286,8 +15395,6 @@ Namespace ZuulDataSetTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "Tbl_Projector"
             tableMapping.ColumnMappings.Add("ProjectID", "ProjectID")
-            tableMapping.ColumnMappings.Add("InventoryNumber", "InventoryNumber")
-            tableMapping.ColumnMappings.Add("SerialNumber", "SerialNumber")
             tableMapping.ColumnMappings.Add("Make", "Make")
             tableMapping.ColumnMappings.Add("Model", "Model")
             tableMapping.ColumnMappings.Add("Location", "Location")
@@ -15296,33 +15403,32 @@ Namespace ZuulDataSetTableAdapters
             tableMapping.ColumnMappings.Add("PurchaseCost", "PurchaseCost")
             tableMapping.ColumnMappings.Add("Disposed", "Disposed")
             tableMapping.ColumnMappings.Add("LastCleaned", "LastCleaned")
+            tableMapping.ColumnMappings.Add("Name", "Name")
+            tableMapping.ColumnMappings.Add("InventoryNumber", "InventoryNumber")
+            tableMapping.ColumnMappings.Add("SerialNumber", "SerialNumber")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Tbl_Projector] WHERE (([ProjectID] = @Original_ProjectID) AND "& _ 
-                "((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNumbe"& _ 
-                "r] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNumbe"& _ 
-                "r] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)) AND ((@IsNull_Make = 1"& _ 
-                " AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1 AND ["& _ 
-                "Model] IS NULL) OR ([Model] = @Original_Model)) AND ([Location] = @Original_Loca"& _ 
-                "tion) AND ((@IsNull_Supplier = 1 AND [Supplier] IS NULL) OR ([Supplier] = @Origi"& _ 
-                "nal_Supplier)) AND ((@IsNull_PurchaseDate = 1 AND [PurchaseDate] IS NULL) OR ([P"& _ 
-                "urchaseDate] = @Original_PurchaseDate)) AND ((@IsNull_PurchaseCost = 1 AND [Purc"& _ 
-                "haseCost] IS NULL) OR ([PurchaseCost] = @Original_PurchaseCost)) AND ([Disposed]"& _ 
-                " = @Original_Disposed) AND ((@IsNull_LastCleaned = 1 AND [LastCleaned] IS NULL) "& _ 
-                "OR ([LastCleaned] = @Original_LastCleaned)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Tbl_Projector] WHERE (([ProjectID] = @Original_ProjectID) AND ([Name"& _ 
+                "] = @Original_Name) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Ori"& _ 
+                "ginal_Make)) AND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Origina"& _ 
+                "l_Model)) AND ([Location] = @Original_Location) AND ([Supplier] = @Original_Supp"& _ 
+                "lier) AND ((@IsNull_PurchaseDate = 1 AND [PurchaseDate] IS NULL) OR ([PurchaseDa"& _ 
+                "te] = @Original_PurchaseDate)) AND ((@IsNull_PurchaseCost = 1 AND [PurchaseCost]"& _ 
+                " IS NULL) OR ([PurchaseCost] = @Original_PurchaseCost)) AND ([Disposed] = @Origi"& _ 
+                "nal_Disposed) AND ((@IsNull_LastCleaned = 1 AND [LastCleaned] IS NULL) OR ([Last"& _ 
+                "Cleaned] = @Original_LastCleaned)) AND ((@IsNull_InventoryNumber = 1 AND [Invent"& _ 
+                "oryNumber] IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@I"& _ 
+                "sNull_SerialNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Origina"& _ 
+                "l_SerialNumber)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ProjectID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InventoryNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SerialNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Make", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Make", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Model", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Model", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Location", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PurchaseDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PurchaseDate", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -15331,18 +15437,18 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastCleaned", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastCleaned", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastCleaned", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastCleaned", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InventoryNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SerialNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tbl_Projector] ([InventoryNumber], [SerialNumber], [Make], [Mo"& _ 
-                "del], [Location], [Supplier], [PurchaseDate], [PurchaseCost], [Disposed], [LastC"& _ 
-                "leaned]) VALUES (@InventoryNumber, @SerialNumber, @Make, @Model, @Location, @Sup"& _ 
-                "plier, @PurchaseDate, @PurchaseCost, @Disposed, @LastCleaned);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ProjectID"& _ 
-                ", InventoryNumber, SerialNumber, Make, Model, Location, Supplier, PurchaseDate, "& _ 
-                "PurchaseCost, Disposed, LastCleaned FROM Tbl_Projector WHERE (ProjectID = SCOPE_"& _ 
-                "IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Tbl_Projector] ([Name], [Make], [Model], [Location], [Supplier], [Pu"& _ 
+                "rchaseDate], [PurchaseCost], [Disposed], [LastCleaned], [InventoryNumber], [Seri"& _ 
+                "alNumber]) VALUES (@Name, @Make, @Model, @Location, @Supplier, @PurchaseDate, @P"& _ 
+                "urchaseCost, @Disposed, @LastCleaned, @InventoryNumber, @SerialNumber)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Make", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Model", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Location", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15351,29 +15457,27 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PurchaseCost", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseCost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastCleaned", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastCleaned", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tbl_Projector] SET [InventoryNumber] = @InventoryNumber, [SerialNum"& _ 
-                "ber] = @SerialNumber, [Make] = @Make, [Model] = @Model, [Location] = @Location, "& _ 
-                "[Supplier] = @Supplier, [PurchaseDate] = @PurchaseDate, [PurchaseCost] = @Purcha"& _ 
-                "seCost, [Disposed] = @Disposed, [LastCleaned] = @LastCleaned WHERE (([ProjectID]"& _ 
-                " = @Original_ProjectID) AND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] "& _ 
-                "IS NULL) OR ([InventoryNumber] = @Original_InventoryNumber)) AND ((@IsNull_Seria"& _ 
-                "lNumber = 1 AND [SerialNumber] IS NULL) OR ([SerialNumber] = @Original_SerialNum"& _ 
-                "ber)) AND ((@IsNull_Make = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) A"& _ 
-                "ND ((@IsNull_Model = 1 AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND "& _ 
-                "([Location] = @Original_Location) AND ((@IsNull_Supplier = 1 AND [Supplier] IS N"& _ 
-                "ULL) OR ([Supplier] = @Original_Supplier)) AND ((@IsNull_PurchaseDate = 1 AND [P"& _ 
-                "urchaseDate] IS NULL) OR ([PurchaseDate] = @Original_PurchaseDate)) AND ((@IsNul"& _ 
-                "l_PurchaseCost = 1 AND [PurchaseCost] IS NULL) OR ([PurchaseCost] = @Original_Pu"& _ 
-                "rchaseCost)) AND ([Disposed] = @Original_Disposed) AND ((@IsNull_LastCleaned = 1"& _ 
-                " AND [LastCleaned] IS NULL) OR ([LastCleaned] = @Original_LastCleaned)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
-                "T ProjectID, InventoryNumber, SerialNumber, Make, Model, Location, Supplier, Pur"& _ 
-                "chaseDate, PurchaseCost, Disposed, LastCleaned FROM Tbl_Projector WHERE (Project"& _ 
-                "ID = @ProjectID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Tbl_Projector] SET [Name] = @Name, [Make] = @Make, [Model] = @Model, [Loc"& _ 
+                "ation] = @Location, [Supplier] = @Supplier, [PurchaseDate] = @PurchaseDate, [Pur"& _ 
+                "chaseCost] = @PurchaseCost, [Disposed] = @Disposed, [LastCleaned] = @LastCleaned"& _ 
+                ", [InventoryNumber] = @InventoryNumber, [SerialNumber] = @SerialNumber WHERE ((["& _ 
+                "ProjectID] = @Original_ProjectID) AND ([Name] = @Original_Name) AND ((@IsNull_Ma"& _ 
+                "ke = 1 AND [Make] IS NULL) OR ([Make] = @Original_Make)) AND ((@IsNull_Model = 1"& _ 
+                " AND [Model] IS NULL) OR ([Model] = @Original_Model)) AND ([Location] = @Origina"& _ 
+                "l_Location) AND ([Supplier] = @Original_Supplier) AND ((@IsNull_PurchaseDate = 1"& _ 
+                " AND [PurchaseDate] IS NULL) OR ([PurchaseDate] = @Original_PurchaseDate)) AND ("& _ 
+                "(@IsNull_PurchaseCost = 1 AND [PurchaseCost] IS NULL) OR ([PurchaseCost] = @Orig"& _ 
+                "inal_PurchaseCost)) AND ([Disposed] = @Original_Disposed) AND ((@IsNull_LastClea"& _ 
+                "ned = 1 AND [LastCleaned] IS NULL) OR ([LastCleaned] = @Original_LastCleaned)) A"& _ 
+                "ND ((@IsNull_InventoryNumber = 1 AND [InventoryNumber] IS NULL) OR ([InventoryNu"& _ 
+                "mber] = @Original_InventoryNumber)) AND ((@IsNull_SerialNumber = 1 AND [SerialNu"& _ 
+                "mber] IS NULL) OR ([SerialNumber] = @Original_SerialNumber)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Make", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Model", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Location", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15382,17 +15486,15 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PurchaseCost", Global.System.Data.SqlDbType.Money, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseCost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastCleaned", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastCleaned", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ProjectID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InventoryNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SerialNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Make", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Make", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Make", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Model", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Model", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Model", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Location", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Location", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Supplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PurchaseDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PurchaseDate", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PurchaseDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -15401,7 +15503,10 @@ Namespace ZuulDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Disposed", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Disposed", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastCleaned", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastCleaned", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastCleaned", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastCleaned", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProjectID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_InventoryNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_InventoryNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SerialNumber", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SerialNumber", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SerialNumber", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15414,19 +15519,27 @@ Namespace ZuulDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ProjectID, InventoryNumber, SerialNumber, Make, Model, Location, Supplier,"& _ 
-                " PurchaseDate, PurchaseCost, Disposed, LastCleaned FROM dbo.Tbl_Projector"
+            Me._commandCollection(0).CommandText = "SELECT        ProjectID, Name, Make, Model, Location, Supplier, PurchaseDate, Pur"& _ 
+                "chaseCost, Disposed, LastCleaned, InventoryNumber, SerialNumber"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM           "& _ 
+                " Tbl_Projector"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        ProjectID, InventoryNumber, SerialNumber, Make, Model, Location, Su"& _ 
-                "pplier, PurchaseDate, PurchaseCost, Disposed, LastCleaned"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Tbl_P"& _ 
-                "rojector"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (InventoryNumber = @inv)"
+            Me._commandCollection(1).CommandText = "SELECT Disposed, InventoryNumber, LastCleaned, Location, Make, Model, Name, Proje"& _ 
+                "ctID, PurchaseCost, PurchaseDate, SerialNumber, Supplier FROM Tbl_Projector WHER"& _ 
+                "E (InventoryNumber = @inv)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@inv", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "InventoryNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        ProjectID, Name, Make, Model, Location, Supplier, PurchaseDate, Pur"& _ 
+                "chaseCost, Disposed, LastCleaned, InventoryNumber, SerialNumber"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM           "& _ 
+                " Tbl_Projector"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE ProjectID = @Pid"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Pid", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ProjectID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15471,6 +15584,18 @@ Namespace ZuulDataSetTableAdapters
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetProjectorByProjectorID(ByVal Pid As Integer) As ZuulDataSet.Tbl_ProjectorDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Pid,Integer)
+            Dim dataTable As ZuulDataSet.Tbl_ProjectorDataTable = New ZuulDataSet.Tbl_ProjectorDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataTable As ZuulDataSet.Tbl_ProjectorDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
@@ -15501,65 +15626,64 @@ Namespace ZuulDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ProjectID As Integer, ByVal Original_InventoryNumber As String, ByVal Original_SerialNumber As String, ByVal Original_Make As String, ByVal Original_Model As String, ByVal Original_Location As Integer, ByVal Original_Supplier As Global.System.Nullable(Of Integer), ByVal Original_PurchaseDate As Global.System.Nullable(Of Date), ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal), ByVal Original_Disposed As Boolean, ByVal Original_LastCleaned As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ProjectID As Integer, ByVal Original_Name As String, ByVal Original_Make As String, ByVal Original_Model As String, ByVal Original_Location As Integer, ByVal Original_Supplier As Integer, ByVal Original_PurchaseDate As Global.System.Nullable(Of Date), ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal), ByVal Original_Disposed As Boolean, ByVal Original_LastCleaned As Global.System.Nullable(Of Date), ByVal Original_InventoryNumber As String, ByVal Original_SerialNumber As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ProjectID,Integer)
-            If (Original_InventoryNumber Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
+            If (Original_Name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Name")
             Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_InventoryNumber,String)
-            End If
-            If (Original_SerialNumber Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_SerialNumber,String)
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Name,String)
             End If
             If (Original_Make Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Make,String)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Make,String)
             End If
             If (Original_Model Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_Model,String)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(Original_Model,String)
             End If
-            Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_Location,Integer)
-            If (Original_Supplier.HasValue = true) Then
+            Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_Location,Integer)
+            Me.Adapter.DeleteCommand.Parameters(7).Value = CType(Original_Supplier,Integer)
+            If (Original_PurchaseDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(Original_PurchaseDate.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PurchaseCost.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_Supplier.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_PurchaseCost.Value,Decimal)
             Else
                 Me.Adapter.DeleteCommand.Parameters(10).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
-            If (Original_PurchaseDate.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(Original_PurchaseDate.Value,Date)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(13).Value = Global.System.DBNull.Value
-            End If
-            If (Original_PurchaseCost.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(Original_PurchaseCost.Value,Decimal)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_Disposed,Boolean)
+            Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_Disposed,Boolean)
             If (Original_LastCleaned.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_LastCleaned.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_LastCleaned.Value,Date)
             Else
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (Original_InventoryNumber Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_InventoryNumber,String)
+            End If
+            If (Original_SerialNumber Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_SerialNumber,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -15580,48 +15704,49 @@ Namespace ZuulDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal InventoryNumber As String, ByVal SerialNumber As String, ByVal Make As String, ByVal Model As String, ByVal Location As Integer, ByVal Supplier As Global.System.Nullable(Of Integer), ByVal PurchaseDate As Global.System.Nullable(Of Date), ByVal PurchaseCost As Global.System.Nullable(Of Decimal), ByVal Disposed As Boolean, ByVal LastCleaned As Global.System.Nullable(Of Date)) As Integer
-            If (InventoryNumber Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+        Public Overloads Overridable Function Insert(ByVal Name As String, ByVal Make As String, ByVal Model As String, ByVal Location As Integer, ByVal Supplier As Integer, ByVal PurchaseDate As Global.System.Nullable(Of Date), ByVal PurchaseCost As Global.System.Nullable(Of Decimal), ByVal Disposed As Boolean, ByVal LastCleaned As Global.System.Nullable(Of Date), ByVal InventoryNumber As String, ByVal SerialNumber As String) As Integer
+            If (Name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Name")
             Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(InventoryNumber,String)
-            End If
-            If (SerialNumber Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(SerialNumber,String)
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(Name,String)
             End If
             If (Make Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Make,String)
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Make,String)
             End If
             If (Model Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(Model,String)
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Model,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Location,Integer)
-            If (Supplier.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(Supplier.Value,Integer)
+            Me.Adapter.InsertCommand.Parameters(3).Value = CType(Location,Integer)
+            Me.Adapter.InsertCommand.Parameters(4).Value = CType(Supplier,Integer)
+            If (PurchaseDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(PurchaseDate.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (PurchaseDate.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(PurchaseDate.Value,Date)
+            If (PurchaseCost.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(PurchaseCost.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (PurchaseCost.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(PurchaseCost.Value,Decimal)
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.InsertCommand.Parameters(8).Value = CType(Disposed,Boolean)
+            Me.Adapter.InsertCommand.Parameters(7).Value = CType(Disposed,Boolean)
             If (LastCleaned.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(LastCleaned.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(LastCleaned.Value,Date)
             Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (InventoryNumber Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(InventoryNumber,String)
+            End If
+            If (SerialNumber Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(SerialNumber,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -15643,130 +15768,130 @@ Namespace ZuulDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
-                    ByVal InventoryNumber As String,  _
-                    ByVal SerialNumber As String,  _
+                    ByVal Name As String,  _
                     ByVal Make As String,  _
                     ByVal Model As String,  _
                     ByVal Location As Integer,  _
-                    ByVal Supplier As Global.System.Nullable(Of Integer),  _
+                    ByVal Supplier As Integer,  _
                     ByVal PurchaseDate As Global.System.Nullable(Of Date),  _
                     ByVal PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Disposed As Boolean,  _
                     ByVal LastCleaned As Global.System.Nullable(Of Date),  _
+                    ByVal InventoryNumber As String,  _
+                    ByVal SerialNumber As String,  _
                     ByVal Original_ProjectID As Integer,  _
-                    ByVal Original_InventoryNumber As String,  _
-                    ByVal Original_SerialNumber As String,  _
+                    ByVal Original_Name As String,  _
                     ByVal Original_Make As String,  _
                     ByVal Original_Model As String,  _
                     ByVal Original_Location As Integer,  _
-                    ByVal Original_Supplier As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Supplier As Integer,  _
                     ByVal Original_PurchaseDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal),  _
                     ByVal Original_Disposed As Boolean,  _
                     ByVal Original_LastCleaned As Global.System.Nullable(Of Date),  _
-                    ByVal ProjectID As Integer) As Integer
-            If (InventoryNumber Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+                    ByVal Original_InventoryNumber As String,  _
+                    ByVal Original_SerialNumber As String) As Integer
+            If (Name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Name")
             Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(InventoryNumber,String)
-            End If
-            If (SerialNumber Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(SerialNumber,String)
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(Name,String)
             End If
             If (Make Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Make,String)
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Make,String)
             End If
             If (Model Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Model,String)
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Model,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Location,Integer)
-            If (Supplier.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Supplier.Value,Integer)
+            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Location,Integer)
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Supplier,Integer)
+            If (PurchaseDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(PurchaseDate.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (PurchaseDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(PurchaseDate.Value,Date)
+            If (PurchaseCost.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(PurchaseCost.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (PurchaseCost.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(PurchaseCost.Value,Decimal)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Disposed,Boolean)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Disposed,Boolean)
             If (LastCleaned.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(LastCleaned.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(LastCleaned.Value,Date)
             Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (InventoryNumber Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
-            End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_ProjectID,Integer)
-            If (Original_InventoryNumber Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_InventoryNumber,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(InventoryNumber,String)
             End If
-            If (Original_SerialNumber Is Nothing) Then
+            If (SerialNumber Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(SerialNumber,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ProjectID,Integer)
+            If (Original_Name Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_Name")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Name,String)
+            End If
+            If (Original_Make Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_SerialNumber,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Make,String)
             End If
-            If (Original_Make Is Nothing) Then
+            If (Original_Model Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Make,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Model,String)
             End If
-            If (Original_Model Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Model,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Location,Integer)
-            If (Original_Supplier.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Supplier.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            End If
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Location,Integer)
+            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Supplier,Integer)
             If (Original_PurchaseDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_PurchaseDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_PurchaseDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
             If (Original_PurchaseCost.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_PurchaseCost.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_Disposed,Boolean)
+            If (Original_LastCleaned.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_PurchaseCost.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_LastCleaned.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Disposed,Boolean)
-            If (Original_LastCleaned.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_LastCleaned.Value,Date)
+            If (Original_InventoryNumber Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_InventoryNumber,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(29).Value = CType(ProjectID,Integer)
+            If (Original_SerialNumber Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_SerialNumber,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15780,35 +15905,6 @@ Namespace ZuulDataSetTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal InventoryNumber As String,  _
-                    ByVal SerialNumber As String,  _
-                    ByVal Make As String,  _
-                    ByVal Model As String,  _
-                    ByVal Location As Integer,  _
-                    ByVal Supplier As Global.System.Nullable(Of Integer),  _
-                    ByVal PurchaseDate As Global.System.Nullable(Of Date),  _
-                    ByVal PurchaseCost As Global.System.Nullable(Of Decimal),  _
-                    ByVal Disposed As Boolean,  _
-                    ByVal LastCleaned As Global.System.Nullable(Of Date),  _
-                    ByVal Original_ProjectID As Integer,  _
-                    ByVal Original_InventoryNumber As String,  _
-                    ByVal Original_SerialNumber As String,  _
-                    ByVal Original_Make As String,  _
-                    ByVal Original_Model As String,  _
-                    ByVal Original_Location As Integer,  _
-                    ByVal Original_Supplier As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_PurchaseDate As Global.System.Nullable(Of Date),  _
-                    ByVal Original_PurchaseCost As Global.System.Nullable(Of Decimal),  _
-                    ByVal Original_Disposed As Boolean,  _
-                    ByVal Original_LastCleaned As Global.System.Nullable(Of Date)) As Integer
-            Return Me.Update(InventoryNumber, SerialNumber, Make, Model, Location, Supplier, PurchaseDate, PurchaseCost, Disposed, LastCleaned, Original_ProjectID, Original_InventoryNumber, Original_SerialNumber, Original_Make, Original_Model, Original_Location, Original_Supplier, Original_PurchaseDate, Original_PurchaseCost, Original_Disposed, Original_LastCleaned, Original_ProjectID)
         End Function
     End Class
     

@@ -3,6 +3,7 @@
 Public Class ComputerDetails
     Dim defaultCid As Integer = 0
     Dim searchPaused As Boolean = False
+    Dim CurrentComputerRow As DataRow
     Private Sub AddHandlers()
         Dim box As TextBox
         Dim cbox As ComboBox
@@ -90,6 +91,7 @@ Public Class ComputerDetails
     End Sub
 
     Private Sub DisplayComputer(ByVal computerrow As DataRow)
+        CurrentComputerRow = computerrow
         searchPaused = True
         Dim LocationTableAdapter As New ZuulDataSetTableAdapters.Tbl_LocationTableAdapter
         Dim SupplierTableAdapter As New ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter
@@ -98,8 +100,6 @@ Public Class ComputerDetails
         Dim SupplierNumber As Integer = computerrow.Field(Of Integer)("Supplier")
         PurchaseDateBox.Text = computerrow.Field(Of Date)("PurchaseDate").ToShortDateString
         PurchaseCostBox.Text = computerrow.Field(Of Decimal)("PurchaseCost").ToString("£0.00")
-        MakeBox.Text = computerrow.Field(Of String)("Make").ToString
-
         Dim LocationName As String = LocationTableAdapter.GetLocationName(LocationNumber).Rows(0).Field(Of String)("LocationName")
         LocationCombo.SelectedIndex = LocationCombo.FindString(LocationName)
         Dim SupplierName As String = SupplierTableAdapter.GetSupplierName(SupplierNumber).Rows(0).Field(Of String)("Name")
@@ -111,23 +111,30 @@ Public Class ComputerDetails
         Else
             PictureBox1.Image = My.Resources.Computer
         End If
-        InventoryBox.Text = computerrow.Field(Of String)("InventoryNumber")
-        SerialNumberBox.Text = computerrow.Field(Of String)("SerialNumber")
 
-        NameBox.Text = computerrow.Field(Of String)("Name")
-        ModelBox.Text = computerrow.Field(Of String)("Model")
+        If Not SearchName.Checked Then NameBox.Text = computerrow.Field(Of String)("Name")
+        If Not SearchMake.Checked Then MakeBox.Text = computerrow.Field(Of String)("Make").ToString
+        If Not SearchInv.Checked Then InventoryBox.Text = computerrow.Field(Of String)("InventoryNumber")
+        If Not SearchSerial.Checked Then SerialNumberBox.Text = computerrow.Field(Of String)("SerialNumber")
+        If Not SearchModel.Checked Then ModelBox.Text = computerrow.Field(Of String)("Model")
+        ProcessorBox.Text = computerrow.Field(Of String)("Processor")
         RamBox.Text = computerrow.Field(Of Integer)("RamGB").ToString
         HDDBox.Text = computerrow.Field(Of Integer)("HDDGB").ToString
         SSDBox.Checked = computerrow.Field(Of Boolean)("SSD")
         DisposedTick.Checked = computerrow.Field(Of Boolean)("Disposed")
         WiredMACBox.Text = computerrow.Field(Of String)("WiredMac")
         WirelessMACBox.Text = computerrow.Field(Of String)("WirelessMac")
-        ADPathBox.Text = OUToPath(computerrow.Field(Of String)("ADPath"))
-        If DisposedTick.Checked Then
-            PictureBox1.Image = My.Resources.DisposedComputer
-        Else
-            PictureBox1.Image = My.Resources.Computer
-        End If
+        Try
+            ADPathBox.Text = OUToPath(computerrow.Field(Of String)("ADPath"))
+        Catch ex As Exception
+            ADPathBox.Text = "Unparsable ADPath"
+        End Try
+
+        'If DisposedTick.Checked Then
+        '    PictureBox1.Image = My.Resources.DisposedComputer
+        'Else
+        '    PictureBox1.Image = My.Resources.Computer
+        'End If
         SaveComputerButton.Enabled = False
         searchPaused = False
     End Sub
@@ -163,7 +170,7 @@ Public Class ComputerDetails
         Dim sup As DataRow = DirectCast(SupplierCombo.SelectedItem, DataRowView).Row
         Dim cost As Decimal
         cost = Decimal.Parse(PurchaseCostBox.Text.Replace("£", ""))
-        'Tbl_ComputerTableAdapter.UpdateComputerByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), cost, PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, pid)
+        Tbl_ComputerTableAdapter.UpdateDetails(NameBox.Text, InventoryBox.Text, SerialNumberBox.Text, ProcessorBox.Text, ADPathBox.Text, IsDisposed, Decimal.Parse(PurchaseCostBox.Text.Replace("£", "")), PurchaseDateBox.Text, WirelessMACBox.Text, WiredMACBox.Text, sup.Field(Of Integer)("SupplierID"), loc.Field(Of Integer)("LocationID"), SSDBox.Checked, Integer.Parse(HDDBox.Text), Integer.Parse(RamBox.Text), ModelBox.Text, MakeBox.Text)
         Dim name As String = NameBox.Text
         ComputerListBox.SelectedIndex = -1
         FillByDisposedButton()
@@ -239,31 +246,139 @@ Public Class ComputerDetails
         FillByDisposedButton()
     End Sub
 
-    Private Sub FilterBox_TextChanged(sender As Object, e As EventArgs) Handles FilterBox.TextChanged
-        Tbl_ComputerTableAdapter.FillByPartialName(Me.ZuulDataSet.Tbl_Computer, "%" & FilterBox.Text & "%")
+#Region "Search from form"
+    ' Handle Check Changed
+    Private Sub SearchMake_CheckedChanged(sender As Object, e As EventArgs) Handles SearchMake.CheckedChanged
+        If SearchMake.Checked Then
+            MakeBox.Text = ""
+            MakeBox.BackColor = Color.AliceBlue
+            SearchInv.Checked = False
+            SearchSerial.Checked = False
+            SearchModel.Checked = False
+            SearchName.Checked = False
+        Else
+            MakeBox.Text = CurrentComputerRow.Field(Of String)("Make").ToString
+            MakeBox.BackColor = Color.White
+            TblComputerBindingSource.Filter = ""
+        End If
+    End Sub
+    Private Sub SearchModel_CheckedChanged(sender As Object, e As EventArgs) Handles SearchModel.CheckedChanged
+        If SearchModel.Checked Then
+            ModelBox.Text = ""
+            ModelBox.BackColor = Color.AliceBlue
+            SearchMake.Checked = False
+            SearchInv.Checked = False
+            SearchSerial.Checked = False
+            SearchName.Checked = False
+        Else
+            ModelBox.Text = Currentcomputerrow.Field(Of String)("Model")
+            ModelBox.BackColor = Color.White
+            TblComputerBindingSource.Filter = ""
+        End If
+    End Sub
+    Private Sub SearchName_CheckedChanged(sender As Object, e As EventArgs) Handles SearchName.CheckedChanged
+        If SearchName.Checked Then
+            NameBox.Text = ""
+            NameBox.BackColor = Color.AliceBlue
+            SearchModel.Checked = False
+            SearchMake.Checked = False
+            SearchInv.Checked = False
+            SearchSerial.Checked = False
+        Else
+            NameBox.Text = CurrentComputerRow.Field(Of String)("Name")
+            NameBox.BackColor = Color.White
+            TblComputerBindingSource.Filter = ""
+        End If
+    End Sub
+    Private Sub SearchSerial_CheckedChanged(sender As Object, e As EventArgs) Handles SearchSerial.CheckedChanged
+        If SearchSerial.Checked Then
+            SerialNumberBox.Text = ""
+            SerialNumberBox.BackColor = Color.AliceBlue
+            SearchModel.Checked = False
+            SearchMake.Checked = False
+            SearchInv.Checked = False
+            SearchName.Checked = False
+        Else
+            SerialNumberBox.Text = CurrentComputerRow.Field(Of String)("SerialNumber")
+            SerialNumberBox.BackColor = Color.White
+            TblComputerBindingSource.Filter = ""
+        End If
+    End Sub
+    Private Sub SearchInventory_CheckedChanged(sender As Object, e As EventArgs) Handles SearchInv.CheckedChanged
+        If SearchInv.Checked Then
+            InventoryBox.Text = ""
+            InventoryBox.BackColor = Color.AliceBlue
+            SearchModel.Checked = False
+            SearchMake.Checked = False
+            SearchSerial.Checked = False
+            SearchName.Checked = False
+        Else
+            InventoryBox.Text = CurrentComputerRow.Field(Of String)("InventoryNumber")
+            InventoryBox.BackColor = Color.White
+            TblComputerBindingSource.Filter = ""
+        End If
     End Sub
 
+    ' Handle searches
     Private Sub MakeBox_TextChanged(sender As Object, e As EventArgs) Handles MakeBox.TextChanged
         If SearchMake.Checked And Not searchPaused Then
-            Tbl_ComputerTableAdapter.FillByMake(Me.ZuulDataSet.Tbl_Computer, "%" & MakeBox.Text & "%")
-            If ZuulDataSet.Tbl_Computer.Rows.Count = 1 Then
-                Dim computerrow As DataRow
-                Try
-                    computerrow = ZuulDataSet.Tbl_Computer.Rows(0)
-                    defaultCid = computerrow.Field(Of Integer)("ComputerID")
-                    DisplayComputer(computerrow)
-                    DisplayNotesForComputer(computerrow)
-                Catch ex As Exception
-                    ClearDisplay()
-                    SelectByIndex(-1)
-                End Try
-            End If
+            TblComputerBindingSource.Filter = "[Make] like '%" & MakeBox.Text & "%'"
         Else
             SaveComputerButton.Enabled = True
         End If
     End Sub
 
-    Private Sub ComputerListBox_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ComputerListBox.MouseDoubleClick
+    Private Sub SerialNumberBox_TextChanged(sender As Object, e As EventArgs) Handles SerialNumberBox.TextChanged
+        If SearchSerial.Checked And Not searchPaused Then
+            TblComputerBindingSource.Filter = "[SerialNumber] like '%" & SerialNumberBox.Text & "%'"
+        Else
+            SaveComputerButton.Enabled = True
+        End If
+    End Sub
+
+    Private Sub ModelBox_TextChanged(sender As Object, e As EventArgs) Handles ModelBox.TextChanged
+        If SearchModel.Checked And Not searchPaused Then
+            TblComputerBindingSource.Filter = "[Model] like '%" & ModelBox.Text & "%'"
+        Else
+            SaveComputerButton.Enabled = True
+        End If
+    End Sub
+
+    Private Sub NameBox_TextChanged(sender As Object, e As EventArgs) Handles NameBox.TextChanged
+        If SearchName.Checked And Not searchPaused Then
+            TblComputerBindingSource.Filter = "[Name] like '%" & NameBox.Text & "%'"
+        Else
+            SaveComputerButton.Enabled = True
+        End If
+    End Sub
+
+    Private Sub InventoryBox_TextChanged(sender As Object, e As EventArgs) Handles InventoryBox.TextChanged
+        If SearchInv.Checked And Not searchPaused Then
+            TblComputerBindingSource.Filter = "[InventoryNumber] like '%" & InventoryBox.Text & "%'"
+        Else
+            SaveComputerButton.Enabled = True
+        End If
+    End Sub
+
+#End Region
+
+    Private Sub LiveCheck_Click(sender As Object, e As EventArgs) Handles LiveCheck.Click
+        Dim res As ManagementObjectCollection = GetWMI(NameBox.Text)
+        WMIOut.Items.Clear()
+
+        For Each m As ManagementObject In res
+            For Each mp As PropertyData In m.Properties
+                WMIOut.Items.Add(String.Format("{0} - {1}", mp.Name, m(mp.Name)))
+            Next
+        Next
+        Dim dsize As String = GetWMI("netserv-stn1", "size", "win32_logicaldisk where deviceID='c:'")
+        Dim fsize As String = GetWMI("netserv-stn1", "freespace", "win32_logicaldisk where deviceID='c:'")
+        Dim intsize As Integer = CInt(Math.Abs(Int64.Parse(dsize) / (1000 * 1000 * 1000)))
+        Dim fintsize As Integer = CInt(Math.Abs(Int64.Parse(fsize) / (1024 * 1024 * 1024)))
+        ' MsgBox(String.Format("C = {1}GB ({3} free) {0}Serial = {2}", vbCrLf, intsize, GetWMI("netserv-stn1", "SerialNumber", "win32_SystemEnclosure"), fintsize))
+    End Sub
+
+    Private Sub ComputerListBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComputerListBox.SelectedValueChanged
         If ComputerListBox.SelectedIndex > -1 Then
             Try
                 Dim computerrow As DataRow = GetSelectedComputer()
@@ -279,19 +394,23 @@ Public Class ComputerDetails
         End If
     End Sub
 
-    Private Sub LiveCheck_Click(sender As Object, e As EventArgs) Handles LiveCheck.Click
-        Dim res As ManagementObjectCollection = GetWMI("laptop-182")
-        WMIOut.Items.Clear()
+    Private Sub ComputerListBox_MouseClick(sender As Object, e As MouseEventArgs) Handles ComputerListBox.MouseClick
+        If ComputerListBox.SelectedIndex > -1 Then
+            Try
+                Dim computerrow As DataRow = GetSelectedComputer()
+                SearchModel.Checked = False
+                SearchMake.Checked = False
+                SearchInv.Checked = False
+                SearchSerial.Checked = False
+                SearchName.Checked = False
+                SelectComputerByName(computerrow.Field(Of String)("Name"))
+            Catch ex As Exception
+                ClearDisplay()
+                SelectByIndex(-1)
+            End Try
+        Else
+            ClearDisplay()
+        End If
 
-        For Each m As ManagementObject In res
-            For Each mp As PropertyData In m.Properties
-                WMIOut.Items.Add(String.Format("{0} - {1}", mp.Name, m(mp.Name)))
-            Next
-        Next
-        Dim dsize As String = GetWMI("netserv-stn1", "size", "win32_logicaldisk where deviceID='c:'")
-        Dim fsize As String = GetWMI("netserv-stn1", "freespace", "win32_logicaldisk where deviceID='c:'")
-        Dim intsize As Integer = CInt(Math.Abs(Int64.Parse(dsize) / (1000 * 1000 * 1000)))
-        Dim fintsize As Integer = CInt(Math.Abs(Int64.Parse(fsize) / (1024 * 1024 * 1024)))
-        ' MsgBox(String.Format("C = {1}GB ({3} free) {0}Serial = {2}", vbCrLf, intsize, GetWMI("netserv-stn1", "SerialNumber", "win32_SystemEnclosure"), fintsize))
     End Sub
 End Class
