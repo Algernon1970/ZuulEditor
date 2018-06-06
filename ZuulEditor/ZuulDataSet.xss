@@ -17,7 +17,7 @@
     <Shape ID="DesignTable:Tbl_Printer" ZOrder="12" X="704" Y="293" Height="419" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Tbl_Supplier" ZOrder="28" X="366" Y="1019" Height="153" Width="216" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:Lnk_ProjectorInfo" ZOrder="11" X="1" Y="-31" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
-    <Shape ID="DesignTable:Tbl_Projector" ZOrder="3" X="64" Y="531" Height="343" Width="222" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:Tbl_Projector" ZOrder="3" X="64" Y="531" Height="400" Width="221" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:Tbl_Files" ZOrder="10" X="498" Y="-30" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
     <Shape ID="DesignTable:Tbl_Equipment" ZOrder="7" X="1083" Y="669" Height="381" Width="231" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>

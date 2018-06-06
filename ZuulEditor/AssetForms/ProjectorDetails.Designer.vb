@@ -31,6 +31,7 @@ Partial Class ProjectorDetails
         Me.ZuulDataSet = New ZuulEditor.ZuulDataSet()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.LastCleanedBox = New System.Windows.Forms.TextBox()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.SearchModelRadio = New System.Windows.Forms.RadioButton()
         Me.SearchInvRadio = New System.Windows.Forms.RadioButton()
@@ -45,10 +46,12 @@ Partial Class ProjectorDetails
         Me.DisposedTick = New System.Windows.Forms.CheckBox()
         Me.NameLabel = New System.Windows.Forms.Label()
         Me.PurchaseCostBox = New System.Windows.Forms.TextBox()
-        Me.PurchaseDateBox = New System.Windows.Forms.TextBox()
+        Me.PurchaseDateBox1 = New System.Windows.Forms.TextBox()
         Me.SupplierCombo = New System.Windows.Forms.ComboBox()
+        Me.TblSupplierBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MakeLabel = New System.Windows.Forms.Label()
         Me.LocationCombo = New System.Windows.Forms.ComboBox()
+        Me.TblLocationBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.ModelLabel = New System.Windows.Forms.Label()
         Me.ModelBox = New System.Windows.Forms.TextBox()
         Me.LocationLabel = New System.Windows.Forms.Label()
@@ -68,14 +71,13 @@ Partial Class ProjectorDetails
         Me.Tbl_ProjectorTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_ProjectorTableAdapter()
         Me.TblPrinterBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ZuulDataSet1 = New ZuulEditor.ZuulDataSet()
-        Me.TblSupplierBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.TblLocationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TblSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Tbl_PrinterTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter()
         Me.Tbl_SupplierTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter()
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Lnk_PrinterInfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter()
         Me.Tbl_InfoTableAdapter1 = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_InfoTableAdapter()
+        Me.LastCleanedButton = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TblProjectorBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,15 +87,15 @@ Partial Class ProjectorDetails
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TblSupplierBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TblLocationBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.ProjectorInfoList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TblSupplierBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblLocationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -180,6 +182,8 @@ Partial Class ProjectorDetails
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.LastCleanedButton)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.LastCleanedBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.RadioButton1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchModelRadio)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SearchInvRadio)
@@ -194,7 +198,7 @@ Partial Class ProjectorDetails
         Me.SplitContainer1.Panel1.Controls.Add(Me.DisposedTick)
         Me.SplitContainer1.Panel1.Controls.Add(Me.NameLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.PurchaseCostBox)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.PurchaseDateBox)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.PurchaseDateBox1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.SupplierCombo)
         Me.SplitContainer1.Panel1.Controls.Add(Me.MakeLabel)
         Me.SplitContainer1.Panel1.Controls.Add(Me.LocationCombo)
@@ -212,6 +216,13 @@ Partial Class ProjectorDetails
         Me.SplitContainer1.Size = New System.Drawing.Size(726, 455)
         Me.SplitContainer1.SplitterDistance = 195
         Me.SplitContainer1.TabIndex = 18
+        '
+        'LastCleanedBox
+        '
+        Me.LastCleanedBox.Location = New System.Drawing.Point(328, 162)
+        Me.LastCleanedBox.Name = "LastCleanedBox"
+        Me.LastCleanedBox.Size = New System.Drawing.Size(100, 20)
+        Me.LastCleanedBox.TabIndex = 33
         '
         'RadioButton1
         '
@@ -281,7 +292,7 @@ Partial Class ProjectorDetails
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.ZuulEditor.My.Resources.Resources.Projector
-        Me.PictureBox1.Location = New System.Drawing.Point(315, 75)
+        Me.PictureBox1.Location = New System.Drawing.Point(353, 75)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(150, 108)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -346,21 +357,29 @@ Partial Class ProjectorDetails
         Me.PurchaseCostBox.Size = New System.Drawing.Size(100, 20)
         Me.PurchaseCostBox.TabIndex = 17
         '
-        'PurchaseDateBox
+        'PurchaseDateBox1
         '
-        Me.PurchaseDateBox.Location = New System.Drawing.Point(596, 117)
-        Me.PurchaseDateBox.Name = "PurchaseDateBox"
-        Me.PurchaseDateBox.Size = New System.Drawing.Size(100, 20)
-        Me.PurchaseDateBox.TabIndex = 16
+        Me.PurchaseDateBox1.Location = New System.Drawing.Point(596, 117)
+        Me.PurchaseDateBox1.Name = "PurchaseDateBox1"
+        Me.PurchaseDateBox1.Size = New System.Drawing.Size(100, 20)
+        Me.PurchaseDateBox1.TabIndex = 16
         '
         'SupplierCombo
         '
+        Me.SupplierCombo.BackColor = System.Drawing.Color.White
+        Me.SupplierCombo.DataSource = Me.TblSupplierBindingSource2
         Me.SupplierCombo.DisplayMember = "Name"
+        Me.SupplierCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.SupplierCombo.FormattingEnabled = True
         Me.SupplierCombo.Location = New System.Drawing.Point(596, 167)
         Me.SupplierCombo.Name = "SupplierCombo"
         Me.SupplierCombo.Size = New System.Drawing.Size(121, 21)
         Me.SupplierCombo.TabIndex = 15
+        '
+        'TblSupplierBindingSource2
+        '
+        Me.TblSupplierBindingSource2.DataMember = "Tbl_Supplier"
+        Me.TblSupplierBindingSource2.DataSource = Me.ZuulDataSet
         '
         'MakeLabel
         '
@@ -373,12 +392,21 @@ Partial Class ProjectorDetails
         '
         'LocationCombo
         '
+        Me.LocationCombo.BackColor = System.Drawing.Color.White
+        Me.LocationCombo.DataSource = Me.TblLocationBindingSource1
         Me.LocationCombo.DisplayMember = "LocationName"
+        Me.LocationCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.LocationCombo.FormattingEnabled = True
         Me.LocationCombo.Location = New System.Drawing.Point(58, 162)
         Me.LocationCombo.Name = "LocationCombo"
         Me.LocationCombo.Size = New System.Drawing.Size(155, 21)
         Me.LocationCombo.TabIndex = 14
+        '
+        'TblLocationBindingSource1
+        '
+        Me.TblLocationBindingSource1.DataMember = "Tbl_Location"
+        Me.TblLocationBindingSource1.DataSource = Me.ZuulDataSet
+        Me.TblLocationBindingSource1.Sort = "LocationName"
         '
         'ModelLabel
         '
@@ -557,20 +585,10 @@ Partial Class ProjectorDetails
         Me.ZuulDataSet1.DataSetName = "ZuulDataSet"
         Me.ZuulDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'TblSupplierBindingSource1
-        '
-        Me.TblSupplierBindingSource1.DataMember = "Tbl_Supplier"
-        Me.TblSupplierBindingSource1.DataSource = Me.ZuulDataSet1
-        '
         'TblLocationBindingSource
         '
         Me.TblLocationBindingSource.DataMember = "Tbl_Location"
         Me.TblLocationBindingSource.DataSource = Me.ZuulDataSet1
-        '
-        'TblSupplierBindingSource
-        '
-        Me.TblSupplierBindingSource.DataSource = Me.ZuulDataSet1
-        Me.TblSupplierBindingSource.Position = 0
         '
         'Tbl_PrinterTableAdapter
         '
@@ -592,6 +610,15 @@ Partial Class ProjectorDetails
         '
         Me.Tbl_InfoTableAdapter1.ClearBeforeFill = True
         '
+        'LastCleanedButton
+        '
+        Me.LastCleanedButton.Location = New System.Drawing.Point(241, 160)
+        Me.LastCleanedButton.Name = "LastCleanedButton"
+        Me.LastCleanedButton.Size = New System.Drawing.Size(81, 23)
+        Me.LastCleanedButton.TabIndex = 34
+        Me.LastCleanedButton.Text = "Last Cleaned"
+        Me.LastCleanedButton.UseVisualStyleBackColor = True
+        '
         'ProjectorDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -611,6 +638,8 @@ Partial Class ProjectorDetails
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TblSupplierBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TblLocationBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
         CType(Me.ProjectorInfoList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
@@ -618,9 +647,7 @@ Partial Class ProjectorDetails
         Me.TableLayoutPanel3.PerformLayout()
         CType(Me.TblPrinterBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZuulDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TblSupplierBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TblLocationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -645,7 +672,7 @@ Partial Class ProjectorDetails
     Friend WithEvents DisposedTick As CheckBox
     Friend WithEvents NameLabel As Label
     Friend WithEvents PurchaseCostBox As TextBox
-    Friend WithEvents PurchaseDateBox As TextBox
+    Friend WithEvents PurchaseDateBox1 As TextBox
     Friend WithEvents SupplierCombo As ComboBox
     Friend WithEvents MakeLabel As Label
     Friend WithEvents LocationCombo As ComboBox
@@ -670,12 +697,14 @@ Partial Class ProjectorDetails
     Friend WithEvents Tbl_ProjectorTableAdapter As ZuulDataSetTableAdapters.Tbl_ProjectorTableAdapter
     Friend WithEvents TblPrinterBindingSource As BindingSource
     Friend WithEvents ZuulDataSet1 As ZuulDataSet
-    Friend WithEvents TblSupplierBindingSource1 As BindingSource
     Friend WithEvents TblLocationBindingSource As BindingSource
-    Friend WithEvents TblSupplierBindingSource As BindingSource
     Friend WithEvents Tbl_PrinterTableAdapter As ZuulDataSetTableAdapters.Tbl_PrinterTableAdapter
     Friend WithEvents Tbl_SupplierTableAdapter As ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter
     Friend WithEvents Tbl_LocationTableAdapter As ZuulDataSetTableAdapters.Tbl_LocationTableAdapter
     Friend WithEvents Lnk_PrinterInfoTableAdapter1 As ZuulDataSetTableAdapters.Lnk_PrinterInfoTableAdapter
     Friend WithEvents Tbl_InfoTableAdapter1 As ZuulDataSetTableAdapters.Tbl_InfoTableAdapter
+    Friend WithEvents TblLocationBindingSource1 As BindingSource
+    Friend WithEvents TblSupplierBindingSource2 As BindingSource
+    Friend WithEvents LastCleanedBox As TextBox
+    Friend WithEvents LastCleanedButton As Button
 End Class

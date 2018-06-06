@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ComputerDetails
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,20 +20,13 @@ Partial Class ComputerDetails
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.ComputerInfoList = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.LiveCheck = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.CreateComputerButton = New System.Windows.Forms.Button()
-        Me.SaveComputerButton = New System.Windows.Forms.Button()
-        Me.DeleteComputerButton = New System.Windows.Forms.Button()
-        Me.ShowDisposedButton = New System.Windows.Forms.CheckBox()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.InventoryBox = New System.Windows.Forms.TextBox()
         Me.SerialNumberBox = New System.Windows.Forms.TextBox()
@@ -82,17 +75,22 @@ Partial Class ComputerDetails
         Me.NameBox = New System.Windows.Forms.TextBox()
         Me.PurchaseDateLabel = New System.Windows.Forms.Label()
         Me.PurchaseCostLabel = New System.Windows.Forms.Label()
-        Me.WMIOut = New System.Windows.Forms.ListBox()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.CreateComputerButton = New System.Windows.Forms.Button()
+        Me.SaveComputerButton = New System.Windows.Forms.Button()
+        Me.DeleteComputerButton = New System.Windows.Forms.Button()
+        Me.ShowDisposedButton = New System.Windows.Forms.CheckBox()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Tbl_ComputerTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_ComputerTableAdapter()
         Me.Tbl_LocationTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_LocationTableAdapter()
         Me.Tbl_SupplierTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_SupplierTableAdapter()
         Me.Lnk_ComputerInfoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Lnk_ComputerInfoTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Lnk_ComputerInfoTableAdapter()
         Me.TableAdapterManager = New ZuulEditor.ZuulDataSetTableAdapters.TableAdapterManager()
+        Me.FindByPriv = New System.Windows.Forms.Button()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.ComputerInfoList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
-        Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,6 +102,7 @@ Partial Class ComputerDetails
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
+        Me.TableLayoutPanel3.SuspendLayout()
         CType(Me.Lnk_ComputerInfoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -119,7 +118,7 @@ Partial Class ComputerDetails
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(721, 266)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(743, 259)
         Me.TableLayoutPanel2.TabIndex = 1
         '
         'ComputerInfoList
@@ -131,109 +130,28 @@ Partial Class ComputerDetails
         Me.ComputerInfoList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.ComputerInfoList.Location = New System.Drawing.Point(3, 3)
         Me.ComputerInfoList.Name = "ComputerInfoList"
-        Me.ComputerInfoList.Size = New System.Drawing.Size(584, 260)
+        Me.ComputerInfoList.Size = New System.Drawing.Size(606, 253)
         Me.ComputerInfoList.TabIndex = 0
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.LiveCheck)
+        Me.Panel2.Controls.Add(Me.FindByPriv)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(593, 3)
+        Me.Panel2.Location = New System.Drawing.Point(615, 3)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(125, 260)
+        Me.Panel2.Size = New System.Drawing.Size(125, 253)
         Me.Panel2.TabIndex = 1
-        '
-        'LiveCheck
-        '
-        Me.LiveCheck.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.LiveCheck.Location = New System.Drawing.Point(0, 214)
-        Me.LiveCheck.Name = "LiveCheck"
-        Me.LiveCheck.Size = New System.Drawing.Size(125, 23)
-        Me.LiveCheck.TabIndex = 1
-        Me.LiveCheck.Text = "Live Check"
-        Me.LiveCheck.UseVisualStyleBackColor = True
         '
         'Button1
         '
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Button1.Location = New System.Drawing.Point(0, 237)
+        Me.Button1.Location = New System.Drawing.Point(0, 230)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(125, 23)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Add Note"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'TableLayoutPanel3
-        '
-        Me.TableLayoutPanel3.AutoScroll = True
-        Me.TableLayoutPanel3.ColumnCount = 5
-        Me.TableLayoutPanel1.SetColumnSpan(Me.TableLayoutPanel3, 2)
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119.0!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135.0!))
-        Me.TableLayoutPanel3.Controls.Add(Me.CreateComputerButton, 0, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.SaveComputerButton, 4, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.DeleteComputerButton, 3, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.ShowDisposedButton, 2, 0)
-        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel1, 1, 0)
-        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 520)
-        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
-        Me.TableLayoutPanel3.RowCount = 1
-        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(857, 29)
-        Me.TableLayoutPanel3.TabIndex = 4
-        '
-        'CreateComputerButton
-        '
-        Me.CreateComputerButton.Location = New System.Drawing.Point(3, 3)
-        Me.CreateComputerButton.Name = "CreateComputerButton"
-        Me.CreateComputerButton.Size = New System.Drawing.Size(107, 23)
-        Me.CreateComputerButton.TabIndex = 6
-        Me.CreateComputerButton.Text = "Create Computer"
-        Me.CreateComputerButton.UseVisualStyleBackColor = True
-        '
-        'SaveComputerButton
-        '
-        Me.SaveComputerButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SaveComputerButton.Enabled = False
-        Me.SaveComputerButton.Location = New System.Drawing.Point(728, 3)
-        Me.SaveComputerButton.Name = "SaveComputerButton"
-        Me.SaveComputerButton.Size = New System.Drawing.Size(126, 23)
-        Me.SaveComputerButton.TabIndex = 8
-        Me.SaveComputerButton.Text = "Save Computer Details"
-        Me.SaveComputerButton.UseVisualStyleBackColor = True
-        '
-        'DeleteComputerButton
-        '
-        Me.DeleteComputerButton.Location = New System.Drawing.Point(494, 3)
-        Me.DeleteComputerButton.Name = "DeleteComputerButton"
-        Me.DeleteComputerButton.Size = New System.Drawing.Size(91, 23)
-        Me.DeleteComputerButton.TabIndex = 9
-        Me.DeleteComputerButton.Text = "Delete Computer"
-        Me.DeleteComputerButton.UseVisualStyleBackColor = True
-        '
-        'ShowDisposedButton
-        '
-        Me.ShowDisposedButton.AutoSize = True
-        Me.ShowDisposedButton.Location = New System.Drawing.Point(353, 3)
-        Me.ShowDisposedButton.Name = "ShowDisposedButton"
-        Me.ShowDisposedButton.Size = New System.Drawing.Size(100, 17)
-        Me.ShowDisposedButton.TabIndex = 7
-        Me.ShowDisposedButton.Text = "Show Disposed"
-        Me.ShowDisposedButton.ThreeState = True
-        Me.ShowDisposedButton.UseVisualStyleBackColor = True
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(122, 3)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(225, 23)
-        Me.FlowLayoutPanel1.TabIndex = 10
         '
         'PictureBox1
         '
@@ -372,16 +290,14 @@ Partial Class ComputerDetails
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.54935!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84.45065!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 409.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.ComputerListBox, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.WMIOut, 2, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -389,7 +305,7 @@ Partial Class ComputerDetails
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1273, 552)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(889, 552)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'Label1
@@ -398,7 +314,7 @@ Partial Class ComputerDetails
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label1.Location = New System.Drawing.Point(3, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(128, 35)
+        Me.Label1.Size = New System.Drawing.Size(132, 35)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Computers"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -407,9 +323,9 @@ Partial Class ComputerDetails
         '
         Me.Label2.AutoSize = True
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Label2.Location = New System.Drawing.Point(137, 0)
+        Me.Label2.Location = New System.Drawing.Point(141, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(723, 35)
+        Me.Label2.Size = New System.Drawing.Size(745, 35)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Detail"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -422,7 +338,7 @@ Partial Class ComputerDetails
         Me.ComputerListBox.FormattingEnabled = True
         Me.ComputerListBox.Location = New System.Drawing.Point(3, 38)
         Me.ComputerListBox.Name = "ComputerListBox"
-        Me.ComputerListBox.Size = New System.Drawing.Size(128, 476)
+        Me.ComputerListBox.Size = New System.Drawing.Size(132, 476)
         Me.ComputerListBox.Sorted = True
         Me.ComputerListBox.TabIndex = 2
         '
@@ -435,9 +351,9 @@ Partial Class ComputerDetails
         '
         Me.Panel1.Controls.Add(Me.SplitContainer1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(137, 38)
+        Me.Panel1.Location = New System.Drawing.Point(141, 38)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(723, 476)
+        Me.Panel1.Size = New System.Drawing.Size(745, 476)
         Me.Panel1.TabIndex = 3
         '
         'SplitContainer1
@@ -492,8 +408,8 @@ Partial Class ComputerDetails
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.TableLayoutPanel2)
-        Me.SplitContainer1.Size = New System.Drawing.Size(723, 476)
-        Me.SplitContainer1.SplitterDistance = 204
+        Me.SplitContainer1.Size = New System.Drawing.Size(745, 476)
+        Me.SplitContainer1.SplitterDistance = 211
         Me.SplitContainer1.TabIndex = 18
         '
         'SearchName
@@ -702,15 +618,76 @@ Partial Class ComputerDetails
         Me.PurchaseCostLabel.TabIndex = 8
         Me.PurchaseCostLabel.Text = "Purchase Cost"
         '
-        'WMIOut
+        'TableLayoutPanel3
         '
-        Me.WMIOut.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.WMIOut.FormattingEnabled = True
-        Me.WMIOut.HorizontalScrollbar = True
-        Me.WMIOut.Location = New System.Drawing.Point(866, 38)
-        Me.WMIOut.Name = "WMIOut"
-        Me.WMIOut.Size = New System.Drawing.Size(404, 476)
-        Me.WMIOut.TabIndex = 5
+        Me.TableLayoutPanel3.AutoScroll = True
+        Me.TableLayoutPanel3.ColumnCount = 5
+        Me.TableLayoutPanel1.SetColumnSpan(Me.TableLayoutPanel3, 2)
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135.0!))
+        Me.TableLayoutPanel3.Controls.Add(Me.CreateComputerButton, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.SaveComputerButton, 4, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.DeleteComputerButton, 3, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.ShowDisposedButton, 2, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.FlowLayoutPanel1, 1, 0)
+        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 520)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 1
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(883, 29)
+        Me.TableLayoutPanel3.TabIndex = 4
+        '
+        'CreateComputerButton
+        '
+        Me.CreateComputerButton.Location = New System.Drawing.Point(3, 3)
+        Me.CreateComputerButton.Name = "CreateComputerButton"
+        Me.CreateComputerButton.Size = New System.Drawing.Size(107, 23)
+        Me.CreateComputerButton.TabIndex = 6
+        Me.CreateComputerButton.Text = "Create Computer"
+        Me.CreateComputerButton.UseVisualStyleBackColor = True
+        '
+        'SaveComputerButton
+        '
+        Me.SaveComputerButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SaveComputerButton.Enabled = False
+        Me.SaveComputerButton.Location = New System.Drawing.Point(754, 3)
+        Me.SaveComputerButton.Name = "SaveComputerButton"
+        Me.SaveComputerButton.Size = New System.Drawing.Size(126, 23)
+        Me.SaveComputerButton.TabIndex = 8
+        Me.SaveComputerButton.Text = "Save Computer Details"
+        Me.SaveComputerButton.UseVisualStyleBackColor = True
+        '
+        'DeleteComputerButton
+        '
+        Me.DeleteComputerButton.Location = New System.Drawing.Point(520, 3)
+        Me.DeleteComputerButton.Name = "DeleteComputerButton"
+        Me.DeleteComputerButton.Size = New System.Drawing.Size(91, 23)
+        Me.DeleteComputerButton.TabIndex = 9
+        Me.DeleteComputerButton.Text = "Delete Computer"
+        Me.DeleteComputerButton.UseVisualStyleBackColor = True
+        '
+        'ShowDisposedButton
+        '
+        Me.ShowDisposedButton.AutoSize = True
+        Me.ShowDisposedButton.Location = New System.Drawing.Point(353, 3)
+        Me.ShowDisposedButton.Name = "ShowDisposedButton"
+        Me.ShowDisposedButton.Size = New System.Drawing.Size(100, 17)
+        Me.ShowDisposedButton.TabIndex = 7
+        Me.ShowDisposedButton.Text = "Show Disposed"
+        Me.ShowDisposedButton.ThreeState = True
+        Me.ShowDisposedButton.UseVisualStyleBackColor = True
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(122, 3)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(225, 23)
+        Me.FlowLayoutPanel1.TabIndex = 10
         '
         'Tbl_ComputerTableAdapter
         '
@@ -752,19 +729,27 @@ Partial Class ComputerDetails
         Me.TableAdapterManager.Tbl_SupplierTableAdapter = Me.Tbl_SupplierTableAdapter
         Me.TableAdapterManager.UpdateOrder = ZuulEditor.ZuulDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'FindByPriv
+        '
+        Me.FindByPriv.Dock = System.Windows.Forms.DockStyle.Top
+        Me.FindByPriv.Location = New System.Drawing.Point(0, 0)
+        Me.FindByPriv.Name = "FindByPriv"
+        Me.FindByPriv.Size = New System.Drawing.Size(125, 23)
+        Me.FindByPriv.TabIndex = 1
+        Me.FindByPriv.Text = "Find By Priv"
+        Me.FindByPriv.UseVisualStyleBackColor = True
+        '
         'ComputerDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1273, 552)
+        Me.ClientSize = New System.Drawing.Size(889, 552)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "ComputerDetails"
         Me.Text = "ComputerDetails"
         Me.TableLayoutPanel2.ResumeLayout(False)
         CType(Me.ComputerInfoList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
-        Me.TableLayoutPanel3.ResumeLayout(False)
-        Me.TableLayoutPanel3.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TblSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZuulDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -778,6 +763,8 @@ Partial Class ComputerDetails
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
+        Me.TableLayoutPanel3.ResumeLayout(False)
+        Me.TableLayoutPanel3.PerformLayout()
         CType(Me.Lnk_ComputerInfoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -787,7 +774,6 @@ Partial Class ComputerDetails
     Friend WithEvents ComputerInfoList As DataGridView
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Button1 As Button
-    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
@@ -816,10 +802,6 @@ Partial Class ComputerDetails
     Friend WithEvents NameBox As TextBox
     Friend WithEvents PurchaseDateLabel As Label
     Friend WithEvents PurchaseCostLabel As Label
-    Friend WithEvents CreateComputerButton As Button
-    Friend WithEvents ShowDisposedButton As CheckBox
-    Friend WithEvents SaveComputerButton As Button
-    Friend WithEvents DeleteComputerButton As Button
     Friend WithEvents ZuulDataSet As ZuulDataSet
     Friend WithEvents TblComputerBindingSource As BindingSource
     Friend WithEvents Tbl_ComputerTableAdapter As ZuulDataSetTableAdapters.Tbl_ComputerTableAdapter
@@ -841,12 +823,16 @@ Partial Class ComputerDetails
     Friend WithEvents SearchSerial As CheckBox
     Friend WithEvents SearchMake As CheckBox
     Friend WithEvents SearchModel As CheckBox
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Label7 As Label
     Friend WithEvents ADPathBox As TextBox
-    Friend WithEvents LiveCheck As Button
-    Friend WithEvents WMIOut As ListBox
     Friend WithEvents ProcessorBox As TextBox
     Friend WithEvents Label8 As Label
     Friend WithEvents SearchName As CheckBox
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents CreateComputerButton As Button
+    Friend WithEvents SaveComputerButton As Button
+    Friend WithEvents DeleteComputerButton As Button
+    Friend WithEvents ShowDisposedButton As CheckBox
+    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents FindByPriv As Button
 End Class

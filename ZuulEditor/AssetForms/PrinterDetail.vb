@@ -35,6 +35,8 @@ Public Class PrinterDetail
         Me.Tbl_LocationTableAdapter.Fill(Me.ZuulDataSet.Tbl_Location)
         Me.Tbl_SupplierTableAdapter.Fill(Me.ZuulDataSet.Tbl_Supplier)
         Me.Tbl_PrinterTableAdapter.Fill(Me.ZuulDataSet.Tbl_Printer)
+        Me.TblPrinterBindingSource.Filter = "disposed = false"
+        ShowDisposedButton.Text = "Showing Active"
         AddHandlers()
     End Sub
 
@@ -53,7 +55,7 @@ Public Class PrinterDetail
         PrinterListBox.SelectedIndex = index
     End Sub
 
-    Private Sub PrinterListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles PrinterListBox.SelectedIndexChanged
+    Private Sub PrinterListBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles PrinterListBox.SelectedValueChanged
         If PrinterListBox.SelectedIndex > -1 Then
             Try
                 Dim printerrow As DataRow = GetSelectedPrinter()
@@ -161,6 +163,11 @@ Public Class PrinterDetail
         End If
     End Sub
 
+    ''' <summary>
+    ''' Check if can create new
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub SavePrinterButton_Click(sender As Object, e As EventArgs) Handles SavePrinterButton.Click
         SavePrinterButton.Enabled = False
         Dim printerrow As DataRow = GetSelectedPrinter()
@@ -169,8 +176,17 @@ Public Class PrinterDetail
 
         Dim sup As DataRow = DirectCast(SupplierCombo.SelectedItem, DataRowView).Row
         Dim cost As Decimal
-        cost = Decimal.Parse(PurchaseCostBox.Text.Replace("£", ""))
-        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), cost, PurchaseDateBox.Text, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, UserSelectable.Checked, pid)
+        If Not Decimal.TryParse(PurchaseCostBox.Text.Replace("£", ""), cost) Then
+            cost = Decimal.Parse("0.0")
+        End If
+        Dim testDate As Date
+        Dim purchaseDate As String
+        If Date.TryParse(PurchaseDateBox.Text, testDate) Then
+            purchaseDate = PurchaseDateBox.Text
+        Else
+            purchaseDate = "1/1/1970"
+        End If
+        Tbl_PrinterTableAdapter.UpdatePrinterByID(NameBox.Text, ConnectionStringBox.Text, MakeBox.Text, ModelBox.Text, IPAddressBox.Text, loc.Field(Of Integer)("LocationID"), sup.Field(Of Integer)("SupplierID"), cost, purchaseDate, DisposedTick.Checked, InventoryBox.Text, SerialNumberBox.Text, UserSelectable.Checked, pid)
         Dim name As String = NameBox.Text
         PrinterListBox.SelectedIndex = -1
         FillByDisposedButton()

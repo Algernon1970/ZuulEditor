@@ -17,7 +17,7 @@
         If res = DialogResult.OK Then
             DoInsert(req.ResultTextBox.Text)
         End If
-
+        req.Dispose()
     End Sub
 
     Private Sub DoDownload(ByRef dg As DataGridViewRow)

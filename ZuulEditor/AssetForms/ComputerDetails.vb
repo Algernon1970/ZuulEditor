@@ -147,6 +147,7 @@ Public Class ComputerDetails
             Me.Tbl_ComputerTableAdapter.Fill(Me.ZuulDataSet.Tbl_Computer)
             SelectComputerByName(req.ResultTextBox.Text)
         End If
+        req.Dispose()
     End Sub
 
     Private Sub CreateComputer(ByVal name As String)
@@ -362,22 +363,6 @@ Public Class ComputerDetails
 
 #End Region
 
-    Private Sub LiveCheck_Click(sender As Object, e As EventArgs) Handles LiveCheck.Click
-        Dim res As ManagementObjectCollection = GetWMI(NameBox.Text)
-        WMIOut.Items.Clear()
-
-        For Each m As ManagementObject In res
-            For Each mp As PropertyData In m.Properties
-                WMIOut.Items.Add(String.Format("{0} - {1}", mp.Name, m(mp.Name)))
-            Next
-        Next
-        Dim dsize As String = GetWMI("netserv-stn1", "size", "win32_logicaldisk where deviceID='c:'")
-        Dim fsize As String = GetWMI("netserv-stn1", "freespace", "win32_logicaldisk where deviceID='c:'")
-        Dim intsize As Integer = CInt(Math.Abs(Int64.Parse(dsize) / (1000 * 1000 * 1000)))
-        Dim fintsize As Integer = CInt(Math.Abs(Int64.Parse(fsize) / (1024 * 1024 * 1024)))
-        ' MsgBox(String.Format("C = {1}GB ({3} free) {0}Serial = {2}", vbCrLf, intsize, GetWMI("netserv-stn1", "SerialNumber", "win32_SystemEnclosure"), fintsize))
-    End Sub
-
     Private Sub ComputerListBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles ComputerListBox.SelectedValueChanged
         If ComputerListBox.SelectedIndex > -1 Then
             Try
@@ -412,5 +397,25 @@ Public Class ComputerDetails
             ClearDisplay()
         End If
 
+    End Sub
+
+    Private Sub FindByPriv_Click(sender As Object, e As EventArgs) Handles FindByPriv.Click
+        Dim tbl_PersonTableAdapter As New ZuulDataSetTableAdapters.Tbl_PersonTableAdapter
+        Dim lnk_ComputerPersonAdapter As New ZuulDataSetTableAdapters.Lnk_ComputerPersonTableAdapter
+
+        Dim req As New RequestString("Username", "Username", 250)
+        Dim res As DialogResult = req.ShowDialog
+        If res = DialogResult.OK Then
+            Dim uName As String = req.ResultTextBox.Text
+            If uName.Equals("") Then
+                Me.Tbl_ComputerTableAdapter.Fill(Me.ZuulDataSet.Tbl_Computer)
+            Else
+                Me.Tbl_ComputerTableAdapter.FillByPrivUser(Me.ZuulDataSet.Tbl_Computer, uName)
+            End If
+        Else
+            Me.Tbl_ComputerTableAdapter.Fill(Me.ZuulDataSet.Tbl_Computer)
+
+        End If
+        req.Dispose()
     End Sub
 End Class

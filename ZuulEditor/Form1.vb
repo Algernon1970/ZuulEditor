@@ -18,6 +18,7 @@
         End If
         Dim searchString As String = req.ResultTextBox.Text
         DisplayFormFor(searchString)
+        req.Dispose()
     End Sub
 
     Private Sub DisplayFormFor(ByVal searchString As String)
@@ -97,5 +98,10 @@
     Private Sub ImportComputersFromCSVButton_Click(sender As Object, e As EventArgs) Handles ImportComputersFromCSVButton.Click
         Dim computerDetailsImport As New ImportFromCSV(Importer.computerDetails)
         computerDetailsImport.Show()
+    End Sub
+
+    Private Sub ProjectorDetailButton_Click(sender As Object, e As EventArgs) Handles ProjectorDetailButton.Click
+        Dim ProjectorWindow As New ProjectorDetails
+        ProjectorDetails.Show()
     End Sub
 End Class

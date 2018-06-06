@@ -9,4 +9,13 @@
 
     End Sub
 
+    Private Sub RequestString_Load(sender As Object, e As EventArgs) Handles MyBase.Shown
+        ResultTextBox.Focus()
+    End Sub
+
+    Private Sub ResultTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles ResultTextBox.KeyDown
+        If e.KeyCode = Keys.Return Then
+            Me.DialogResult = DialogResult.OK
+        End If
+    End Sub
 End Class

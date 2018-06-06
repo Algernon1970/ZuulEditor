@@ -241,7 +241,9 @@
       <DependentUpon>ZuulDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\DirtyProjector.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Computer.png" />
   </ItemGroup>
