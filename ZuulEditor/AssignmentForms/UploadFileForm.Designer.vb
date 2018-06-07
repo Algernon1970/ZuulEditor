@@ -25,14 +25,15 @@ Partial Class UploadFileForm
         Me.components = New System.ComponentModel.Container()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Download = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Upload = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.TitleDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TblFilesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ZuulDataSet = New ZuulEditor.ZuulDataSet()
-        Me.Tbl_FilesTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_FilesTableAdapter()
         Me.CreateItemButton = New System.Windows.Forms.Button()
+        Me.Tbl_FilesTableAdapter = New ZuulEditor.ZuulDataSetTableAdapters.Tbl_FilesTableAdapter()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TblFilesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,6 +68,14 @@ Partial Class UploadFileForm
         Me.DataGridView1.Size = New System.Drawing.Size(446, 238)
         Me.DataGridView1.TabIndex = 0
         '
+        'TitleDataGridViewTextBoxColumn
+        '
+        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "Title"
+        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
+        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
+        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TitleDataGridViewTextBoxColumn.Width = 200
+        '
         'Download
         '
         Me.Download.HeaderText = "Download"
@@ -83,14 +92,6 @@ Partial Class UploadFileForm
         Me.Upload.Text = "Upload"
         Me.Upload.UseColumnTextForButtonValue = True
         '
-        'TitleDataGridViewTextBoxColumn
-        '
-        Me.TitleDataGridViewTextBoxColumn.DataPropertyName = "Title"
-        Me.TitleDataGridViewTextBoxColumn.HeaderText = "Title"
-        Me.TitleDataGridViewTextBoxColumn.Name = "TitleDataGridViewTextBoxColumn"
-        Me.TitleDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TitleDataGridViewTextBoxColumn.Width = 200
-        '
         'TblFilesBindingSource
         '
         Me.TblFilesBindingSource.DataMember = "Tbl_Files"
@@ -100,10 +101,6 @@ Partial Class UploadFileForm
         '
         Me.ZuulDataSet.DataSetName = "ZuulDataSet"
         Me.ZuulDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Tbl_FilesTableAdapter
-        '
-        Me.Tbl_FilesTableAdapter.ClearBeforeFill = True
         '
         'CreateItemButton
         '
@@ -115,9 +112,19 @@ Partial Class UploadFileForm
         Me.CreateItemButton.Text = "New Item"
         Me.CreateItemButton.UseVisualStyleBackColor = True
         '
+        'Tbl_FilesTableAdapter
+        '
+        Me.Tbl_FilesTableAdapter.ClearBeforeFill = True
+        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.Title = "Upload File to Database"
+        '
+        'SaveFileDialog1
+        '
+        Me.SaveFileDialog1.InitialDirectory = "z:\"
+        Me.SaveFileDialog1.RestoreDirectory = True
+        Me.SaveFileDialog1.Title = "Save File from Database"
         '
         'UploadFileForm
         '
@@ -145,4 +152,5 @@ Partial Class UploadFileForm
     Friend WithEvents Upload As DataGridViewButtonColumn
     Friend WithEvents CreateItemButton As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
 End Class

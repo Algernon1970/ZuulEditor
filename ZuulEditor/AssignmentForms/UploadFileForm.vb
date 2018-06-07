@@ -6,7 +6,6 @@
     End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        MsgBox(String.Format("row = {0}{1}Column = {2}", e.RowIndex, vbCrLf, e.ColumnIndex))
         If e.ColumnIndex = 1 Then DoDownload(DataGridView1.Rows(e.RowIndex))
         If e.ColumnIndex = 2 Then DoUpload(DataGridView1.Rows(e.RowIndex))
     End Sub
@@ -21,7 +20,25 @@
     End Sub
 
     Private Sub DoDownload(ByRef dg As DataGridViewRow)
+        Dim dbi As DataRowView = DirectCast(dg.DataBoundItem, DataRowView)
+        Dim dbr As DataRow = dbi.Row
 
+        Dim rowID As Integer = dbr.Field(Of Integer)("ID")
+        Dim fn As String = dbr.Field(Of String)("OriginalFN")
+        Dim content As Byte() = dbr.Field(Of Byte())("Data")
+        Dim fnext As String = fn.Split("."c)(1)
+        SaveFileDialog1.DefaultExt = fnext
+        SaveFileDialog1.Filter = String.Format("*.{0}|*.{0}", fnext)
+        SaveFileDialog1.AddExtension = True
+        SaveFileDialog1.FileName = fn
+        Dim res As DialogResult = SaveFileDialog1.ShowDialog
+        If res = DialogResult.OK Then
+            Dim loc As String = SaveFileDialog1.FileName
+            Dim outStream As IO.Stream = SaveFileDialog1.OpenFile()
+            outStream.Write(content, 0, content.Length)
+            outStream.Flush()
+            outStream.Close()
+        End If
     End Sub
 
     Private Sub DoUpload(ByRef dg As DataGridViewRow)
