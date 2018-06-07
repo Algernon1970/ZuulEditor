@@ -1,5 +1,7 @@
 ﻿Imports System.Management
-
+''' <summary>
+''' Test
+''' </summary>
 Public Class ComputerDetails
     Dim defaultCid As Integer = 0
     Dim searchPaused As Boolean = False
