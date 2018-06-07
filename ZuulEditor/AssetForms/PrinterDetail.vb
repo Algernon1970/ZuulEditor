@@ -1,7 +1,5 @@
 ﻿Imports System.ComponentModel
-''' <summary>
-''' Test
-''' </summary>
+
 Public Class PrinterDetail
     Dim defaultPid As Integer = 0
     Dim PrinterWMI As New PrinterInfo

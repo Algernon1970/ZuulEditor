@@ -46,16 +46,25 @@
             'get item at index.  Does index start with tab. If so, loop backwards till one doesnt.  This is the Machine.
             Dim item As String = OperationListBox.Items(index).ToString
             If item.StartsWith(vbTab) Then
-                theSam = item
+                theSam = item.Replace(vbTab, "")
                 For x = index To 0 Step -1
-                    item = OperationListBox.Items(index).ToString
+                    item = OperationListBox.Items(x).ToString
                     If Not item.StartsWith(vbTab) Then
                         theComputer = item
                         Exit For
                     End If
                 Next
             End If
-            OperationListBox.Items.Add(String.Format("Remove {0} from {1}", theSam, theComputer))
+
+            Dim cid As Integer? = Tbl_ComputerTableAdapter.GetCIDbyName(theComputer)
+            Dim pid As Integer? = Tbl_PersonTableAdapter.GetPIDbySAM(theSam)
+            If (IsNothing(cid)) Or (IsNothing(pid)) Then
+                OperationListBox.Items.Add(String.Format("Failed to Remove {0} from {1}", theSam, theComputer))
+            Else
+                OperationListBox.Items.Add(String.Format("Removed {0} from {1}", theSam, theComputer))
+                Lnk_PrivUsers.DeleteAssignment(CType(cid, Integer), CType(pid, Integer))
+            End If
+
         Next
     End Sub
 

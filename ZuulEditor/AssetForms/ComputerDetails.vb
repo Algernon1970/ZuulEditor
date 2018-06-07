@@ -1,7 +1,5 @@
 ﻿Imports System.Management
-''' <summary>
-''' Test
-''' </summary>
+
 Public Class ComputerDetails
     Dim defaultCid As Integer = 0
     Dim searchPaused As Boolean = False
@@ -132,11 +130,6 @@ Public Class ComputerDetails
             ADPathBox.Text = "Unparsable ADPath"
         End Try
 
-        'If DisposedTick.Checked Then
-        '    PictureBox1.Image = My.Resources.DisposedComputer
-        'Else
-        '    PictureBox1.Image = My.Resources.Computer
-        'End If
         SaveComputerButton.Enabled = False
         searchPaused = False
     End Sub
